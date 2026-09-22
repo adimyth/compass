@@ -58,6 +58,8 @@ JevBench scores Calibration on the hard tier only. Our calibration split mixed f
 
 Procedure: (1) fit temperatures on the hard-like split for the frozen fusion-0.5 readout and for head-v1; (2) evaluate both on the untouched release split; (3) the frozen readout with the new calibration becomes `compass-0.1.1` and gets one public-items run, reported as is; (4) head-v1 is promoted over it only if it wins on the internal release split (accuracy and ECE) and its own single public run does not regress hard-tier ECE against `compass-0.1.1`; otherwise `compass-0.1.1` ships.
 
+Outcome (23 Sep): fusion temperatures 1.25 / 2.0 / 1.5; release split 60.1 %, ECE 0.074. Public items unchanged in accuracy, hard ECE 0.107 (was 0.105). head-v1 with the hard-like calibration: release split 67.5 %, ECE 0.044; public hard ECE 0.199, still far above the release, so the over-confidence is in the head and head-v1 stays unpromoted. `compass-0.1.1` is the release, tagged `v0.1.1`.
+
 ## Follow-up, after the row exists
 
 Stage B (LoRA plus verification head on our own corpus) targeting long-policy, multi-hop, probability and ambiguous items, where Jev beats the frozen 4B systems by 20–40 points. Temporal arithmetic is not a target: every no-generation system on the board scores 20–33 % there.
