@@ -1,0 +1,44 @@
+{
+  "temperatures": {
+    "choice": 1.25,
+    "score": 1.0,
+    "noul": 0.75
+  },
+  "fitted_on": [
+    "dev/splits/calibration-hard.jsonl"
+  ],
+  "model": "compass-head-qwen3.5-4b-compass-prompt-2",
+  "readout": "verify",
+  "head": "release/head-v1",
+  "fusion_weight": null,
+  "n_items": 212,
+  "report": {
+    "choice": {
+      "n": 60,
+      "fit_half_T": 1.25,
+      "shipped_T": 1.25,
+      "held_out_ece_before": 0.1714,
+      "held_out_ece_after": 0.1746,
+      "held_out_nll_before": 0.8576,
+      "held_out_nll_after": 0.875
+    },
+    "score": {
+      "n": 60,
+      "fit_half_T": 1.0,
+      "shipped_T": 1.0,
+      "held_out_ece_before": 0.1017,
+      "held_out_ece_after": 0.1017,
+      "held_out_nll_before": 1.0021,
+      "held_out_nll_after": 1.0021
+    },
+    "noul": {
+      "n": 92,
+      "fit_half_T": 0.5,
+      "shipped_T": 0.75,
+      "held_out_ece_before": 0.0675,
+      "held_out_ece_after": 0.1343,
+      "held_out_nll_before": 0.5948,
+      "held_out_nll_after": 0.6303
+    }
+  }
+}
