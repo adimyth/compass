@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import os
 import random
 import time
 from dataclasses import replace
@@ -141,6 +142,9 @@ def main() -> None:
 
     from peft import LoraConfig, get_peft_model
 
+    for path in (args.train, args.select):
+        if "shadow" in os.path.normpath(path).split(os.sep):
+            raise SystemExit(f"{path} is under shadow/: the shadow suite is never read by training (SHADOW_SUITE_PROTOCOL.md)")
     torch.manual_seed(args.seed)
     rng = random.Random(args.seed)
     scorer = BackboneScorer(args.model_name)
