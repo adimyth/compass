@@ -36,6 +36,7 @@ def test_head_round_trip(tmp_path):
     with torch.no_grad():
         head.mlp[-1].weight.fill_(0.3)
         head.readout_weights.copy_(torch.tensor([0.7, 0.2]))
+    head.eval()
     head.save(str(tmp_path / "h"))
     again = CompassHead.load(str(tmp_path / "h"), torch.device("cpu"))
     x = torch.randn(4, 16)
