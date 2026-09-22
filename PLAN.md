@@ -27,6 +27,16 @@ What this ships is the same size class as SemIf (#2, 73.1) and reflex (#5, 70.3)
 - Every reported number names the revision, prompt version, calibration file and hardware.
 - Latency is measured by the maintainer on their GPU; our Mac numbers are not quoted.
 
+## Revalidation (22 Sep, evening)
+
+Re-examined before spending GPU time. Three things change the order of work.
+
+1. **The readout has not been A/B-tested.** Verification was chosen on principle, never against the answer-letter readout every strong 4B row uses. The public check gives a warning sign: standard tier 80.6 %, where the frozen 4B rows sit at 95–98 % on the same kind of items. Verifying each option in isolation can say "plausible" to several options; a direct "which one?" read contrasts them. Training on top of a readout that loses 15 points on easy classification would waste the run. So the first GPU job is a readout comparison on our own items (138 existing plus a fresh routing/policy generator): verification, direct option-key readout, and a combination of the two in log space. The winner on our items becomes the release readout.
+2. **Training is not a sure gain.** On the board, the best 4B row is frozen (SemIf 73.1); the LoRA-trained 4B (reflex) is below it. Trained small models also lose calibration (kev 4B/8B). A synthetic-only corpus can overfit its templates. Training moves to a gated experiment after a release-worthy frozen system exists: head-only first (cheap, low risk), LoRA second, each accepted only if it beats the frozen system on held-out families.
+3. **The judge tier is the biggest unknown in the projection.** It is 28 % of Intelligence, 146 answer-adequacy noul items, not public, with an 82 % majority-class floor. Our nearest evidence is adequacy 9/12 and judge_hard 10/17. If our noul readout leans "no", the tier could land far below the 80 % the projection assumes. The routing/policy generator gets an adequacy generator beside it (responses with one planted error) so the readout comparison covers this family.
+
+Revised order: (a) GPU: container, latency, readout comparison on own items; (b) if the readout changes, refit calibration and run the public items once more for the final configuration, reported as before; (c) training as a gated experiment; (d) submit when told to.
+
 ## Follow-up, after the row exists
 
 Stage B (LoRA plus verification head on our own corpus) targeting long-policy, multi-hop, probability and ambiguous items, where Jev beats the frozen 4B systems by 20–40 points. Temporal arithmetic is not a target: every no-generation system on the board scores 20–33 % there.
