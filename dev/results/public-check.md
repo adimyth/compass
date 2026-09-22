@@ -16,6 +16,10 @@ Internal release split (366 untouched items, `gate5-release.log`): 60.1 % overal
 
 **Projection, not a measurement.** With `jevbench/composite_v13.py`, the measured 4090 latency (×2 + 0.15 s adjustment) and the $0.03/M hosted price: Calibration 77.1, Speed 87.9, Cost 57.7, Intelligence 62–66 for an assumed judge tier of 75–85 %, projected JevBench Score about 70–71. The judge tier, the 109 held-out hard items and the maintainer's own latency remain unknown.
 
+## Stage B candidate head-v1 (not promoted), 23 September 2026, RTX 4090
+
+Same backbone and readouts with `release/head-v1` (residual head) and `release/head-v1/calibration.json`. One run, `2026-09-22-public-check-head-v1.jsonl`. easy 100 % (48/48), standard 81.9 % (59/72), hard 55.9 % (62/111); hard ECE 0.231, TVD 0.264; 231/231 well-formed. Projected 66.5 against 70.9 for the release: the calibration loss outweighs the flat accuracy. Not promoted (PLAN.md, gate 7).
+
 ## Earlier run: verification readout only (prompt-2), 22 September 2026, Apple M4 Pro
 
 One run of JevBench's 231 public items through JevBench's own `typesafe` adapter and `score_task`, against `compass-vocab-qwen3.5-4b-compass-prompt-2` (Qwen3.5-4B revision `851bf6e8`, frozen, bf16) with `release/calibration.json`, served on an Apple M4 Pro (MPS, reference linear-attention kernels). Not tuned on; reported as is. Per-item records: `2026-09-22-public-check.jsonl`.

@@ -79,7 +79,7 @@ def main() -> None:
     parser.add_argument("--port", type=int, default=8000)
     args = parser.parse_args()
     calibrator = Calibrator.load(args.calibration) if args.calibration else Calibrator()
-    is_release = (args.model_name, args.revision, args.readout) == (release.BACKBONE, release.BACKBONE_REVISION, release.READOUT) and (args.readout != "fusion" or args.fusion_weight == release.FUSION_WEIGHT)
+    is_release = (args.model_name, args.revision, args.readout, args.head) == (release.BACKBONE, release.BACKBONE_REVISION, release.READOUT, None) and (args.readout != "fusion" or args.fusion_weight == release.FUSION_WEIGHT)
     model_id = args.model_id or (release.MODEL_ID if is_release else None)
     scorer = build(args.scorer, model_name=args.model_name, revision=args.revision, device=args.device, head_path=args.head, model_id=model_id,
                    readout=args.readout, fusion_weight=args.fusion_weight)

@@ -48,6 +48,8 @@ Adopted gates (23 Sep):
 
 Status 22 Sep, late: gates 1–6 done on an RTX 4090 (`dev/results/gate*`). Readout chosen: fusion-0.5 (selection split 65.2 % vs verify 62.0 %). Calibration fitted. Release split 60.1 %. Public items for the release configuration: easy 100 %, standard 80.6 %, hard 56.8 %. Release `compass-0.1.0` pinned and tagged `v0.1.0`. Not submitted.
 
+Gate 7, head-only (23 Sep): residual head trained on the train split (2,700 items), early-stopped on selection (loss 0.74 → 0.57, accuracy 65.2 % → 71.7 %); calibration fitted on the calibration split. On the untouched release split it beat the frozen release on every count (67.5 % vs 60.1 %, ECE 0.052 vs 0.061, same flips, same latency). On the public items it did not transfer: standard 81.9 % (+1 item), hard 55.9 % (−1 item), and hard-tier ECE 0.231 against 0.105, TVD 0.264 against 0.248. The calibration fitted on our generator-built split does not carry over to hand-written hard items, and Calibration is a quarter of the score: projected 66.5 against 70.9 for the frozen release. **Not promoted.** `compass-0.1.0` stays the release. The head and its records stay in `release/head-v1/` and `dev/results/gate7-*`, `2026-09-22-public-check-head-v1.jsonl`. What would have to change before another attempt: a calibration split with authored hard items rather than generator items, and a loss that penalises over-confidence on unseen families. LoRA is not attempted, since the condition for it (head-only promising) is not met on external data.
+
 Splits are made by disjoint seeds and templates; the authored items are spread across selection, calibration and release so the release split is not generator-only.
 
 ## Follow-up, after the row exists
