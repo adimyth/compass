@@ -1,0 +1,16 @@
+{
+  "train": "/workspace/feats/train.pt",
+  "select": "/workspace/feats/selection.pt",
+  "n_train": 2700,
+  "n_select": 276,
+  "lr": 0.0003,
+  "weight_decay": 0.01,
+  "width": 256,
+  "dropout": 0.1,
+  "ordinal_weight": 0.5,
+  "batch": 16,
+  "selection_loss_untrained": 0.7424734234809875,
+  "selection_acc_untrained": 0.6521739130434783,
+  "selection_loss": 0.5713896155357361,
+  "selection_acc": 0.717391304347826
+}
