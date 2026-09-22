@@ -22,10 +22,11 @@ from compass.contract import compile_request
 
 def flat_scores(scorer: BackboneScorer, model, prefix: str, rubric: str, branches: list[str]) -> list[float]:
     out = []
+    device = next(model.parameters()).device
     for b in branches:
-        enc = scorer.tok(prefix + rubric + b, return_tensors="pt", add_special_tokens=False).to(scorer.device)
+        enc = scorer.tok(prefix + rubric + b, return_tensors="pt", add_special_tokens=False).to(device)
         with torch.no_grad():
-            out.append(scorer._logodds(model(**enc).logits[:, -1]).item())
+            out.append(scorer._logodds(model(**enc).logits[:, -1].to(scorer.device)).item())
     return out
 
 
@@ -34,11 +35,13 @@ def main() -> None:
     parser.add_argument("--model-name", default="Qwen/Qwen3.5-4B")
     parser.add_argument("--tasks", default="dev/splits/selection.jsonl")
     parser.add_argument("--n", type=int, default=24)
+    parser.add_argument("--ref-device", default=None, help="device for the fp32 reference (cpu when the GPU is shared)")
     args = parser.parse_args()
     from transformers import AutoModelForCausalLM
 
     s = BackboneScorer(args.model_name)
-    ref = AutoModelForCausalLM.from_pretrained(args.model_name, dtype=torch.float32).to(s.device).eval()
+    ref_device = torch.device(args.ref_device) if args.ref_device else s.device
+    ref = AutoModelForCausalLM.from_pretrained(args.model_name, dtype=torch.float32).to(ref_device).eval()
     rows = []
     for line in list(open(args.tasks))[: args.n]:
         t = json.loads(line)
