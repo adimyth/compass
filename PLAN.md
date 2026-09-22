@@ -35,7 +35,18 @@ Re-examined before spending GPU time. Three things change the order of work.
 2. **Training is not a sure gain.** On the board, the best 4B row is frozen (SemIf 73.1); the LoRA-trained 4B (reflex) is below it. Trained small models also lose calibration (kev 4B/8B). A synthetic-only corpus can overfit its templates. Training moves to a gated experiment after a release-worthy frozen system exists: head-only first (cheap, low risk), LoRA second, each accepted only if it beats the frozen system on held-out families.
 3. **The judge tier is the biggest unknown in the projection.** It is 28 % of Intelligence, 146 answer-adequacy noul items, not public, with an 82 % majority-class floor. Our nearest evidence is adequacy 9/12 and judge_hard 10/17. If our noul readout leans "no", the tier could land far below the 80 % the projection assumes. The routing/policy generator gets an adequacy generator beside it (responses with one planted error) so the readout comparison covers this family.
 
-Revised order: (a) GPU: container, latency, readout comparison on own items; (b) if the readout changes, refit calibration and run the public items once more for the final configuration, reported as before; (c) training as a gated experiment; (d) submit when told to.
+Adopted gates (23 Sep):
+
+1. GPU: validate the container, CUDA latency, and cached-versus-uncached score parity.
+2. Frozen-readout comparison on newly generated internal data: candidate verification; direct fixed-symbol readout (A/B/C mapped to candidates in canonical order); a fixed log-space fusion. Each readout also reports its flip rate under reversed option order; flips count against it.
+3. One internal **selection** split chooses the readout and fusion weight. A separate **release** split stays untouched.
+4. Calibration is fitted only after that choice is frozen, on a dedicated **calibration** split.
+5. The chosen frozen configuration is evaluated once on the untouched release split.
+6. JevBench public items run once for that frozen release configuration and are reported without further tuning (the earlier prompt-2 run stays in the record beside it).
+7. Stage B only as a separate gated experiment, on a fourth **train** split disjoint from the other three: head-only first; LoRA plus head only if head-only is promising; promoted only if it improves the untouched release evaluation without hurting calibration, robustness or latency; if promoted, it is a new release with one final public-items result.
+8. Submit only when authorised.
+
+Splits are made by disjoint seeds and templates; the authored items are spread across selection, calibration and release so the release split is not generator-only.
 
 ## Follow-up, after the row exists
 
