@@ -52,6 +52,12 @@ Gate 7, head-only (23 Sep): residual head trained on the train split (2,700 item
 
 Splits are made by disjoint seeds and templates; the authored items are spread across selection, calibration and release so the release split is not generator-only.
 
+## Gate 4b (pre-registered 23 Sep, before any run): hard-like calibration split
+
+JevBench scores Calibration on the hard tier only. Our calibration split mixed families the frozen model gets 93–94 % right (routing, policy) with families at 50–65 % (temporal, multi-hop, adequacy), so the fitted temperatures were sharper than a hard-tier item warrants. From now on temperatures are fitted on `dev/splits/calibration-hard.jsonl`, the calibration split restricted to those three families (212 items). This is a design change made from the benchmark's rules, adopted for the release before its result is seen.
+
+Procedure: (1) fit temperatures on the hard-like split for the frozen fusion-0.5 readout and for head-v1; (2) evaluate both on the untouched release split; (3) the frozen readout with the new calibration becomes `compass-0.1.1` and gets one public-items run, reported as is; (4) head-v1 is promoted over it only if it wins on the internal release split (accuracy and ECE) and its own single public run does not regress hard-tier ECE against `compass-0.1.1`; otherwise `compass-0.1.1` ships.
+
 ## Follow-up, after the row exists
 
 Stage B (LoRA plus verification head on our own corpus) targeting long-policy, multi-hop, probability and ambiguous items, where Jev beats the frozen 4B systems by 20–40 points. Temporal arithmetic is not a target: every no-generation system on the board scores 20–33 % there.
