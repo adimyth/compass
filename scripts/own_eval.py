@@ -43,11 +43,12 @@ def main() -> None:
     parser.add_argument("--readout", default="verify", choices=("verify", "direct", "fusion"))
     parser.add_argument("--fusion-weight", type=float, default=0.5)
     parser.add_argument("--debias", type=float, default=0.0)
+    parser.add_argument("--adapter", default=None)
     parser.add_argument("--calibration")
     parser.add_argument("--dump", help="write per-item results to this JSONL")
     args = parser.parse_args()
 
-    scorer = build(args.scorer, model_name=args.model_name, head_path=args.head, readout=args.readout, fusion_weight=args.fusion_weight, debias=args.debias)
+    scorer = build(args.scorer, model_name=args.model_name, head_path=args.head, readout=args.readout, fusion_weight=args.fusion_weight, debias=args.debias, adapter=args.adapter)
     calibrator = Calibrator.load(args.calibration) if args.calibration else Calibrator()
     tasks = [json.loads(line) for line in open(args.tasks, encoding="utf-8") if line.strip()]
 

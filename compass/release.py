@@ -8,4 +8,5 @@ CALIBRATION = "release/calibration.json"  # fitted on dev/splits/calibration-har
 READOUT = "fusion"
 FUSION_WEIGHT = 0.5
 DEBIAS = 0.0  # content-free prior subtraction weight (PLAN.md gate 2b); 0 in compass-0.1.1
+ADAPTER = None  # Stage B v2 LoRA directory when promoted; None in compass-0.1.1
 MODEL_ID = "compass-0.1.1"

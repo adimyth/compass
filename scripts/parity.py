@@ -36,11 +36,12 @@ def main() -> None:
     parser.add_argument("--tasks", default="dev/splits/selection.jsonl")
     parser.add_argument("--n", type=int, default=24)
     parser.add_argument("--ref-device", default=None, help="device for the fp32 reference (cpu when the GPU is shared)")
+    parser.add_argument("--adapter", default=None)
     args = parser.parse_args()
     from transformers import AutoModelForCausalLM
 
     # Phase 1: the bf16 serving model scores everything (forked and flat); then it is freed so the fp32 reference fits on a 24 GB GPU.
-    s = BackboneScorer(args.model_name)
+    s = BackboneScorer(args.model_name, adapter=args.adapter)
     items = []
     for line in list(open(args.tasks))[: args.n]:
         t = json.loads(line)
@@ -51,7 +52,11 @@ def main() -> None:
     del s.model
     torch.cuda.empty_cache()
     ref_device = torch.device(args.ref_device) if args.ref_device else s.device
-    ref = AutoModelForCausalLM.from_pretrained(args.model_name, dtype=torch.float32).to(ref_device).eval()
+    ref = AutoModelForCausalLM.from_pretrained(args.model_name, dtype=torch.float32)
+    if args.adapter:
+        from peft import PeftModel
+        ref = PeftModel.from_pretrained(ref, args.adapter).merge_and_unload()
+    ref = ref.to(ref_device).eval()
     rows = []
     for tid, tokens, forked, flat16, prefix, rubric, branches in items:
         flat32 = flat_scores(s, ref, prefix, rubric, branches)
