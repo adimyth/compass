@@ -57,7 +57,7 @@ def test_answers_are_valid_and_tokens_are_counted(scorer):
         for rubric, branches in questions
     )
     assert out["usage"] == {"input_tokens": expected, "output_tokens": 0}
-    assert out["model"].startswith("compass-vocab-qwen3.5-0.8b")
+    assert out["model"].startswith("compass-verify-qwen3.5-0.8b")
 
 
 def test_option_order_cannot_change_the_answer(scorer):
