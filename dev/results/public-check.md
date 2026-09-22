@@ -1,0 +1,17 @@
+# Public-items check, 22 September 2026
+
+One run of JevBench's 231 public items through JevBench's own `typesafe` adapter and `score_task`, against `compass-vocab-qwen3.5-4b-compass-prompt-2` (Qwen3.5-4B revision `851bf6e8`, frozen, bf16) with `release/calibration.json`, served on an Apple M4 Pro (MPS, reference linear-attention kernels). Not tuned on; reported as is. Per-item records: `2026-09-22-public-check.jsonl`.
+
+| Tier | Items | Accuracy | Valid | Top-label ECE | Mean input tokens |
+| --- | --- | --- | --- | --- | --- |
+| easy | 48 | 100.0 % | 48/48 | 0.021 | 298 |
+| standard (original) | 72 | 80.6 % | 72/72 | 0.074 | 296 |
+| hard | 111 | 55.9 % | 111/111 | 0.089 | 1,408 |
+
+Hard tier by family: adversarial 6/6, trap 8/8, routing_hard 5/5, multi_hop 11/18, judge_hard 10/17, probability 6/10 (mean TVD to gold distributions 0.25), ambiguous 4/7, long_policy 8/19, tradeoff 2/6, temporal_numeric 2/15.
+
+Standard tier by family: extraction 12/12, ordinal 12/12, intent 11/12, adequacy 9/12, policy 8/12, routing 6/12.
+
+Projection with `jevbench/composite_v13.py`, assuming 0.2 s raw p50 / 0.3 s p95 on the maintainer's GPU (×2 + 0.15 s adjustment) and the $0.03/M hosted price for the size class: Calibration 78.6, Speed 83.8, Cost 59.0; Intelligence 62–66 depending on the private judge tier (75–85 %), giving a JevBench Score of about 70–71. The judge tier is not public and was not run.
+
+Latency on this Mac (p50 1.6 s standard, 3.5 s hard) is not a measurement of the release: the reference PyTorch linear-attention path was used, not the fused CUDA kernels.
