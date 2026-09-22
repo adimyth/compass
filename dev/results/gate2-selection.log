@@ -1,0 +1,44 @@
+== verify
+choice  accuracy 73/93 = 0.785
+score   accuracy 21/61 = 0.344
+noul    accuracy 77/122 = 0.631
+overall accuracy 0.620  top-label ECE 0.103
+choice flips under reversed option order: 0
+latency p50 92 ms, max 707 ms; mean input tokens 379; model compass-verify-qwen3.5-4b-compass-prompt-2
+== direct
+choice  accuracy 57/93 = 0.613
+score   accuracy 30/61 = 0.492
+noul    accuracy 74/122 = 0.607
+overall accuracy 0.583  top-label ECE 0.101
+choice flips under reversed option order: 0
+latency p50 62 ms, max 655 ms; mean input tokens 292; model compass-direct-qwen3.5-4b-compass-prompt-2
+== fusion-0.3
+choice  accuracy 70/93 = 0.753
+score   accuracy 29/61 = 0.475
+noul    accuracy 75/122 = 0.615
+overall accuracy 0.630  top-label ECE 0.089
+choice flips under reversed option order: 0
+latency p50 121 ms, max 726 ms; mean input tokens 465; model compass-fusion-qwen3.5-4b-compass-prompt-2
+== fusion-0.5
+choice  accuracy 76/93 = 0.817
+score   accuracy 25/61 = 0.410
+noul    accuracy 79/122 = 0.648
+overall accuracy 0.652  top-label ECE 0.098
+choice flips under reversed option order: 0
+latency p50 122 ms, max 724 ms; mean input tokens 465; model compass-fusion-qwen3.5-4b-compass-prompt-2
+== fusion-0.7
+choice  accuracy 75/93 = 0.806
+score   accuracy 24/61 = 0.393
+noul    accuracy 76/122 = 0.623
+overall accuracy 0.634  top-label ECE 0.086
+choice flips under reversed option order: 0
+latency p50 121 ms, max 750 ms; mean input tokens 465; model compass-fusion-qwen3.5-4b-compass-prompt-2
+
+per-family accuracy on the selection split
+readout          adequacy  adversarial    ambiguous         fact    multi_hop      ordinal       policy      routing temporal_num     all
+direct          19/31         1/1          1/1          1/1         44/90         1/1         18/30        27/31        49/90       0.583
+fusion-0.3      20/31         1/1          1/1          1/1         48/90         1/1         23/30        28/31        51/90       0.630
+fusion-0.5      20/31         1/1          1/1          1/1         48/90         1/1         28/30        29/31        51/90       0.652
+fusion-0.7      20/31         1/1          1/1          1/1         48/90         1/1         28/30        30/31        45/90       0.634
+verify          20/31         1/1          1/1          1/1         44/90         1/1         28/30        30/31        45/90       0.620
+== GATE2_DONE

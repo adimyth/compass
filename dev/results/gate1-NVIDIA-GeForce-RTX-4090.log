@@ -1,0 +1,25 @@
+== 2026-09-22T19:03:01Z NVIDIA-GeForce-RTX-4090
+NVIDIA GeForce RTX 4090, 580.126.20, 24564 MiB
+torch 2.14.0+cu130 cuda 13.0 transformers 5.17.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'causal_conv1d'
+fused linear-attention kernels: NO (reference path)
+== parity: test suite (0.8B) and forked-vs-flat on the 4B
+4 passed in 7.33s
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]Fetching 2 files: 100%|██████████| 2/2 [00:00<00:00, 2119.94it/s]
+Loading weights:   0%|          | 0/426 [00:00<?, ?it/s]Loading weights: 100%|██████████| 426/426 [00:00<00:00, 8309.76it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+cached-vs-uncached parity on 12 selection items: max |delta log-odds| = 0.2500 (FAIL)
+peak GPU memory: 8.71 GiB
+== latency: serial, warm, verify readout
+{"data":[{"id":"compass-0.1.0","aliases":["compass-latest"],"calibration":"release/calibration.json","backbone":{"model":"Qwen/Qwen3.5-4B","revision":"851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a","readout":"verify","fusion_weight":null},"prompt_version":"compass-prompt-2","package":"0.1.0.dev0"}]}
+short: input_tokens=316 n=100 p50=91 ms p95=96 ms max=100 ms
+long: input_tokens=1635 n=100 p50=174 ms p95=176 ms max=191 ms
+== compat check with JevBench's adapter
+ok   compat-choice: strict_valid=True predicted=engineering correct=True model=compass-0.1.0 input_tokens=294 latency=106.1 ms
+ok   compat-noul: strict_valid=True predicted=no correct=True model=compass-0.1.0 input_tokens=208 latency=93.3 ms
+ok   compat-score: strict_valid=True predicted=2 correct=True model=compass-0.1.0 input_tokens=296 latency=91.1 ms
+3/3 answers valid under JevBench's own adapter and validator
+== GATE1_DONE
