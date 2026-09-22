@@ -14,13 +14,17 @@ import torch
 
 from .contract import CompiledQuestion, CompiledRequest, ScoreOutput
 
-PROMPT_VERSION = "compass-prompt-2"
+PROMPT_VERSION = "compass-prompt-3"  # prompt-3: the direct readout has its own system prompt (gate 2c); verification wording unchanged since prompt-2
 SPLIT = "␞"  # record separator, never expected in real text; marks prefix/branch boundaries
 
 SYSTEM = (
     "You are a decision verifier. You will read a document, a question about it and a rubric listing every allowed answer. "
     "Then you will be shown one proposed answer. Judge strictly from the document and the rubric whether that proposed answer is the correct one. "
     "Reply with yes or no only."
+)
+SYSTEM_DIRECT = (
+    "You are a decision model. You will read a document, a question about it and a lettered list of every allowed answer. "
+    "Judge strictly from the document and the rubric which one answer is correct. Reply with that answer's letter only."
 )
 TYPE_NAMES = {"choice": "Allowed answers", "score": "Levels, in increasing order", "noul": "Allowed answers"}
 # Noul candidates are keyed false/true internally; the model sees them as the answers no/yes. Verifying "the correct answer is no: ..." read as a double negation and lost 2 of 7 own dev items (prompt-1); this framing is prompt-2.
@@ -105,12 +109,12 @@ class BackboneScorer:
 
     # ---- prompt assembly -------------------------------------------------
 
-    def render(self, request: CompiledRequest) -> tuple[str, list[tuple[str, list[str]]]]:
+    def render(self, request: CompiledRequest, system: str = SYSTEM) -> tuple[str, list[tuple[str, list[str]]]]:
         """Return the state prefix text and, per question, (rubric text, branch texts). The chat template is applied once, so its markup lands in the right segments."""
         # Render one full conversation with markers, then cut it: the template's end-of-user and assistant markup ends up in the branch.
         user = f"<document>\n{request.state}\n</document>\n\n{SPLIT}{SPLIT}"
         rendered = self.tok.apply_chat_template(
-            [{"role": "system", "content": SYSTEM}, {"role": "user", "content": user}],
+            [{"role": "system", "content": system}, {"role": "user", "content": user}],
             tokenize=False, add_generation_prompt=True, enable_thinking=False,
         )
         prefix, _, tail = rendered.partition(SPLIT + SPLIT)
@@ -153,7 +157,7 @@ class BackboneScorer:
         return ids
 
     def _direct(self, q: CompiledQuestion, state_cache, tokens: int) -> tuple[list[float], int]:
-        """One branch: the rubric with symbols, then the answer position; returns log-probs over the candidates' symbols."""
+        """One branch on the direct prefix (its own system prompt): the rubric with symbols, then the answer position; returns log-probs over the candidates' symbols."""
         prefix_tail = self._tail
         text = direct_rubric_text(q) + prefix_tail
         out, length = self._run([text], self._fork(state_cache, 1), tokens, False)
@@ -170,6 +174,7 @@ class BackboneScorer:
         prefix, questions = self.render(request)
         state_out, state_len = self._run([prefix], None, 0, False)
         tokens = int(state_len.item())
+        direct_cache = None
         feats: dict[str, dict] = {}
         for q, (rubric, branches) in zip(request.questions, questions):
             q_out, q_len = self._run([rubric], self._fork(state_out.past_key_values, 1), tokens, False)
@@ -180,15 +185,24 @@ class BackboneScorer:
             last = b_len - 1
             verify = torch.log_softmax(self._logodds(b_out.logits[rows, last]), dim=-1)
             hidden = b_out.hidden_states[-1][rows, last].float()
-            direct, used = self._direct(q, state_out.past_key_values, tokens)
+            if direct_cache is None:
+                direct_cache = self._direct_cache(request, request.state)
+                tokens += direct_cache[1]
+            direct, used = self._direct(q, direct_cache[0], direct_cache[1])
             feats[q.qid] = {"hidden": hidden.cpu(), "verify": verify.cpu(), "direct": torch.tensor(direct), "qtype": TYPES.index(q.type)}
             tokens += q_tokens + int(b_len.sum().item()) + used
         return feats, tokens
 
-    def _raw(self, q: CompiledQuestion, rubric: str, branches: list[str], state_cache, tokens: int) -> tuple[list[float], int]:
-        """Raw candidate logits for one question against a given state cache, per the configured readout. Returns (logits, tokens used)."""
+    def _direct_cache(self, request: CompiledRequest, state: str):
+        """Prefill the document once more under the direct readout's own system prompt. Returns (cache, tokens)."""
+        prefix, _ = self.render(CompiledRequest(state=state, questions=request.questions), system=SYSTEM_DIRECT)
+        out, length = self._run([prefix], None, 0, False)
+        return out.past_key_values, int(length.item())
+
+    def _raw(self, q: CompiledQuestion, rubric: str, branches: list[str], state_cache, tokens: int, direct: tuple | None = None) -> tuple[list[float], int]:
+        """Raw candidate logits for one question against a given state cache, per the configured readout. `direct` is the (cache, tokens) of the direct prefix when that readout is in use. Returns (logits, tokens used)."""
         if self.readout == "direct":
-            return self._direct(q, state_cache, tokens)
+            return self._direct(q, direct[0], direct[1])
         q_out, q_len = self._run([rubric], self._fork(state_cache, 1), tokens, False)
         q_tokens = int(q_len.item())
         n = len(branches)
@@ -199,7 +213,7 @@ class BackboneScorer:
         used = q_tokens + int(b_len.sum().item())
         if self.readout == "fusion":
             v = torch.log_softmax(torch.tensor(values), dim=-1).tolist()
-            d, d_used = self._direct(q, state_cache, tokens)
+            d, d_used = self._direct(q, direct[0], direct[1])
             used += d_used
             w = self.fusion_weight
             values = [w * a + (1 - w) * b for a, b in zip(v, d)]
@@ -220,20 +234,32 @@ class BackboneScorer:
                 logits[qid] = values
             return ScoreOutput(logits=logits, input_tokens=tokens)
         prefix, questions = self.render(request)
-        state_out, state_len = self._run([prefix], None, 0, False)
-        tokens = int(state_len.item())
-        null_cache = None
+        needs_direct = self.readout in ("direct", "fusion")
+        tokens = 0
+        state_cache = None
+        if self.readout != "direct":
+            state_out, state_len = self._run([prefix], None, 0, False)
+            state_cache, tokens = state_out.past_key_values, int(state_len.item())
+        direct = None
+        if needs_direct:
+            direct = self._direct_cache(request, request.state)
+            tokens += direct[1]
+        null_cache, null_direct, null_tokens = None, None, 0
         if self.debias:
-            null_prefix, _ = self.render(CompiledRequest(state=NULL_STATE, questions=request.questions))
-            null_out, null_len = self._run([null_prefix], None, 0, False)
-            null_cache, null_tokens = null_out.past_key_values, int(null_len.item())
-            tokens += null_tokens
+            if self.readout != "direct":
+                null_prefix, _ = self.render(CompiledRequest(state=NULL_STATE, questions=request.questions))
+                null_out, null_len = self._run([null_prefix], None, 0, False)
+                null_cache, null_tokens = null_out.past_key_values, int(null_len.item())
+                tokens += null_tokens
+            if needs_direct:
+                null_direct = self._direct_cache(request, NULL_STATE)
+                tokens += null_direct[1]
         logits: dict[str, list[float]] = {}
         for q, (rubric, branches) in zip(request.questions, questions):
-            values, used = self._raw(q, rubric, branches, state_out.past_key_values, tokens)
+            values, used = self._raw(q, rubric, branches, state_cache, tokens, direct)
             tokens += used
             if self.debias:
-                prior, used = self._raw(q, rubric, branches, null_cache, null_tokens)
+                prior, used = self._raw(q, rubric, branches, null_cache, null_tokens, null_direct)
                 tokens += used
                 values = [a - self.debias * b for a, b in zip(values, prior)]
             if not all(math.isfinite(v) for v in values):

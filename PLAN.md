@@ -64,6 +64,12 @@ Outcome (23 Sep): fusion temperatures 1.25 / 2.0 / 1.5; release split 60.1 %, EC
 
 Standard-tier misses are content priors of the verifier (every routing miss picks the same option, policy misses all say "no", adequacy misses all say "yes"), not reading errors. Candidate: score the same candidates against a null document and subtract that prior with weight λ (`--debias`). Procedure: λ ∈ {0.5, 1.0} on top of fusion-0.5, chosen on the selection split against the current 65.2 %; if it wins there, calibration is refitted on the hard-like split, the release split is evaluated once, and the result becomes `compass-0.2.0` with one public-items run reported as is. If it does not win on the selection split, nothing changes.
 
+Outcome (23 Sep): fusion + debias 0.5 → 60.1 %, debias 1.0 → 55.8 %, verify + debias 1.0 → 59.1 %, all below the 65.2 % baseline on every type, at 805 tokens per decision instead of 465. Not adopted (`dev/results/gate2b-*`).
+
+## Gate 2c (pre-registered 23 Sep, before any run): a system prompt for the direct readout
+
+The direct readout has so far run under the verifier's system prompt, which tells the model to judge one proposed answer and reply yes or no, and then asks it for a letter. Fix: the direct readout gets its own system prompt (read the document, pick the one correct answer, reply with its letter). Procedure: direct-v2 and fusion-0.5 over direct-v2 on the selection split against 65.2 %; if fusion over direct-v2 (or direct-v2 alone) wins, the usual gates follow (calibration on the hard-like split, release split once, one public run as `compass-0.2.0`). Otherwise nothing changes.
+
 ## Follow-up, after the row exists
 
 Stage B (LoRA plus verification head on our own corpus) targeting long-policy, multi-hop, probability and ambiguous items, where Jev beats the frozen 4B systems by 20–40 points. Temporal arithmetic is not a target: every no-generation system on the board scores 20–33 % there.
