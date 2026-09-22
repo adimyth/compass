@@ -10,7 +10,7 @@ An original Jev-class decision model for [JevBench](https://github.com/fstandhar
 
 ## Status
 
-The contract layer, the serving runtime and the Stage A backbone scorer (frozen Qwen3.5, candidate verification readout) work end to end. There is no trained head or adapter yet.
+**Release `compass-0.1.0` (Stage A) is pinned**: frozen Qwen3.5-4B at revision `851bf6e8`, fusion-0.5 readout, `release/calibration.json`. Public-item results and the projection are in [dev/results/public-check.md](dev/results/public-check.md). No trained head or adapter yet; Stage B is a gated experiment (PLAN.md gate 7).
 
 | Component (SPEC.md §5) | File | State |
 | --- | --- | --- |

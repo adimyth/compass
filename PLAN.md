@@ -46,6 +46,8 @@ Adopted gates (23 Sep):
 7. Stage B only as a separate gated experiment, on a fourth **train** split disjoint from the other three: head-only first; LoRA plus head only if head-only is promising; promoted only if it improves the untouched release evaluation without hurting calibration, robustness or latency; if promoted, it is a new release with one final public-items result.
 8. Submit only when authorised.
 
+Status 22 Sep, late: gates 1–6 done on an RTX 4090 (`dev/results/gate*`). Readout chosen: fusion-0.5 (selection split 65.2 % vs verify 62.0 %). Calibration fitted. Release split 60.1 %. Public items for the release configuration: easy 100 %, standard 80.6 %, hard 56.8 %. Release `compass-0.1.0` pinned and tagged `v0.1.0`. Not submitted.
+
 Splits are made by disjoint seeds and templates; the authored items are spread across selection, calibration and release so the release split is not generator-only.
 
 ## Follow-up, after the row exists
