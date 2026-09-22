@@ -82,7 +82,9 @@ class BackboneScorer:
         self.device = pick_device(device)
         self.tok = AutoTokenizer.from_pretrained(model_name, revision=revision)
         self.model = AutoModelForCausalLM.from_pretrained(model_name, revision=revision, dtype=dtype).to(self.device).eval()
-        self.head = torch.load(head_path, map_location=self.device) if head_path else None
+        from .head import CompassHead
+
+        self.head = CompassHead.load(head_path, self.device) if head_path else None
         if readout not in READOUTS:
             raise ValueError(f"readout must be one of {READOUTS}")
         self.readout, self.fusion_weight = readout, fusion_weight
@@ -159,7 +161,42 @@ class BackboneScorer:
         return (sel - torch.logsumexp(sel, dim=-1)).tolist(), int(length.item())
 
     @torch.no_grad()
+    def features(self, request: CompiledRequest) -> tuple[dict[str, dict], int]:
+        """Per question: hidden state at the readout position for every candidate, the normalised verification log-odds and the direct log-probs. Used by Stage B training and by serving with a head."""
+        from .head import TYPES
+
+        prefix, questions = self.render(request)
+        state_out, state_len = self._run([prefix], None, 0, False)
+        tokens = int(state_len.item())
+        feats: dict[str, dict] = {}
+        for q, (rubric, branches) in zip(request.questions, questions):
+            q_out, q_len = self._run([rubric], self._fork(state_out.past_key_values, 1), tokens, False)
+            q_tokens = int(q_len.item())
+            n = len(branches)
+            b_out, b_len = self._run(branches, self._fork(q_out.past_key_values, n), tokens + q_tokens, True)
+            rows = torch.arange(n, device=self.device)
+            last = b_len - 1
+            verify = torch.log_softmax(self._logodds(b_out.logits[rows, last]), dim=-1)
+            hidden = b_out.hidden_states[-1][rows, last].float()
+            direct, used = self._direct(q, state_out.past_key_values, tokens)
+            feats[q.qid] = {"hidden": hidden.cpu(), "verify": verify.cpu(), "direct": torch.tensor(direct), "qtype": TYPES.index(q.type)}
+            tokens += q_tokens + int(b_len.sum().item()) + used
+        return feats, tokens
+
+    @torch.no_grad()
     def score(self, request: CompiledRequest) -> ScoreOutput:
+        if self.head is not None:
+            feats, tokens = self.features(request)
+            logits = {}
+            for qid, f in feats.items():
+                n = f["hidden"].shape[0]
+                out = self.head(f["hidden"].to(self.device), f["verify"].to(self.device), f["direct"].to(self.device),
+                                torch.full((n,), f["qtype"], dtype=torch.long, device=self.device))
+                values = out.tolist()
+                if not all(math.isfinite(v) for v in values):
+                    raise RuntimeError(f"non-finite head logit for question {qid!r}")
+                logits[qid] = values
+            return ScoreOutput(logits=logits, input_tokens=tokens)
         prefix, questions = self.render(request)
         state_out, state_len = self._run([prefix], None, 0, False)
         state_cache = state_out.past_key_values
@@ -173,14 +210,10 @@ class BackboneScorer:
             q_out, q_len = self._run([rubric], self._fork(state_cache, 1), tokens, False)
             q_tokens = int(q_len.item())
             n = len(branches)
-            b_out, b_len = self._run(branches, self._fork(q_out.past_key_values, n), tokens + q_tokens, self.head is not None)
+            b_out, b_len = self._run(branches, self._fork(q_out.past_key_values, n), tokens + q_tokens, False)
             last = b_len - 1
             rows = torch.arange(n, device=self.device)
-            if self.head is None:
-                raw = self._logodds(b_out.logits[rows, last])
-            else:
-                raw = self.head(b_out.hidden_states[-1][rows, last].float()).squeeze(-1)
-            values = raw.tolist()
+            values = self._logodds(b_out.logits[rows, last]).tolist()
             if self.readout == "fusion":
                 # Log-space fusion of the two frozen readouts: verification log-odds (normalised over candidates) and the direct symbol log-probs.
                 v = torch.log_softmax(torch.tensor(values), dim=-1).tolist()
