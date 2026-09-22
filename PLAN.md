@@ -64,6 +64,12 @@ Outcome (23 Sep): fusion temperatures 1.25 / 2.0 / 1.5; release split 60.1 %, EC
 
 Standard-tier misses are content priors of the verifier (every routing miss picks the same option, policy misses all say "no", adequacy misses all say "yes"), not reading errors. Candidate: score the same candidates against a null document and subtract that prior with weight λ (`--debias`). Procedure: λ ∈ {0.5, 1.0} on top of fusion-0.5, chosen on the selection split against the current 65.2 %; if it wins there, calibration is refitted on the hard-like split, the release split is evaluated once, and the result becomes `compass-0.2.0` with one public-items run reported as is. If it does not win on the selection split, nothing changes.
 
+Outcome of gate 2c (23 Sep): direct-v2 50.4 % (was 58.3 %), fusion over direct-v2 56.2 % (was 65.2 %), fusion-0.3 54.3 %. The verifier framing helps the direct readout; the dedicated prompt hurts. Not adopted; the code was reverted so `main` reproduces `compass-0.1.1` (`dev/results/gate2c-*`).
+
+## What this session established
+
+Three pre-registered attempts to move past the frozen release failed their own tests: a trained residual head (gains on our data, none on JevBench's, worse calibration), content-free debiasing (worse on our data), and a dedicated direct-readout prompt (worse on our data). The frozen 4B rows above us on the standard and judge tiers (SemIf 97.9 % / 95.2 % against our 80.6 % public standard) show that better frozen prompting exists, but our selection split is 65 % generated temporal and multi-hop items and cannot rank prompts on the judgement items where we lose. The one lever with evidence behind it is authored data: a few hundred hand-written routing, policy and adequacy items for selection and calibration, and for any future Stage B.
+
 ## Follow-up, after the row exists
 
 Stage B (LoRA plus verification head on our own corpus) targeting long-policy, multi-hop, probability and ambiguous items, where Jev beats the frozen 4B systems by 20–40 points. Temporal arithmetic is not a target: every no-generation system on the board scores 20–33 % there.
