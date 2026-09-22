@@ -1,8 +1,8 @@
-# Public-items check, 22 September 2026
+# Public-items check, 22 September 2026 (preliminary, public items only)
 
 One run of JevBench's 231 public items through JevBench's own `typesafe` adapter and `score_task`, against `compass-vocab-qwen3.5-4b-compass-prompt-2` (Qwen3.5-4B revision `851bf6e8`, frozen, bf16) with `release/calibration.json`, served on an Apple M4 Pro (MPS, reference linear-attention kernels). Not tuned on; reported as is. Per-item records: `2026-09-22-public-check.jsonl`.
 
-| Tier | Items | Accuracy | Valid | Top-label ECE | Mean input tokens |
+| Tier | Items | Accuracy | Well-formed answers | Top-label ECE | Mean input tokens |
 | --- | --- | --- | --- | --- | --- |
 | easy | 48 | 100.0 % | 48/48 | 0.021 | 298 |
 | standard (original) | 72 | 80.6 % | 72/72 | 0.074 | 296 |
@@ -12,6 +12,8 @@ Hard tier by family: adversarial 6/6, trap 8/8, routing_hard 5/5, multi_hop 11/1
 
 Standard tier by family: extraction 12/12, ordinal 12/12, intent 11/12, adequacy 9/12, policy 8/12, routing 6/12.
 
-Projection with `jevbench/composite_v13.py`, assuming 0.2 s raw p50 / 0.3 s p95 on the maintainer's GPU (×2 + 0.15 s adjustment) and the $0.03/M hosted price for the size class: Calibration 78.6, Speed 83.8, Cost 59.0; Intelligence 62–66 depending on the private judge tier (75–85 %), giving a JevBench Score of about 70–71. The judge tier is not public and was not run.
+These are public-only, preliminary figures: the 109 held-out hard items and the 146-item judge tier were not run, and published rows for other systems (for example SemIf's 59.5 % and reflex's 63.2 % on hard) are full-benchmark results including held-out cases, so they are not directly comparable to the 55.9 % here.
+
+**Projection, not a measurement.** With `jevbench/composite_v13.py`, assuming 0.2 s raw p50 / 0.3 s p95 on the maintainer's GPU (×2 + 0.15 s adjustment) and the $0.03/M hosted price for the size class: the projected axes are Calibration 78.6 (from public hard items only), Speed 83.8 (assumed latency), Cost 59.0; Intelligence 62–66 depending on an assumed judge-tier accuracy of 75–85 %, giving a projected JevBench Score of about 70–71. The judge tier, the held-out hard items and evaluator-GPU latency are unknown until the maintainer runs the system.
 
 Latency on this Mac (p50 1.6 s standard, 3.5 s hard) is not a measurement of the release: the reference PyTorch linear-attention path was used, not the fused CUDA kernels.

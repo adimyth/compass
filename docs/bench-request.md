@@ -24,13 +24,13 @@ python -m jevbench.cli run --tasks datasets/public/original.jsonl \
 
 **Our own numbers on the public items**, one request at a time through your adapter and `score_task`, run once as a final check and not tuned on:
 
-| tier | items | accuracy | valid |
+| tier | items | accuracy | well-formed |
 | --- | --- | --- | --- |
 | easy | 48 | 1.000 | 48/48 |
 | standard (original) | 72 | 0.806 | 72/72 |
 | hard | 111 | 0.559 | 111/111 |
 
-Hard-tier top-label ECE 0.089; mean TVD to gold distributions on the public `probability` items 0.25. Hard misses concentrate in `temporal_numeric` and `long_policy`, like the other one-pass systems. We claim no rank from this; the held-out and judge items are yours, and speed and cost are measured from your server.
+Hard-tier top-label ECE 0.089; mean TVD to gold distributions on the public `probability` items 0.25. These are public-item figures only and are not comparable to ranked rows, which include the held-out and judge items. Hard misses concentrate in `temporal_numeric` and `long_policy`. We claim no rank from this; the held-out and judge items are yours, and speed and cost are measured from your server.
 
 **Cost basis.** Qwen3.5-4B at the hosted price you use for that size class ($0.03 per M input, DeepInfra), times the input tokens the API reports; nothing is generated. Latency was not measured on a CUDA GPU by us (development ran on a Mac), so we quote none.
 

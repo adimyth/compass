@@ -10,7 +10,7 @@ What this ships is the same size class as SemIf (#2, 73.1) and reflex (#5, 70.3)
 | --- | --- | --- |
 | Dev items | `dev/families/`: the temporal generator (60) plus a multi-hop generator (60) and the 18 authored items. All through `scripts/validate_items.py` with the JevBench overlap check. | Done: 138 items, 0 errors, 0 overlap. |
 | Calibration | `scripts/fit_calibration.py` fits one temperature per question type on the dev items, writes `release/calibration.json`. | Done: T = 1.5 / 3.0 / 2.5 (choice / score / noul); held-out ECE 0.19→0.16, 0.27→0.14, 0.24→0.09. |
-| Final check | JevBench's public items (231), once, through `scripts/public_check.py` (JevBench's adapter and scorer) against the server on this Mac. Reported as is, never tuned on. | Done: easy 100 %, standard 80.6 %, hard 55.9 %, 231/231 valid, hard ECE 0.089. `dev/results/public-check.md`. |
+| Final check | JevBench's public items (231), once, through `scripts/public_check.py` (JevBench's adapter and scorer) against the server on this Mac. Reported as is, never tuned on. | Done (public items only, preliminary): easy 100 %, standard 80.6 %, hard 55.9 %, 231/231 well-formed, hard ECE 0.089. Projected score 70–71, unverified until the maintainer's run. `dev/results/public-check.md`. |
 
 ## Day 2: package and submit
 
