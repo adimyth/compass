@@ -1,0 +1,26 @@
+nohup: ignoring input
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]Fetching 2 files: 100%|██████████| 2/2 [00:00<00:00, 1599.05it/s]
+Loading weights:   0%|          | 0/426 [00:00<?, ?it/s]Loading weights: 100%|██████████| 426/426 [00:00<00:00, 15903.35it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]Fetching 2 files: 100%|██████████| 2/2 [00:00<00:00, 1620.36it/s]
+Loading weights:   0%|          | 0/426 [00:00<?, ?it/s]Loading weights:   0%|          | 1/426 [00:00<03:21,  2.11it/s]Loading weights:  22%|██▏       | 93/426 [00:00<00:01, 207.67it/s]Loading weights:  33%|███▎      | 141/426 [00:00<00:01, 255.77it/s]Loading weights:  43%|████▎     | 184/426 [00:00<00:00, 252.11it/s]Loading weights:  52%|█████▏    | 220/426 [00:01<00:00, 263.09it/s]Loading weights:  60%|█████▉    | 254/426 [00:01<00:00, 244.21it/s]Loading weights:  67%|██████▋   | 287/426 [00:01<00:00, 261.20it/s]Loading weights:  74%|███████▍  | 317/426 [00:01<00:00, 262.38it/s]Loading weights:  81%|████████  | 346/426 [00:01<00:00, 266.73it/s]Loading weights:  88%|████████▊ | 375/426 [00:01<00:00, 271.46it/s]Loading weights:  95%|█████████▍| 404/426 [00:01<00:00, 275.03it/s]Loading weights: 100%|██████████| 426/426 [00:01<00:00, 237.87it/s]
+selection-multihop-oncall-082      tok=  492 forked-fp32=0.101 flat16-fp32=0.120 forked-flat16=0.124 argmax forked=ok flat16=ok
+selection-own-ambig-01             tok=  299 forked-fp32=0.091 flat16-fp32=0.155 forked-flat16=0.121 argmax forked=ok flat16=ok
+selection-multihop-severity-056    tok=  446 forked-fp32=0.119 flat16-fp32=0.119 forked-flat16=0.124 argmax forked=ok flat16=ok
+selection-policy-034               tok=  274 forked-fp32=0.069 flat16-fp32=0.069 forked-flat16=0.000 argmax forked=ok flat16=ok
+selection-multihop-oncall-013      tok=  481 forked-fp32=0.183 flat16-fp32=0.155 forked-flat16=0.126 argmax forked=ok flat16=ok
+selection-routing-033              tok=  395 forked-fp32=0.207 flat16-fp32=0.193 forked-flat16=0.250 argmax forked=ok flat16=ok
+selection-multihop-allow-027       tok=  496 forked-fp32=0.092 flat16-fp32=0.039 forked-flat16=0.125 argmax forked=ok flat16=ok
+selection-multihop-oncall-088      tok=  492 forked-fp32=0.159 flat16-fp32=0.043 forked-flat16=0.124 argmax forked=ok flat16=ok
+selection-multihop-allow-021       tok=  504 forked-fp32=0.117 flat16-fp32=0.080 forked-flat16=0.125 argmax forked=ok flat16=ok
+selection-policy-049               tok=  256 forked-fp32=0.050 flat16-fp32=0.074 forked-flat16=0.124 argmax forked=ok flat16=ok
+selection-temporal-return-003      tok=  289 forked-fp32=0.067 flat16-fp32=0.210 forked-flat16=0.250 argmax forked=ok flat16=ok
+selection-multihop-severity-053    tok=  447 forked-fp32=0.059 flat16-fp32=0.101 forked-flat16=0.125 argmax forked=ok flat16=ok
+selection-multihop-allow-081       tok=  497 forked-fp32=0.121 flat16-fp32=0.035 forked-flat16=0.125 argmax forked=ok flat16=ok
+selection-multihop-severity-047    tok=  445 forked-fp32=0.100 flat16-fp32=0.127 forked-flat16=0.122 argmax forked=ok flat16=ok
+selection-temporal-tier-013        tok=  376 forked-fp32=0.067 flat16-fp32=0.066 forked-flat16=0.001 argmax forked=FLIP flat16=FLIP
+selection-multihop-oncall-028      tok=  499 forked-fp32=0.104 flat16-fp32=0.104 forked-flat16=0.001 argmax forked=ok flat16=ok
+
+mean |delta| vs fp32: forked-bf16 0.107, flat-bf16 0.106; max: forked 0.207, flat 0.210
+argmax flips vs fp32: forked-bf16 1/16, flat-bf16 1/16

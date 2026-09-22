@@ -1,0 +1,7 @@
+choice  accuracy 95/122 = 0.779
+score   accuracy 31/81 = 0.383
+noul    accuracy 94/163 = 0.577
+overall accuracy 0.601  top-label ECE 0.061
+mean TVD to gold distributions on 1 graded items: 0.075
+choice flips under reversed option order: 0
+latency p50 121 ms, max 740 ms; mean input tokens 466; model compass-fusion-qwen3.5-4b-compass-prompt-2
