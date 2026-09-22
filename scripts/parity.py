@@ -39,20 +39,25 @@ def main() -> None:
     args = parser.parse_args()
     from transformers import AutoModelForCausalLM
 
+    # Phase 1: the bf16 serving model scores everything (forked and flat); then it is freed so the fp32 reference fits on a 24 GB GPU.
     s = BackboneScorer(args.model_name)
-    ref_device = torch.device(args.ref_device) if args.ref_device else s.device
-    ref = AutoModelForCausalLM.from_pretrained(args.model_name, dtype=torch.float32).to(ref_device).eval()
-    rows = []
+    items = []
     for line in list(open(args.tasks))[: args.n]:
         t = json.loads(line)
         _, req = compile_request({"state": t["state"], "questions": {"d": t["question"]}})
-        forked = s.score(req).logits["d"]
+        out = s.score(req)
         prefix, [(rubric, branches)] = s.render(req)
-        flat16 = flat_scores(s, s.model, prefix, rubric, branches)
+        items.append((t["id"], out.input_tokens, out.logits["d"], flat_scores(s, s.model, prefix, rubric, branches), prefix, rubric, branches))
+    del s.model
+    torch.cuda.empty_cache()
+    ref_device = torch.device(args.ref_device) if args.ref_device else s.device
+    ref = AutoModelForCausalLM.from_pretrained(args.model_name, dtype=torch.float32).to(ref_device).eval()
+    rows = []
+    for tid, tokens, forked, flat16, prefix, rubric, branches in items:
         flat32 = flat_scores(s, ref, prefix, rubric, branches)
         am = lambda v: max(range(len(v)), key=lambda k: (v[k], -k))
         rows.append({
-            "id": t["id"], "tokens": s.score(req).input_tokens,
+            "id": tid, "tokens": tokens,
             "forked_vs_fp32": max(abs(a - b) for a, b in zip(forked, flat32)),
             "flat16_vs_fp32": max(abs(a - b) for a, b in zip(flat16, flat32)),
             "forked_vs_flat16": max(abs(a - b) for a, b in zip(forked, flat16)),

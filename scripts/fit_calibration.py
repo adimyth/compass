@@ -55,9 +55,11 @@ def main() -> None:
     parser.add_argument("--model-name", default="Qwen/Qwen3.5-4B")
     parser.add_argument("--out", required=True)
     parser.add_argument("--seed", type=int, default=7)
+    parser.add_argument("--readout", default="verify", choices=("verify", "direct", "fusion"))
+    parser.add_argument("--fusion-weight", type=float, default=0.5)
     args = parser.parse_args()
 
-    scorer = build("backbone", model_name=args.model_name)
+    scorer = build("backbone", model_name=args.model_name, readout=args.readout, fusion_weight=args.fusion_weight)
     tasks = [json.loads(l) for p in args.tasks for l in open(p, encoding="utf-8") if l.strip()]
     rng = random.Random(args.seed)
     rng.shuffle(tasks)
@@ -92,7 +94,7 @@ def main() -> None:
                          "held_out_nll_before": round(nll(held, 1.0), 4), "held_out_nll_after": round(nll(held, best), 4)}
         print(qtype, report[qtype])
 
-    out = {"temperatures": temperatures, "fitted_on": args.tasks, "model": scorer.model_id, "n_items": len(tasks), "report": report}
+    out = {"temperatures": temperatures, "fitted_on": args.tasks, "model": scorer.model_id, "readout": args.readout, "fusion_weight": args.fusion_weight if args.readout == "fusion" else None, "n_items": len(tasks), "report": report}
     with open(args.out, "w", encoding="utf-8") as fh:
         json.dump(out, fh, indent=2)
     print("wrote", args.out)
