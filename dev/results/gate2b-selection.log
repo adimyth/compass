@@ -1,0 +1,18 @@
+choice  accuracy 69/93 = 0.742
+score   accuracy 20/61 = 0.328
+noul    accuracy 77/122 = 0.631
+overall accuracy 0.601  top-label ECE 0.109
+choice flips under reversed option order: 0
+latency p50 239 ms, max 836 ms; mean input tokens 805; model compass-fusion-debias0.5-qwen3.5-4b-compass-prompt-2
+choice  accuracy 65/93 = 0.699
+score   accuracy 16/61 = 0.262
+noul    accuracy 73/122 = 0.598
+overall accuracy 0.558  top-label ECE 0.205
+choice flips under reversed option order: 0
+latency p50 244 ms, max 885 ms; mean input tokens 805; model compass-fusion-debias1-qwen3.5-4b-compass-prompt-2
+choice  accuracy 71/93 = 0.763
+score   accuracy 17/61 = 0.279
+noul    accuracy 75/122 = 0.615
+overall accuracy 0.591  top-label ECE 0.169
+choice flips under reversed option order: 0
+latency p50 180 ms, max 764 ms; mean input tokens 632; model compass-verify-debias1-qwen3.5-4b-compass-prompt-2
