@@ -8,7 +8,8 @@ COPY pyproject.toml README.md ./
 COPY compass ./compass
 COPY release ./release
 RUN pip install --no-cache-dir . huggingface_hub \
-    && pip install --no-cache-dir flash-linear-attention causal-conv1d || echo "fused linear-attention kernels unavailable; the reference PyTorch path is used"
+    && (pip install --no-cache-dir flash-linear-attention || echo "flash-linear-attention unavailable; the reference PyTorch path is used") \
+    && (pip install --no-cache-dir causal-conv1d || true)
 
 # Pin the backbone at the recorded revision and bake it into the image.
 RUN python -c "import compass.release as r; from huggingface_hub import snapshot_download; snapshot_download(r.BACKBONE, revision=r.BACKBONE_REVISION, ignore_patterns=['*.png'])"

@@ -5,5 +5,7 @@ set -eu
 cd "$(dirname "$0")/.."
 PORT="${1:-8000}"
 uv sync --frozen 2>/dev/null || uv sync
-uv pip install flash-linear-attention causal-conv1d >/dev/null 2>&1 || echo "fused linear-attention kernels unavailable; using the reference PyTorch path (slower, same numbers)"
+# flash-linear-attention (Triton) is what speeds up the hybrid layers; causal-conv1d is optional and often has no wheel for the current torch.
+uv pip install flash-linear-attention >/dev/null 2>&1 || echo "flash-linear-attention unavailable; using the reference PyTorch path (slower, same numbers)"
+uv pip install causal-conv1d >/dev/null 2>&1 || true
 exec uv run python -m compass.server --port "$PORT" --calibration release/calibration.json
