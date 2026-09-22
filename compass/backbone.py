@@ -30,6 +30,8 @@ NO_FORMS = ("no", "No", " no", " No", "NO")
 # Direct readout: candidates are labelled with fixed symbols in canonical order and the answer is read from the symbol logits at one position.
 SYMBOLS = [chr(ord("A") + i) for i in range(26)] + [chr(ord("a") + i) for i in range(26)] + [str(i) for i in range(10)] + ["α", "β"]
 READOUTS = ("verify", "direct", "fusion")
+# Content-free debiasing: the same candidates are scored against a null document and that prior is subtracted (weight `debias`).
+NULL_STATE = "(no document was provided)"
 
 
 def rubric_text(q: CompiledQuestion) -> str:
@@ -76,7 +78,7 @@ def pick_device(name: str | None) -> torch.device:
 class BackboneScorer:
     def __init__(self, model_name: str = "Qwen/Qwen3.5-0.8B", revision: str | None = None, device: str | None = None,
                  dtype: torch.dtype = torch.bfloat16, head_path: str | None = None, model_id: str | None = None,
-                 readout: str = "verify", fusion_weight: float = 0.5):
+                 readout: str = "verify", fusion_weight: float = 0.5, debias: float = 0.0):
         from transformers import AutoModelForCausalLM, AutoTokenizer
 
         self.device = pick_device(device)
@@ -87,10 +89,10 @@ class BackboneScorer:
         self.head = CompassHead.load(head_path, self.device) if head_path else None
         if readout not in READOUTS:
             raise ValueError(f"readout must be one of {READOUTS}")
-        self.readout, self.fusion_weight = readout, fusion_weight
-        self.model_id = model_id or f"compass-{'head' if self.head else readout}-{model_name.split('/')[-1].lower()}-{PROMPT_VERSION}"
+        self.readout, self.fusion_weight, self.debias = readout, fusion_weight, debias
+        self.model_id = model_id or f"compass-{'head' if self.head else readout}{f'-debias{debias:g}' if debias else ''}-{model_name.split('/')[-1].lower()}-{PROMPT_VERSION}"
         self.backbone = {"model": model_name, "revision": revision, "readout": "head" if self.head else self.readout,
-                         "fusion_weight": fusion_weight if readout == "fusion" else None}
+                         "fusion_weight": fusion_weight if readout == "fusion" else None, "debias": debias or None}
         self.prompt_version = PROMPT_VERSION
         self.yes_ids = self._form_ids(YES_FORMS)
         self.no_ids = self._form_ids(NO_FORMS)
@@ -183,6 +185,26 @@ class BackboneScorer:
             tokens += q_tokens + int(b_len.sum().item()) + used
         return feats, tokens
 
+    def _raw(self, q: CompiledQuestion, rubric: str, branches: list[str], state_cache, tokens: int) -> tuple[list[float], int]:
+        """Raw candidate logits for one question against a given state cache, per the configured readout. Returns (logits, tokens used)."""
+        if self.readout == "direct":
+            return self._direct(q, state_cache, tokens)
+        q_out, q_len = self._run([rubric], self._fork(state_cache, 1), tokens, False)
+        q_tokens = int(q_len.item())
+        n = len(branches)
+        b_out, b_len = self._run(branches, self._fork(q_out.past_key_values, n), tokens + q_tokens, False)
+        last = b_len - 1
+        rows = torch.arange(n, device=self.device)
+        values = self._logodds(b_out.logits[rows, last]).tolist()
+        used = q_tokens + int(b_len.sum().item())
+        if self.readout == "fusion":
+            v = torch.log_softmax(torch.tensor(values), dim=-1).tolist()
+            d, d_used = self._direct(q, state_cache, tokens)
+            used += d_used
+            w = self.fusion_weight
+            values = [w * a + (1 - w) * b for a, b in zip(v, d)]
+        return values, used
+
     @torch.no_grad()
     def score(self, request: CompiledRequest) -> ScoreOutput:
         if self.head is not None:
@@ -199,30 +221,22 @@ class BackboneScorer:
             return ScoreOutput(logits=logits, input_tokens=tokens)
         prefix, questions = self.render(request)
         state_out, state_len = self._run([prefix], None, 0, False)
-        state_cache = state_out.past_key_values
         tokens = int(state_len.item())
+        null_cache = None
+        if self.debias:
+            null_prefix, _ = self.render(CompiledRequest(state=NULL_STATE, questions=request.questions))
+            null_out, null_len = self._run([null_prefix], None, 0, False)
+            null_cache, null_tokens = null_out.past_key_values, int(null_len.item())
+            tokens += null_tokens
         logits: dict[str, list[float]] = {}
         for q, (rubric, branches) in zip(request.questions, questions):
-            if self.readout == "direct":
-                logits[q.qid], used = self._direct(q, state_cache, tokens)
+            values, used = self._raw(q, rubric, branches, state_out.past_key_values, tokens)
+            tokens += used
+            if self.debias:
+                prior, used = self._raw(q, rubric, branches, null_cache, null_tokens)
                 tokens += used
-                continue
-            q_out, q_len = self._run([rubric], self._fork(state_cache, 1), tokens, False)
-            q_tokens = int(q_len.item())
-            n = len(branches)
-            b_out, b_len = self._run(branches, self._fork(q_out.past_key_values, n), tokens + q_tokens, False)
-            last = b_len - 1
-            rows = torch.arange(n, device=self.device)
-            values = self._logodds(b_out.logits[rows, last]).tolist()
-            if self.readout == "fusion":
-                # Log-space fusion of the two frozen readouts: verification log-odds (normalised over candidates) and the direct symbol log-probs.
-                v = torch.log_softmax(torch.tensor(values), dim=-1).tolist()
-                d, used = self._direct(q, state_cache, tokens)
-                tokens += used
-                w = self.fusion_weight
-                values = [w * a + (1 - w) * b for a, b in zip(v, d)]
+                values = [a - self.debias * b for a, b in zip(values, prior)]
             if not all(math.isfinite(v) for v in values):
-                raise RuntimeError(f"non-finite verification logit for question {q.qid!r}")
+                raise RuntimeError(f"non-finite logit for question {q.qid!r}")
             logits[q.qid] = values
-            tokens += q_tokens + int(b_len.sum().item())
         return ScoreOutput(logits=logits, input_tokens=tokens)

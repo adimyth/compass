@@ -74,15 +74,16 @@ def main() -> None:
     parser.add_argument("--head", help="backbone: trained verification head (Stage B); omitted means vocabulary readout")
     parser.add_argument("--readout", default=release.READOUT, choices=("verify", "direct", "fusion"))
     parser.add_argument("--fusion-weight", type=float, default=release.FUSION_WEIGHT, help="weight of the verification readout in fusion")
+    parser.add_argument("--debias", type=float, default=release.DEBIAS, help="content-free prior subtraction weight; 0 disables")
     parser.add_argument("--calibration", help="fitted calibration JSON; omitted means uncalibrated")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8000)
     args = parser.parse_args()
     calibrator = Calibrator.load(args.calibration) if args.calibration else Calibrator()
-    is_release = (args.model_name, args.revision, args.readout, args.head) == (release.BACKBONE, release.BACKBONE_REVISION, release.READOUT, None) and (args.readout != "fusion" or args.fusion_weight == release.FUSION_WEIGHT)
+    is_release = (args.model_name, args.revision, args.readout, args.head) == (release.BACKBONE, release.BACKBONE_REVISION, release.READOUT, None) and (args.readout != "fusion" or args.fusion_weight == release.FUSION_WEIGHT) and args.debias == release.DEBIAS
     model_id = args.model_id or (release.MODEL_ID if is_release else None)
     scorer = build(args.scorer, model_name=args.model_name, revision=args.revision, device=args.device, head_path=args.head, model_id=model_id,
-                   readout=args.readout, fusion_weight=args.fusion_weight)
+                   readout=args.readout, fusion_weight=args.fusion_weight, debias=args.debias)
     uvicorn.run(create_app(scorer, calibrator), host=args.host, port=args.port, workers=1)
 
 

@@ -7,4 +7,5 @@ CALIBRATION = "release/calibration.json"  # fitted on dev/splits/calibration-har
 # Chosen on the selection split (dev/results/gate2-selection.log): log-space fusion of the verification and direct readouts, equal weight.
 READOUT = "fusion"
 FUSION_WEIGHT = 0.5
+DEBIAS = 0.0  # content-free prior subtraction weight (PLAN.md gate 2b); 0 in compass-0.1.1
 MODEL_ID = "compass-0.1.1"

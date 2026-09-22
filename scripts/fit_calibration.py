@@ -57,10 +57,11 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=7)
     parser.add_argument("--readout", default="verify", choices=("verify", "direct", "fusion"))
     parser.add_argument("--fusion-weight", type=float, default=0.5)
+    parser.add_argument("--debias", type=float, default=0.0)
     parser.add_argument("--head", help="Stage B head directory; overrides the readout")
     args = parser.parse_args()
 
-    scorer = build("backbone", model_name=args.model_name, readout=args.readout, fusion_weight=args.fusion_weight, head_path=args.head)
+    scorer = build("backbone", model_name=args.model_name, readout=args.readout, fusion_weight=args.fusion_weight, debias=args.debias, head_path=args.head)
     tasks = [json.loads(l) for p in args.tasks for l in open(p, encoding="utf-8") if l.strip()]
     rng = random.Random(args.seed)
     rng.shuffle(tasks)

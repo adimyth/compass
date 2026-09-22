@@ -60,6 +60,10 @@ Procedure: (1) fit temperatures on the hard-like split for the frozen fusion-0.5
 
 Outcome (23 Sep): fusion temperatures 1.25 / 2.0 / 1.5; release split 60.1 %, ECE 0.074. Public items unchanged in accuracy, hard ECE 0.107 (was 0.105). head-v1 with the hard-like calibration: release split 67.5 %, ECE 0.044; public hard ECE 0.199, still far above the release, so the over-confidence is in the head and head-v1 stays unpromoted. `compass-0.1.1` is the release, tagged `v0.1.1`.
 
+## Gate 2b (pre-registered 23 Sep, before any run): content-free debiasing
+
+Standard-tier misses are content priors of the verifier (every routing miss picks the same option, policy misses all say "no", adequacy misses all say "yes"), not reading errors. Candidate: score the same candidates against a null document and subtract that prior with weight λ (`--debias`). Procedure: λ ∈ {0.5, 1.0} on top of fusion-0.5, chosen on the selection split against the current 65.2 %; if it wins there, calibration is refitted on the hard-like split, the release split is evaluated once, and the result becomes `compass-0.2.0` with one public-items run reported as is. If it does not win on the selection split, nothing changes.
+
 ## Follow-up, after the row exists
 
 Stage B (LoRA plus verification head on our own corpus) targeting long-policy, multi-hop, probability and ambiguous items, where Jev beats the frozen 4B systems by 20–40 points. Temporal arithmetic is not a target: every no-generation system on the board scores 20–33 % there.
