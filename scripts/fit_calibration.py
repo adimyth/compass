@@ -57,9 +57,10 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=7)
     parser.add_argument("--readout", default="verify", choices=("verify", "direct", "fusion"))
     parser.add_argument("--fusion-weight", type=float, default=0.5)
+    parser.add_argument("--head", help="Stage B head directory; overrides the readout")
     args = parser.parse_args()
 
-    scorer = build("backbone", model_name=args.model_name, readout=args.readout, fusion_weight=args.fusion_weight)
+    scorer = build("backbone", model_name=args.model_name, readout=args.readout, fusion_weight=args.fusion_weight, head_path=args.head)
     tasks = [json.loads(l) for p in args.tasks for l in open(p, encoding="utf-8") if l.strip()]
     rng = random.Random(args.seed)
     rng.shuffle(tasks)
@@ -94,7 +95,7 @@ def main() -> None:
                          "held_out_nll_before": round(nll(held, 1.0), 4), "held_out_nll_after": round(nll(held, best), 4)}
         print(qtype, report[qtype])
 
-    out = {"temperatures": temperatures, "fitted_on": args.tasks, "model": scorer.model_id, "readout": args.readout, "fusion_weight": args.fusion_weight if args.readout == "fusion" else None, "n_items": len(tasks), "report": report}
+    out = {"temperatures": temperatures, "fitted_on": args.tasks, "model": scorer.model_id, "readout": args.readout, "head": args.head, "fusion_weight": args.fusion_weight if args.readout == "fusion" else None, "n_items": len(tasks), "report": report}
     with open(args.out, "w", encoding="utf-8") as fh:
         json.dump(out, fh, indent=2)
     print("wrote", args.out)
