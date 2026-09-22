@@ -18,7 +18,7 @@ Internal release split (366 untouched items, `gate5-release.log`): 60.1 % overal
 
 ## Stage B candidate head-v1 (not promoted), 23 September 2026, RTX 4090
 
-Same backbone and readouts with `release/head-v1` (residual head) and `release/head-v1/calibration.json`. One run, `2026-09-22-public-check-head-v1.jsonl`. easy 100 % (48/48), standard 81.9 % (59/72), hard 55.9 % (62/111); hard ECE 0.231, TVD 0.264; 231/231 well-formed. Projected 66.5 against 70.9 for the release: the calibration loss outweighs the flat accuracy. Not promoted (PLAN.md, gate 7).
+Same backbone and readouts with `release/head-v1` (residual head) and `release/head-v1/calibration.json`. One run, `2026-09-22-public-check-head-v1.jsonl`. easy 100 % (48/48), standard 81.9 % (59/72), hard 55.9 % (62/111); hard ECE 0.231, TVD 0.264; 231/231 well-formed. Projected 67.6 against 70.9 for the release: the calibration loss outweighs the flat accuracy. Not promoted (PLAN.md, gate 7).
 
 ## Earlier run: verification readout only (prompt-2), 22 September 2026, Apple M4 Pro
 
