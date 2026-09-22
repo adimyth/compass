@@ -27,6 +27,9 @@ TYPE_NAMES = {"choice": "Allowed answers", "score": "Levels, in increasing order
 NOUL_NAMES = {"false": "no", "true": "yes"}
 YES_FORMS = ("yes", "Yes", " yes", " Yes", "YES")
 NO_FORMS = ("no", "No", " no", " No", "NO")
+# Direct readout: candidates are labelled with fixed symbols in canonical order and the answer is read from the symbol logits at one position.
+SYMBOLS = [chr(ord("A") + i) for i in range(26)] + [chr(ord("a") + i) for i in range(26)] + [str(i) for i in range(10)] + ["α", "β"]
+READOUTS = ("verify", "direct", "fusion")
 
 
 def rubric_text(q: CompiledQuestion) -> str:
@@ -51,6 +54,15 @@ def proposition(q: CompiledQuestion, index: int) -> str:
     return f"Proposed answer: {head}: {c.text}\nIs this proposed answer correct under the rubric?"
 
 
+def direct_rubric_text(q: CompiledQuestion) -> str:
+    lines = [f"Question: {q.instructions}", f"{TYPE_NAMES[q.type]}:"]
+    for i, c in enumerate(q.candidates):
+        name = f"level {c.key}" if q.type == "score" else NOUL_NAMES[c.key] if q.type == "noul" else c.key
+        lines.append(f"  {SYMBOLS[i]}. {name}: {c.text}")
+    lines.append("Which one is the correct answer? Reply with its letter only.")
+    return "\n".join(lines)
+
+
 def pick_device(name: str | None) -> torch.device:
     if name:
         return torch.device(name)
@@ -63,15 +75,20 @@ def pick_device(name: str | None) -> torch.device:
 
 class BackboneScorer:
     def __init__(self, model_name: str = "Qwen/Qwen3.5-0.8B", revision: str | None = None, device: str | None = None,
-                 dtype: torch.dtype = torch.bfloat16, head_path: str | None = None, model_id: str | None = None):
+                 dtype: torch.dtype = torch.bfloat16, head_path: str | None = None, model_id: str | None = None,
+                 readout: str = "verify", fusion_weight: float = 0.5):
         from transformers import AutoModelForCausalLM, AutoTokenizer
 
         self.device = pick_device(device)
         self.tok = AutoTokenizer.from_pretrained(model_name, revision=revision)
         self.model = AutoModelForCausalLM.from_pretrained(model_name, revision=revision, dtype=dtype).to(self.device).eval()
         self.head = torch.load(head_path, map_location=self.device) if head_path else None
-        self.model_id = model_id or f"compass-{'head' if self.head else 'vocab'}-{model_name.split('/')[-1].lower()}-{PROMPT_VERSION}"
-        self.backbone = {"model": model_name, "revision": revision, "readout": "head" if self.head else "vocab"}
+        if readout not in READOUTS:
+            raise ValueError(f"readout must be one of {READOUTS}")
+        self.readout, self.fusion_weight = readout, fusion_weight
+        self.model_id = model_id or f"compass-{'head' if self.head else readout}-{model_name.split('/')[-1].lower()}-{PROMPT_VERSION}"
+        self.backbone = {"model": model_name, "revision": revision, "readout": "head" if self.head else self.readout,
+                         "fusion_weight": fusion_weight if readout == "fusion" else None}
         self.prompt_version = PROMPT_VERSION
         self.yes_ids = self._form_ids(YES_FORMS)
         self.no_ids = self._form_ids(NO_FORMS)
@@ -93,6 +110,7 @@ class BackboneScorer:
             tokenize=False, add_generation_prompt=True, enable_thinking=False,
         )
         prefix, _, tail = rendered.partition(SPLIT + SPLIT)
+        self._tail = tail
         questions = []
         for q in request.questions:
             rubric = rubric_text(q) + "\n\n"
@@ -121,6 +139,25 @@ class BackboneScorer:
         lp = torch.log_softmax(logits.float(), dim=-1)
         return torch.logsumexp(lp[:, self.yes_ids], dim=-1) - torch.logsumexp(lp[:, self.no_ids], dim=-1)
 
+    def _symbol_ids(self, n: int) -> list[int]:
+        ids = []
+        for sym in SYMBOLS[:n]:
+            forms = [t for f in (sym, " " + sym) if len(t := self.tok.encode(f, add_special_tokens=False)) == 1]
+            if not forms:
+                raise RuntimeError(f"symbol {sym!r} is not a single token")
+            ids.append(forms[0][0])
+        return ids
+
+    def _direct(self, q: CompiledQuestion, state_cache, tokens: int) -> tuple[list[float], int]:
+        """One branch: the rubric with symbols, then the answer position; returns log-probs over the candidates' symbols."""
+        prefix_tail = self._tail
+        text = direct_rubric_text(q) + prefix_tail
+        out, length = self._run([text], self._fork(state_cache, 1), tokens, False)
+        lp = torch.log_softmax(out.logits[0, int(length.item()) - 1].float(), dim=-1)
+        ids = self._symbol_ids(len(q.candidates))
+        sel = lp[ids]
+        return (sel - torch.logsumexp(sel, dim=-1)).tolist(), int(length.item())
+
     @torch.no_grad()
     def score(self, request: CompiledRequest) -> ScoreOutput:
         prefix, questions = self.render(request)
@@ -129,6 +166,10 @@ class BackboneScorer:
         tokens = int(state_len.item())
         logits: dict[str, list[float]] = {}
         for q, (rubric, branches) in zip(request.questions, questions):
+            if self.readout == "direct":
+                logits[q.qid], used = self._direct(q, state_cache, tokens)
+                tokens += used
+                continue
             q_out, q_len = self._run([rubric], self._fork(state_cache, 1), tokens, False)
             q_tokens = int(q_len.item())
             n = len(branches)
@@ -140,6 +181,13 @@ class BackboneScorer:
             else:
                 raw = self.head(b_out.hidden_states[-1][rows, last].float()).squeeze(-1)
             values = raw.tolist()
+            if self.readout == "fusion":
+                # Log-space fusion of the two frozen readouts: verification log-odds (normalised over candidates) and the direct symbol log-probs.
+                v = torch.log_softmax(torch.tensor(values), dim=-1).tolist()
+                d, used = self._direct(q, state_cache, tokens)
+                tokens += used
+                w = self.fusion_weight
+                values = [w * a + (1 - w) * b for a, b in zip(v, d)]
             if not all(math.isfinite(v) for v in values):
                 raise RuntimeError(f"non-finite verification logit for question {q.qid!r}")
             logits[q.qid] = values

@@ -72,13 +72,16 @@ def main() -> None:
     parser.add_argument("--model-id", default=None, help=f"id reported in responses; defaults to {release.MODEL_ID} for the pinned backbone")
     parser.add_argument("--device", help="backbone: cuda, mps or cpu; auto-detected when omitted")
     parser.add_argument("--head", help="backbone: trained verification head (Stage B); omitted means vocabulary readout")
+    parser.add_argument("--readout", default="verify", choices=("verify", "direct", "fusion"))
+    parser.add_argument("--fusion-weight", type=float, default=0.5, help="weight of the verification readout in fusion")
     parser.add_argument("--calibration", help="fitted calibration JSON; omitted means uncalibrated")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8000)
     args = parser.parse_args()
     calibrator = Calibrator.load(args.calibration) if args.calibration else Calibrator()
     model_id = args.model_id or (release.MODEL_ID if (args.model_name, args.revision) == (release.BACKBONE, release.BACKBONE_REVISION) else None)
-    scorer = build(args.scorer, model_name=args.model_name, revision=args.revision, device=args.device, head_path=args.head, model_id=model_id)
+    scorer = build(args.scorer, model_name=args.model_name, revision=args.revision, device=args.device, head_path=args.head, model_id=model_id,
+                   readout=args.readout, fusion_weight=args.fusion_weight)
     uvicorn.run(create_app(scorer, calibrator), host=args.host, port=args.port, workers=1)
 
 
