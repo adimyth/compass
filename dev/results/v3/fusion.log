@@ -1,0 +1,9 @@
+-- fusion 0.3
+overall accuracy 0.920  top-label ECE 0.116
+choice flips under reversed option order: 0
+-- fusion 0.5
+overall accuracy 0.899  top-label ECE 0.093
+choice flips under reversed option order: 0
+-- fusion 0.7
+overall accuracy 0.904  top-label ECE 0.108
+choice flips under reversed option order: 0

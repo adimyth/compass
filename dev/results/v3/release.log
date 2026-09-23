@@ -1,0 +1,18 @@
+choice  accuracy 165/229 = 0.721
+noul    accuracy 131/233 = 0.562
+score   accuracy 62/120 = 0.517
+overall accuracy 0.615  top-label ECE 0.076
+choice flips under reversed option order: 0
+latency p50 266 ms, max 1871 ms; mean input tokens 576; model compass-fusion-qwen3.5-4b-compass-prompt-2
+choice  accuracy 199/229 = 0.869
+noul    accuracy 172/233 = 0.738
+score   accuracy 101/120 = 0.842
+overall accuracy 0.811  top-label ECE 0.065
+choice flips under reversed option order: 0
+latency p50 276 ms, max 1317 ms; mean input tokens 576; model compass-fusion-lora-qwen3.5-4b-compass-prompt-2
+choice  accuracy 202/229 = 0.882
+noul    accuracy 169/233 = 0.725
+score   accuracy 87/120 = 0.725
+overall accuracy 0.787  top-label ECE 0.035
+choice flips under reversed option order: 0
+latency p50 293 ms, max 1309 ms; mean input tokens 576; model compass-fusion-lora-qwen3.5-4b-compass-prompt-2
