@@ -1,0 +1,159 @@
+{
+  "args": {
+    "train": "dev/splits_v2/train.jsonl",
+    "select": "dev/splits_v2/selection.jsonl",
+    "out": "release/lora-v2",
+    "model_name": "Qwen/Qwen3.5-4B",
+    "rank": 16,
+    "alpha": 32,
+    "lora_dropout": 0.05,
+    "lr": 0.0001,
+    "weight_decay": 0.01,
+    "epochs": 2,
+    "accum": 8,
+    "fusion": 0.5,
+    "ordinal_w": 0.5,
+    "perm_w": 0.5,
+    "perm_p": 0.5,
+    "opaque_p": 0.5,
+    "eval_every": 400,
+    "patience": 3,
+    "max_select": 400,
+    "seed": 0
+  },
+  "n_train": 2150,
+  "n_select": 161,
+  "best_selection_loss": 0.8873302168802816,
+  "best_step": 250,
+  "log": [
+    {
+      "step": 0,
+      "seen": 0,
+      "loss": 1.336758746236262,
+      "acc": 0.7080745341614907,
+      "by_family": {
+        "adequacy": "7/10",
+        "ambiguous": "7/7",
+        "policy": "11/13",
+        "probability": "29/60",
+        "routing": "60/71"
+      }
+    },
+    {
+      "step": 50,
+      "seen": 400,
+      "loss": 1.0610499146397323,
+      "acc": 0.8260869565217391,
+      "by_family": {
+        "adequacy": "6/10",
+        "ambiguous": "7/7",
+        "policy": "8/13",
+        "probability": "47/60",
+        "routing": "65/71"
+      }
+    },
+    {
+      "step": 100,
+      "seen": 800,
+      "loss": 1.031379698107586,
+      "acc": 0.906832298136646,
+      "by_family": {
+        "adequacy": "8/10",
+        "ambiguous": "7/7",
+        "policy": "9/13",
+        "probability": "55/60",
+        "routing": "67/71"
+      }
+    },
+    {
+      "step": 150,
+      "seen": 1200,
+      "loss": 0.9625220286051789,
+      "acc": 0.8757763975155279,
+      "by_family": {
+        "adequacy": "6/10",
+        "ambiguous": "6/7",
+        "policy": "10/13",
+        "probability": "52/60",
+        "routing": "67/71"
+      }
+    },
+    {
+      "step": 200,
+      "seen": 1600,
+      "loss": 0.9321816444499288,
+      "acc": 0.9316770186335404,
+      "by_family": {
+        "adequacy": "9/10",
+        "ambiguous": "6/7",
+        "policy": "10/13",
+        "probability": "60/60",
+        "routing": "65/71"
+      }
+    },
+    {
+      "step": 250,
+      "seen": 2000,
+      "loss": 0.8873302168802816,
+      "acc": 0.9130434782608695,
+      "by_family": {
+        "adequacy": "7/10",
+        "ambiguous": "6/7",
+        "policy": "8/13",
+        "probability": "58/60",
+        "routing": "68/71"
+      }
+    },
+    {
+      "step": 301,
+      "seen": 2406,
+      "loss": 0.9988113209218529,
+      "acc": 0.9130434782608695,
+      "by_family": {
+        "adequacy": "6/10",
+        "ambiguous": "6/7",
+        "policy": "11/13",
+        "probability": "58/60",
+        "routing": "66/71"
+      }
+    },
+    {
+      "step": 351,
+      "seen": 2806,
+      "loss": 1.0362505128805466,
+      "acc": 0.9254658385093167,
+      "by_family": {
+        "adequacy": "7/10",
+        "ambiguous": "6/7",
+        "policy": "10/13",
+        "probability": "58/60",
+        "routing": "68/71"
+      }
+    },
+    {
+      "step": 401,
+      "seen": 3206,
+      "loss": 0.990789322077885,
+      "acc": 0.9192546583850931,
+      "by_family": {
+        "adequacy": "7/10",
+        "ambiguous": "6/7",
+        "policy": "9/13",
+        "probability": "58/60",
+        "routing": "68/71"
+      }
+    }
+  ],
+  "targets": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj",
+    "in_proj_qkv",
+    "in_proj_z",
+    "out_proj",
+    "gate_proj",
+    "up_proj",
+    "down_proj"
+  ]
+}

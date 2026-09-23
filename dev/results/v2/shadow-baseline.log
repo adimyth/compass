@@ -1,0 +1,62 @@
+{
+ "name": "compass-0.1.1",
+ "model": "compass-fusion-qwen3.5-4b-compass-prompt-2",
+ "n": 160,
+ "overall": {
+  "n": 160,
+  "accuracy": 0.7063,
+  "ece": 0.0511
+ },
+ "core_families": {
+  "n": 110,
+  "accuracy": 0.5818,
+  "ece": 0.0657
+ },
+ "by_family": {
+  "adequacy": {
+   "n": 40,
+   "accuracy": 0.65,
+   "ece": 0.0824
+  },
+  "ambiguous": {
+   "n": 30,
+   "accuracy": 0.7,
+   "ece": 0.0974
+  },
+  "policy": {
+   "n": 40,
+   "accuracy": 0.425,
+   "ece": 0.2414
+  },
+  "routing": {
+   "n": 50,
+   "accuracy": 0.98,
+   "ece": 0.0988
+  }
+ },
+ "by_form": {
+  "dialogue": {
+   "n": 32,
+   "accuracy": 0.9062,
+   "ece": 0.1988
+  },
+  "narrative": {
+   "n": 26,
+   "accuracy": 0.8462,
+   "ece": 0.1238
+  },
+  "record": {
+   "n": 70,
+   "accuracy": 0.5286,
+   "ece": 0.1209
+  },
+  "ticket": {
+   "n": 32,
+   "accuracy": 0.7812,
+   "ece": 0.1796
+  }
+ },
+ "choice_flips_reversed_order": 0,
+ "latency_p50_s": 0.126,
+ "mean_input_tokens": 798.1
+}
