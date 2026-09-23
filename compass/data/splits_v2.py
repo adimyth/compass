@@ -19,8 +19,8 @@ from . import multihop, routing, temporal, v2
 # template -> (split, n, seed). Forms: multihop/routing/temporal generators have one form each (record-like), v2 generators have two.
 MANIFEST = {
     "policy-record": ("train", 700, 5100), "policy-narrative": ("release", 120, 5300),          # narrative policy held out of train
-    "probability-record": ("train", 300, 5110), "probability-narrative": ("selection", 60, 5210),
-    "ordinal-record": ("train", 300, 5120), "ordinal-narrative": ("calibration", 60, 5220),
+    "probability-record": ("train", 300, 5110), "probability-narrative": ("selection", 60, 5210), "probability-release": ("release", 60, 5310),
+    "ordinal-record": ("train", 300, 5120), "ordinal-narrative": ("calibration", 60, 5220), "ordinal-release": ("release", 60, 5320),
     "multihop": ("train", 600, 5130), "multihop-eval": ("calibration", 90, 5230), "multihop-release": ("release", 90, 5330),
     "routing-gen": ("selection", 60, 5240), "routing-gen-release": ("release", 60, 5340),
     "temporal-regression": ("release", 60, 5350),
@@ -30,7 +30,7 @@ MANIFEST = {
 def generated(template: str, n: int, seed: int) -> list[dict]:
     if template.startswith(("policy", "probability", "ordinal")):
         gen, form = template.split("-")
-        return v2.generate(gen, form, n, seed)
+        return v2.generate(gen, "narrative" if form == "release" else form, n, seed)
     if template.startswith("multihop"):
         return multihop.generate(n, seed)
     if template.startswith("routing"):
