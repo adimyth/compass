@@ -1,6 +1,6 @@
 # [bench request]: Add Compass 0.2.0 (Qwen3.5-4B + LoRA, fused verification and option-symbol readouts, TypeSafe wire format)
 
-Draft of the issue for `fstandhartinger/jevbench`. Numbers are from `dev/results/public-check.md`. The repository and the adapter must be public before posting.
+Submitted as https://github.com/fstandhartinger/jevbench/issues/53 on 23 September 2026. Numbers are from `dev/results/public-check.md`.
 
 ---
 
