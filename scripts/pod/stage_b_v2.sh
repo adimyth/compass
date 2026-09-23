@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Stage B v2 on the GPU pod, in the order TRAINING_SPEC.md fixes. Each step writes under dev/results/v2/. Usage: scripts/pod/stage_b_v2.sh [step ...]
+# Stage B v2 on the GPU pod, in the order TRAINING_the README fixes. Each step writes under dev/results/v2/. Usage: scripts/pod/stage_b_v2.sh [step ...]
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 export HF_HOME=${HF_HOME:-/workspace/hf}

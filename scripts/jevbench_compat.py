@@ -1,6 +1,6 @@
 """Check a running Compass server against JevBench's own adapter and validator.
 
-It sends synthetic tasks written here, one per question type, through JevBench's unchanged `typesafe` adapter, then scores each answer with JevBench's `score_task`. It uses no JevBench items, so it can run as often as needed without touching benchmark data (SPEC.md §8).
+It sends synthetic tasks written here, one per question type, through JevBench's unchanged `typesafe` adapter, then scores each answer with JevBench's `score_task`. It uses no JevBench items, so it can run as often as needed without touching benchmark data (the README).
 
     git clone https://github.com/fstandhartinger/jevbench /path/to/jevbench
     python -m compass.server --port 8000 &

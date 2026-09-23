@@ -1,4 +1,4 @@
-"""Stage B v2: train a LoRA on the frozen backbone through the existing verification and direct readouts (TRAINING_SPEC.md).
+"""Stage B v2: train a LoRA on the frozen backbone through the existing verification and direct readouts (TRAINING_the README).
 
 Flattened full sequences, no cache forking: for each item, every verification branch is one sequence `prefix + rubric + branch` and the direct readout is one sequence `direct prefix + direct rubric + tail`, batched with right padding and read at the last real token with the same helpers `compass/backbone.py` uses at inference. Loss per item over its candidate group: listwise CE on the fused distribution, per-readout CE, ordinal distance for score items, permutation consistency (second rubric order) and opaque-label consistency (option keys replaced by neutral tokens).
 

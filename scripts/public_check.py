@@ -1,6 +1,6 @@
 """The final check: JevBench's public items, once, through JevBench's own adapter and scorer, against a running Compass server.
 
-This is run one time before release and its output is reported as is. It is not used to choose prompts, temperatures or anything else (PLAN.md, rules). Per-item outcomes go to a JSONL for the record.
+This is run one time before release and its output is reported as is. It is not used to choose prompts, temperatures or anything else (docs/EXPERIMENTS.md). Per-item outcomes go to a JSONL for the record.
 
     python scripts/public_check.py --jevbench ../jevbench --endpoint http://127.0.0.1:8000 --out dev/results/public-check.jsonl
 """

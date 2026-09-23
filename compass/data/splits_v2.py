@@ -1,4 +1,4 @@
-"""Build the Stage B v2 splits from a template manifest (CORPUS_SPEC.md §5).
+"""Build the Stage B v2 splits from a template manifest (CORPUS_the README).
 
 Generated items: each (generator, form) template is assigned to exactly one split; forms held out of train are listed. Authored items: files under dev/authored/ are assigned by their domain group (train-* → train; eval-* → selection, calibration and release by a stable hash of the scenario id). The shadow suite under shadow/ is never read here. The builder refuses to run if a template id would land in two splits.
 

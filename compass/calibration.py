@@ -1,6 +1,6 @@
 """Calibration layer: turns raw candidate logits into probabilities.
 
-Temperatures are fitted once, after the decision model is frozen, on a validation split that shares nothing with training data or JevBench (SPEC.md §5, §7). The default of 1.0 for every type is the uncalibrated identity, used until a fitted file exists.
+Temperatures are fitted once, after the decision model is frozen, on a validation split that shares nothing with training data or JevBench (the README, §7). The default of 1.0 for every type is the uncalibrated identity, used until a fitted file exists.
 """
 
 from __future__ import annotations

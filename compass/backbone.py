@@ -1,6 +1,6 @@
 """The backbone scorer: candidate verification over a shared read of the state.
 
-Layout (STRATEGY.md, decisions 2 and 3). The state is prefilled once. For each question the cache is forked and the instructions plus the rubric, in canonical candidate order, are appended. For each candidate the question cache is forked again and a short branch stating the candidate as a proposition is appended; all branches of a question run as one batch. The raw logit of a candidate is the model's log-odds of "yes" against "no" at the readout position (Stage A, vocabulary readout) or the output of a trained head on the hidden state there (Stage B).
+Layout (README, How it works). The state is prefilled once. For each question the cache is forked and the instructions plus the rubric, in canonical candidate order, are appended. For each candidate the question cache is forked again and a short branch stating the candidate as a proposition is appended; all branches of a question run as one batch. The raw logit of a candidate is the model's log-odds of "yes" against "no" at the readout position (Stage A, vocabulary readout) or the output of a trained head on the hidden state there (Stage B).
 
 Reported input tokens are every token the backbone processed. The prompt wording below is Compass's own and is part of the versioned model.
 """

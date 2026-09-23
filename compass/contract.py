@@ -1,6 +1,6 @@
 """The /v1/systemone contract: request validation, rubric compilation and response assembly.
 
-Everything here is deterministic and independent of the model. A scorer only ever sees a `CompiledRequest` and returns one raw logit per candidate; this module owns the wire format, so a scorer cannot produce an invalid answer shape. See SPEC.md §6 and api/systemone.schema.json.
+Everything here is deterministic and independent of the model. A scorer only ever sees a `CompiledRequest` and returns one raw logit per candidate; this module owns the wire format, so a scorer cannot produce an invalid answer shape. See the README and api/systemone.schema.json.
 """
 
 from __future__ import annotations

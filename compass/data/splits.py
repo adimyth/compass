@@ -1,4 +1,4 @@
-"""Build the four disjoint internal splits (PLAN.md gates 3, 4, 5, 7).
+"""Build the four disjoint internal splits (docs/EXPERIMENTS.md).
 
 Each split draws from every generator with its own seed range, so no two splits share a seed, and item ids carry the split name so a mix-up is visible. The authored items (`dev/own_dev.jsonl`) are spread across selection, calibration and release, never train. Sizes are per generator module.
 

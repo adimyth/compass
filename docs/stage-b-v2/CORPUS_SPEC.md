@@ -1,6 +1,6 @@
 # Stage B v2 corpus specification
 
-Written before any item exists (23 September 2026). The corpus trains a LoRA on the frozen Qwen3.5-4B through Compass's existing verification and direct readouts; nothing about the readouts, fusion, calibration or serving changes. Stage B v1 failed because its data was uniform generator output and the model learned the generators ([PLAN.md](../../PLAN.md), gate 7). This spec exists so that v2's data cannot fail the same way, and so that its splits are designed rather than discovered.
+Written before any item exists (23 September 2026). The corpus trains a LoRA on the frozen Qwen3.5-4B through Compass's existing verification and direct readouts; nothing about the readouts, fusion, calibration or serving changes. Stage B v1 failed because its data was uniform generator output and the model learned the generators ([docs/EXPERIMENTS.md](../../docs/EXPERIMENTS.md), gate 7). This spec exists so that v2's data cannot fail the same way, and so that its splits are designed rather than discovered.
 
 ## 1. What every item must satisfy
 

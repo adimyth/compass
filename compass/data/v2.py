@@ -1,6 +1,6 @@
 """Stage B v2 code-computed generators: policy with contrast, probability, ordinal.
 
-Every generator takes a language form (`record` or `narrative`) so that splits can hold a form out of training (CORPUS_SPEC.md §5). Every wrong option is supported by some clause of the document; `provenance.plausible_wrong` names the tempting one. Labels are computed, never written.
+Every generator takes a language form (`record` or `narrative`) so that splits can hold a form out of training (CORPUS_the README). Every wrong option is supported by some clause of the document; `provenance.plausible_wrong` names the tempting one. Labels are computed, never written.
 
     python -m compass.data.v2 --generator policy --form record --n 100 --seed 5 --out out.jsonl
 """

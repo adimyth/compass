@@ -17,7 +17,7 @@ Hard tier by family: trap 8/8, routing_hard 5/5, adversarial 6/6, multi_hop 13/1
 
 ## Release configuration `compass-0.1.1` (fusion-0.5, hard-like calibration), 23 September 2026, RTX 4090
 
-Qwen3.5-4B revision `851bf6e8`, frozen, bf16; readout: log-space fusion (weight 0.5) of candidate verification and the direct symbol readout, chosen on the internal selection split (`gate2-selection.log`); `release/calibration.json` fitted on the hard-like calibration split (T = 1.25 / 2.0 / 1.5; PLAN.md gate 4b). Served on a RunPod RTX 4090 with flash-linear-attention. One run through JevBench's `typesafe` adapter and `score_task`; not tuned on. Per-item records: `2026-09-23-public-check-fusion-calhard.jsonl` (the `compass-0.1.0` run with the earlier calibration, `2026-09-22-public-check-fusion.jsonl`, has identical accuracy and hard ECE 0.105).
+Qwen3.5-4B revision `851bf6e8`, frozen, bf16; readout: log-space fusion (weight 0.5) of candidate verification and the direct symbol readout, chosen on the internal selection split (`gate2-selection.log`); `release/calibration.json` fitted on the hard-like calibration split (T = 1.25 / 2.0 / 1.5; docs/EXPERIMENTS.md). Served on a RunPod RTX 4090 with flash-linear-attention. One run through JevBench's `typesafe` adapter and `score_task`; not tuned on. Per-item records: `2026-09-23-public-check-fusion-calhard.jsonl` (the `compass-0.1.0` run with the earlier calibration, `2026-09-22-public-check-fusion.jsonl`, has identical accuracy and hard ECE 0.105).
 
 | Tier | Items | Accuracy | Well-formed answers | Top-label ECE | Mean input tokens | p50 (localhost, 4090) |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -33,7 +33,7 @@ Internal release split (366 untouched items, `gate5-release.log`): 60.1 % overal
 
 ## Stage B candidate head-v1 (not promoted), 23 September 2026, RTX 4090
 
-Same backbone and readouts with `release/head-v1` (residual head) and `release/head-v1/calibration.json`. One run, `2026-09-22-public-check-head-v1.jsonl`. easy 100 % (48/48), standard 81.9 % (59/72), hard 55.9 % (62/111); hard ECE 0.231, TVD 0.264; 231/231 well-formed. Projected 67.6 against 70.9 for the release: the calibration loss outweighs the flat accuracy. Not promoted (PLAN.md, gate 7). With the hard-like calibration (gate 4b) its hard ECE is 0.199 (`2026-09-23-public-check-head-calhard.jsonl`), still far from the release's 0.107, so the over-confidence is in the head, not in the calibration split.
+Same backbone and readouts with `release/head-v1` (residual head) and `release/head-v1/calibration.json`. One run, `2026-09-22-public-check-head-v1.jsonl`. easy 100 % (48/48), standard 81.9 % (59/72), hard 55.9 % (62/111); hard ECE 0.231, TVD 0.264; 231/231 well-formed. Projected 67.6 against 70.9 for the release: the calibration loss outweighs the flat accuracy. Not promoted (docs/EXPERIMENTS.md). With the hard-like calibration (gate 4b) its hard ECE is 0.199 (`2026-09-23-public-check-head-calhard.jsonl`), still far from the release's 0.107, so the over-confidence is in the head, not in the calibration split.
 
 ## Earlier run: verification readout only (prompt-2), 22 September 2026, Apple M4 Pro
 
