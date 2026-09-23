@@ -10,7 +10,7 @@ An original Jev-class decision model for [JevBench](https://github.com/fstandhar
 
 ## Status
 
-**Release `compass-0.1.1` (Stage A) is pinned**: frozen Qwen3.5-4B at revision `851bf6e8`, fusion-0.5 readout, `release/calibration.json` fitted on the hard-like calibration split. Public-item results and the projection are in [dev/results/public-check.md](dev/results/public-check.md). No trained head or adapter yet; Stage B is a gated experiment (PLAN.md gate 7).
+**Release `compass-0.2.0` is pinned**: Qwen3.5-4B at revision `851bf6e8` plus the Stage B v2 LoRA `adimyth/compass-lora-v2` at `bfa8af07` (merged at load), fusion-0.5 readout, `release/calibration.json` fitted for the adapter on the hard-like calibration split. The previous release `compass-0.1.1` (tag `v0.1.1`, no adapter) remains reproducible with `--adapter none --calibration release/calibration-0.1.1.json`. Public-item results and the projection are in [dev/results/public-check.md](dev/results/public-check.md). No trained head or adapter yet; Stage B is a gated experiment (PLAN.md gate 7).
 
 | Component (SPEC.md §5) | File | State |
 | --- | --- | --- |

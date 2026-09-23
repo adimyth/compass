@@ -1,44 +1,44 @@
 {
   "temperatures": {
-    "choice": 1.25,
+    "choice": 2.0,
     "score": 2.0,
-    "noul": 1.5
+    "noul": 2.25
   },
   "fitted_on": [
-    "dev/splits/calibration-hard.jsonl"
+    "dev/splits_v2/calibration-hard.jsonl"
   ],
-  "model": "compass-fusion-qwen3.5-4b-compass-prompt-2",
+  "model": "compass-fusion-lora-qwen3.5-4b-compass-prompt-2",
   "readout": "fusion",
   "head": null,
   "fusion_weight": 0.5,
-  "n_items": 212,
+  "n_items": 178,
   "report": {
     "choice": {
-      "n": 60,
-      "fit_half_T": 1.5,
-      "shipped_T": 1.25,
-      "held_out_ece_before": 0.0576,
-      "held_out_ece_after": 0.0795,
-      "held_out_nll_before": 1.0073,
-      "held_out_nll_after": 1.0221
+      "n": 45,
+      "fit_half_T": 0.25,
+      "shipped_T": 2.0,
+      "held_out_ece_before": 0.0937,
+      "held_out_ece_after": 0.0931,
+      "held_out_nll_before": 0.5269,
+      "held_out_nll_after": 1.2941
     },
     "score": {
-      "n": 60,
-      "fit_half_T": 1.75,
+      "n": 90,
+      "fit_half_T": 2.25,
       "shipped_T": 2.0,
-      "held_out_ece_before": 0.275,
-      "held_out_ece_after": 0.1794,
-      "held_out_nll_before": 1.3821,
-      "held_out_nll_after": 1.3157
+      "held_out_ece_before": 0.0286,
+      "held_out_ece_after": 0.0698,
+      "held_out_nll_before": 0.0993,
+      "held_out_nll_after": 0.1376
     },
     "noul": {
-      "n": 92,
-      "fit_half_T": 1.25,
-      "shipped_T": 1.5,
-      "held_out_ece_before": 0.1142,
-      "held_out_ece_after": 0.0815,
-      "held_out_nll_before": 0.6699,
-      "held_out_nll_after": 0.6538
+      "n": 43,
+      "fit_half_T": 2.0,
+      "shipped_T": 2.25,
+      "held_out_ece_before": 0.1522,
+      "held_out_ece_after": 0.1151,
+      "held_out_nll_before": 0.5846,
+      "held_out_nll_after": 0.4233
     }
   }
 }

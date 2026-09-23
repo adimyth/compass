@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir . huggingface_hub \
     && (pip install --no-cache-dir causal-conv1d || true)
 
 # Pin the backbone at the recorded revision and bake it into the image.
-RUN python -c "import compass.release as r; from huggingface_hub import snapshot_download; snapshot_download(r.BACKBONE, revision=r.BACKBONE_REVISION, ignore_patterns=['*.png'])"
+RUN --mount=type=secret,id=hf_token,required=false sh -c '[ -f /run/secrets/hf_token ] && export HF_TOKEN=$(cat /run/secrets/hf_token); python -c "import compass.release as r; from huggingface_hub import snapshot_download; snapshot_download(r.BACKBONE, revision=r.BACKBONE_REVISION, ignore_patterns=[\"*.png\"]); snapshot_download(r.ADAPTER, revision=r.ADAPTER_REVISION)"'
 
 ENV HF_HUB_OFFLINE=1
 EXPOSE 8000
