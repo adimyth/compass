@@ -7,8 +7,9 @@ TAG=${TAG:-v2}
 R=dev/results/$TAG; mkdir -p "$R"
 ADAPTER=${ADAPTER:-release/lora-$TAG}
 SEED=${SEED:-0}
+TRAIN_EXTRA=${TRAIN_EXTRA:-}   # e.g. "--family-weight adequacy=2.0 --patience 5 --eval-every 600" for the v3 adequacy run
 JB=${JB:-/workspace/jevbench}
-steps=${*:-"splits train fusion calibrate release parity baseline_shadow shadow"}
+steps=${*:-"splits train fusion calibrate release parity baseline_shadow shadow diag"}
 
 for step in $steps; do
   echo "== $step $(date -u +%FT%TZ)"
@@ -26,7 +27,7 @@ print("calibration-hard", len(keep))
 EOF
       ;;
     train)
-      uv run python -m compass.train_lora --train dev/splits_v2/train.jsonl --select dev/splits_v2/selection.jsonl --out "$ADAPTER" --seed "$SEED" 2>&1 | grep -v -i "warn\|fall\|Fetching\|Loading" | tee "$R/train.log"
+      uv run python -m compass.train_lora --train dev/splits_v2/train.jsonl --select dev/splits_v2/selection.jsonl --out "$ADAPTER" --seed "$SEED" $TRAIN_EXTRA 2>&1 | grep -v -i "warn\|fall\|Fetching\|Loading" | tee "$R/train.log"
       ;;
     fusion)
       for w in 0.3 0.5 0.7; do echo "-- fusion $w"; uv run python scripts/own_eval.py --tasks dev/splits_v2/selection.jsonl --adapter "$ADAPTER" --readout fusion --fusion-weight $w 2>&1 | grep -E "overall|flips"; done | tee "$R/fusion.log"
@@ -53,6 +54,13 @@ EOF
     shadow)
       W=$(cat "$R/fusion_weight.txt")
       uv run python scripts/shadow_eval.py --name "lora-$TAG" --adapter "$ADAPTER" --readout fusion --fusion-weight "$W" --calibration "$ADAPTER/calibration.json" 2>&1 | grep -v -i "warn\|fall\|Fetching\|Loading" | tee "$R/shadow-lora.log"
+      ;;
+    diag)
+      # Generated adequacy diagnostic (dev/families/adequacy-generated-shadow.jsonl): not promotion evidence, only whether the generator's patterns were learned.
+      W=$(cat "$R/fusion_weight.txt")
+      for cfg in "compass-0.2.0:--adapter release/lora-v2 --fusion-weight 0.5 --calibration release/lora-v2/calibration.json" "lora-$TAG:--adapter $ADAPTER --fusion-weight $W --calibration $ADAPTER/calibration.json"; do
+        echo "-- ${cfg%%:*}"; uv run python scripts/own_eval.py --tasks dev/families/adequacy-generated-shadow.jsonl --readout fusion ${cfg#*:} 2>&1 | grep -E "overall|ECE"
+      done | tee "$R/diag-adequacy-generated.log"
       ;;
     *) echo "unknown step $step"; exit 1;;
   esac

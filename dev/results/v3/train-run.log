@@ -1,0 +1,87 @@
++ cd /workspace/compass
++ export HF_HOME=/workspace/hf UV_CACHE_DIR=/workspace/uvcache
++ HF_HOME=/workspace/hf
++ UV_CACHE_DIR=/workspace/uvcache
++ uv sync
++ tail -1
+ + uvicorn==0.53.0
++ uv pip install flash-linear-attention peft
++ tail -1
+ + flash-linear-attention==0.5.2
++ uv pip install causal-conv1d
++ tail -1
+      environment.
++ uv run hf download Qwen/Qwen3.5-4B --revision 851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a --exclude '*.png'
++ tail -1
+  path: /workspace/hf/hub/models--Qwen--Qwen3.5-4B/snapshots/851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a
++ tail -1
++ uv run hf download Qwen/Qwen3.5-0.8B --exclude '*.png'
+  path: /workspace/hf/hub/models--Qwen--Qwen3.5-0.8B/snapshots/2fc06364715b967f1860aea9cf38778875588b17
++ git clone -q --depth 1 https://github.com/fstandhartinger/jevbench /workspace/jevbench
++ uv run python -c 'import torch,fla,peft;print(torch.__version__, torch.cuda.is_available(), fla.__version__, peft.__version__)'
+2.14.0+cu130 True 0.5.2 0.21.0
++ echo SETUP_DONE
+SETUP_DONE
++ export TAG=v3 SEED=0 'TRAIN_EXTRA=--family-weight adequacy=2.0 --patience 5 --eval-every 600'
++ TAG=v3
++ SEED=0
++ TRAIN_EXTRA='--family-weight adequacy=2.0 --patience 5 --eval-every 600'
++ bash scripts/pod/stage_b_v2.sh
+== splits 2026-09-23T09:20:57Z
+train: 2470 items, 270 authored, {'adequacy': 390, 'ambiguous': 30, 'multi_hop': 600, 'ordinal': 300, 'policy': 740, 'probability': 300, 'routing': 90, 'tradeoff': 20}
+selection: 188 items, 49 authored, {'adequacy': 29, 'ambiguous': 7, 'ordinal': 2, 'policy': 13, 'probability': 62, 'routing': 71, 'tradeoff': 4}
+calibration: 220 items, 54 authored, {'adequacy': 26, 'ambiguous': 10, 'multi_hop': 90, 'ordinal': 63, 'policy': 8, 'probability': 5, 'routing': 6, 'tradeoff': 12}
+release: 582 items, 107 authored, {'adequacy': 50, 'ambiguous': 13, 'multi_hop': 90, 'ordinal': 70, 'policy': 139, 'probability': 68, 'routing': 88, 'temporal_numeric': 60, 'tradeoff': 4}
+3460 items, 0 errors
+calibration-hard 202
+== train 2026-09-23T09:20:58Z
+trainable params: 30,474,240 || all params: 4,236,225,536 || trainable%: 0.7194
+untrained: selection loss 1.3083 acc 0.723 {'adequacy': '21/29', 'ambiguous': '7/7', 'ordinal': '2/2', 'policy': '11/13', 'probability': '32/62', 'routing': '60/71', 'tradeoff': '3/4'}
+epoch 0 step 10/618 seen 80 loss 1.6268 lr 5.55e-05 159s
+epoch 0 step 20/618 seen 160 loss 1.9675 lr 9.97e-05 266s
+epoch 0 step 30/618 seen 240 loss 1.9839 lr 9.94e-05 372s
+epoch 0 step 40/618 seen 320 loss 1.1267 lr 9.90e-05 484s
+epoch 0 step 50/618 seen 400 loss 1.5177 lr 9.84e-05 598s
+epoch 0 step 60/618 seen 480 loss 1.5070 lr 9.77e-05 713s
+epoch 0 step 70/618 seen 560 loss 0.9063 lr 9.69e-05 811s
+  selection: loss 0.8004 acc 0.904 {'adequacy': '22/29', 'ambiguous': '7/7', 'ordinal': '2/2', 'policy': '11/13', 'probability': '57/62', 'routing': '67/71', 'tradeoff': '4/4'}
+epoch 0 step 80/618 seen 640 loss 1.3465 lr 9.59e-05 975s
+epoch 0 step 90/618 seen 720 loss 1.4483 lr 9.49e-05 1090s
+epoch 0 step 100/618 seen 800 loss 0.7961 lr 9.37e-05 1206s
+epoch 0 step 110/618 seen 880 loss 0.6105 lr 9.24e-05 1319s
+epoch 0 step 120/618 seen 960 loss 0.5988 lr 9.10e-05 1424s
+epoch 0 step 130/618 seen 1040 loss 1.7282 lr 8.95e-05 1542s
+epoch 0 step 140/618 seen 1120 loss 0.5254 lr 8.79e-05 1648s
+epoch 0 step 150/618 seen 1200 loss 1.5993 lr 8.62e-05 1751s
+  selection: loss 0.9330 acc 0.878 {'adequacy': '21/29', 'ambiguous': '7/7', 'ordinal': '1/2', 'policy': '9/13', 'probability': '56/62', 'routing': '67/71', 'tradeoff': '4/4'}
+epoch 0 step 160/618 seen 1280 loss 1.7522 lr 8.44e-05 1916s
+epoch 0 step 170/618 seen 1360 loss 1.9158 lr 8.25e-05 2027s
+epoch 0 step 180/618 seen 1440 loss 0.2769 lr 8.05e-05 2140s
+epoch 0 step 190/618 seen 1520 loss 1.5635 lr 7.84e-05 2260s
+epoch 0 step 200/618 seen 1600 loss 0.7348 lr 7.63e-05 2366s
+epoch 0 step 210/618 seen 1680 loss 2.5556 lr 7.41e-05 2477s
+epoch 0 step 220/618 seen 1760 loss 0.7153 lr 7.19e-05 2588s
+  selection: loss 1.0661 acc 0.888 {'adequacy': '20/29', 'ambiguous': '7/7', 'ordinal': '1/2', 'policy': '9/13', 'probability': '59/62', 'routing': '67/71', 'tradeoff': '4/4'}
+epoch 0 step 230/618 seen 1840 loss 1.0351 lr 6.95e-05 2750s
+epoch 0 step 240/618 seen 1920 loss 0.1404 lr 6.72e-05 2870s
+epoch 0 step 250/618 seen 2000 loss 2.7960 lr 6.48e-05 2976s
+epoch 0 step 260/618 seen 2080 loss 2.3397 lr 6.23e-05 3091s
+epoch 0 step 270/618 seen 2160 loss 1.0479 lr 5.98e-05 3200s
+epoch 0 step 280/618 seen 2240 loss 0.7961 lr 5.73e-05 3313s
+epoch 0 step 290/618 seen 2320 loss 0.6054 lr 5.48e-05 3429s
+epoch 0 step 300/618 seen 2400 loss 0.2733 lr 5.23e-05 3546s
+  selection: loss 0.9752 acc 0.899 {'adequacy': '19/29', 'ambiguous': '7/7', 'ordinal': '2/2', 'policy': '10/13', 'probability': '60/62', 'routing': '67/71', 'tradeoff': '4/4'}
+epoch 1 step 310/618 seen 2478 loss 0.2766 lr 4.97e-05 3729s
+epoch 1 step 320/618 seen 2558 loss 0.8402 lr 4.72e-05 3856s
+epoch 1 step 330/618 seen 2638 loss 1.8840 lr 4.47e-05 3994s
+epoch 1 step 340/618 seen 2718 loss 0.3826 lr 4.22e-05 4119s
+epoch 1 step 350/618 seen 2798 loss 0.5370 lr 3.97e-05 4247s
+epoch 1 step 360/618 seen 2878 loss 1.6710 lr 3.72e-05 4369s
+epoch 1 step 370/618 seen 2958 loss 1.8399 lr 3.47e-05 4488s
+  selection: loss 0.9882 acc 0.894 {'adequacy': '20/29', 'ambiguous': '7/7', 'ordinal': '2/2', 'policy': '10/13', 'probability': '59/62', 'routing': '66/71', 'tradeoff': '4/4'}
+epoch 1 step 380/618 seen 3038 loss 0.1233 lr 3.23e-05 4667s
+epoch 1 step 390/618 seen 3118 loss 0.5149 lr 3.00e-05 4788s
+epoch 1 step 400/618 seen 3198 loss 2.6754 lr 2.77e-05 4909s
+epoch 1 step 410/618 seen 3278 loss 0.4127 lr 2.54e-05 5038s
+epoch 1 step 420/618 seen 3358 loss 0.7548 lr 2.33e-05 5159s
+epoch 1 step 430/618 seen 3438 loss 0.2935 lr 2.11e-05 5285s

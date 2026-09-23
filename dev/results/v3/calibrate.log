@@ -1,0 +1,14 @@
+scored 20/202 (7 s)
+scored 40/202 (14 s)
+scored 60/202 (20 s)
+scored 80/202 (26 s)
+scored 100/202 (32 s)
+scored 120/202 (39 s)
+scored 140/202 (45 s)
+scored 160/202 (51 s)
+scored 180/202 (57 s)
+scored 200/202 (63 s)
+choice {'n': 46, 'fit_half_T': 1.25, 'shipped_T': 1.5, 'held_out_ece_before': 0.1041, 'held_out_ece_after': 0.097, 'held_out_nll_before': 0.399, 'held_out_nll_after': 0.3716}
+score {'n': 93, 'fit_half_T': 1.5, 'shipped_T': 1.25, 'held_out_ece_before': 0.1561, 'held_out_ece_after': 0.1295, 'held_out_nll_before': 0.497, 'held_out_nll_after': 0.5432}
+noul {'n': 63, 'fit_half_T': 2.5, 'shipped_T': 2.25, 'held_out_ece_before': 0.1595, 'held_out_ece_after': 0.0601, 'held_out_nll_before': 0.5631, 'held_out_nll_after': 0.4811}
+wrote release/lora-v3/calibration.json

@@ -105,6 +105,20 @@ The four missing drafting jobs were completed (train tradeoff 20; eval tradeoff/
 
 Seed 1 (published for the record as `adimyth/compass-lora-v2b@f5b5a926`) ties seed 0 on accuracy but fails the promotion rule on core ECE (0.097 against 0.046; its calibration fit chose sharper temperatures on a small calibration split). **Not promoted; `compass-0.2.0` stands**, now confirmed on the full suite: +9.4 points on the core families over 0.1.1 with ECE halved, and the two seeds agree within a point on accuracy, so the gain is not seed noise. The adequacy regression is consistent across both seeds (65 → 52–58 %) and is the next target: more adequacy data in training (90 items today) and its own loss weight.
 
+## Stage B v3: adequacy-focused run (23 Sep)
+
+Data: 400 generated adequacy items (`compass/data/adequacy_v3.py`; train 300, eval 60, and 40 Group-C items kept out of the shadow suite as a diagnostic), adequacy weight 2.0 in the loss, patience 5. Training's best checkpoint came after ~1,200 items and nothing beat it in the following 75 minutes; the process was stopped and the gates ran on that checkpoint (no `training.json` for this run; the run logs are `dev/results/v3/train-run.log` and `gates-run.log`). Fusion 0.3 chosen on selection.
+
+| shadow suite, 280 items | compass-0.1.1 | compass-0.2.0 | lora-v3 |
+| --- | --- | --- | --- |
+| core families | 59.4 %, ECE 0.067 | **68.8 %, ECE 0.050** | 62.4 %, ECE 0.099 |
+| adequacy (40 drafted) | 65.0 % | 57.5 % | 57.5 % |
+| policy / multi_hop / ambiguous | 47 / 63 / 73 % | 60 / 78 / 90 % | 53 / 68 / 80 % |
+| release split (582) | 61.5 % | 81.1 % | 78.7 % |
+| generated adequacy diagnostic (40) | – | 75.0 % | 75.0 % |
+
+**Not promoted; `compass-0.2.0` stands** (third confirmation, on a different pod). The generated adequacy items lifted selection adequacy (65 → 76 %, mostly generated items) and left the drafted shadow adequacy items unchanged, while costing accuracy on the other families. Generated adequacy data does not transfer to fluent, judge-style responses; only drafted or hand-written adequacy items in that style can be expected to. Small differences between pods for the same configuration (0.2.0 adequacy 52.5 % on the first pod, 57.5 % here; core 68.2 % vs 68.8 %) are bf16 kernel noise and bound what a single run can resolve.
+
 ## Follow-up, after the row exists
 
 Stage B (LoRA plus verification head on our own corpus) targeting long-policy, multi-hop, probability and ambiguous items, where Jev beats the frozen 4B systems by 20–40 points. Temporal arithmetic is not a target: every no-generation system on the board scores 20–33 % there.

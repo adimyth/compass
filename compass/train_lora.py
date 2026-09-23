@@ -97,6 +97,8 @@ class Trainer:
             back[torch.tensor(order, device=self.s.device)] = f2  # f2[k] belongs to original index order[k]
             p1, p2 = torch.log_softmax(f, -1), torch.log_softmax(back, -1)
             loss = loss + args.perm_w * 0.5 * (F.kl_div(p2, p1, log_target=True, reduction="sum") + F.kl_div(p1, p2, log_target=True, reduction="sum"))
+        if train:
+            loss = loss * getattr(args, "family_weights", {}).get(task.get("family"), 1.0)
         correct = int(torch.argmax(f).item() == int(torch.argmax(target).item()))
         return loss, {"correct": correct, "conf": float(torch.softmax(f, -1).max().item())}
 
@@ -138,7 +140,9 @@ def main() -> None:
     parser.add_argument("--patience", type=int, default=3)
     parser.add_argument("--max-select", type=int, default=400)
     parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--family-weight", action="append", default=[], help="family=weight, e.g. adequacy=2.0; multiplies that family's loss")
     args = parser.parse_args()
+    args.family_weights = {k: float(v) for k, v in (fw.split("=") for fw in args.family_weight)}
 
     from peft import LoraConfig, get_peft_model
 

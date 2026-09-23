@@ -1,0 +1,117 @@
+{
+ "name": "compass-0.1.1-v3",
+ "run_utc": "2026-09-23T11:18:03Z",
+ "model": "compass-fusion-qwen3.5-4b-compass-prompt-2",
+ "config": {
+  "name": "compass-0.1.1-v3",
+  "shadow_dir": "shadow",
+  "model_name": "Qwen/Qwen3.5-4B",
+  "readout": "fusion",
+  "fusion_weight": 0.5,
+  "adapter": null,
+  "calibration": "release/calibration-0.1.1.json",
+  "out_dir": "dev/results/shadow"
+ },
+ "shadow_files": {
+  "shadow-1.jsonl": "dc82c84c81d39b671c33f8e2e6ae835c7505df73e0caa7561d9e3599626c5328",
+  "shadow-2.jsonl": "9305666ba0acd1e6d1b3876ee4b5653448f43649bad6be749630580492134673",
+  "shadow-2b.jsonl": "5ee6a6eafa7bb5d038325da035ffbba92eb9595e5b119e25b8ce745e78eb3fc0",
+  "shadow-3.jsonl": "9573661150d4fc8d79d9c79e1a8a3f0de91bff784c617d3792c94beba8b96e5b",
+  "shadow-3b.jsonl": "03efc516b6e2e1e926f190e405f86d9f08fee438b6903f902119eacdbec06f43"
+ },
+ "n": 280,
+ "overall": {
+  "n": 280,
+  "accuracy": 0.6679,
+  "ece": 0.0431
+ },
+ "core_families": {
+  "n": 170,
+  "accuracy": 0.5941,
+  "ece": 0.067
+ },
+ "by_family": {
+  "adequacy": {
+   "n": 40,
+   "accuracy": 0.65,
+   "ece": 0.0964
+  },
+  "ambiguous": {
+   "n": 30,
+   "accuracy": 0.7333,
+   "ece": 0.092
+  },
+  "multi_hop": {
+   "n": 40,
+   "accuracy": 0.625,
+   "ece": 0.1385
+  },
+  "ordinal": {
+   "n": 20,
+   "accuracy": 0.4,
+   "ece": 0.19
+  },
+  "policy": {
+   "n": 60,
+   "accuracy": 0.4667,
+   "ece": 0.2184
+  },
+  "probability": {
+   "n": 20,
+   "accuracy": 0.7,
+   "ece": 0.1605
+  },
+  "routing": {
+   "n": 50,
+   "accuracy": 0.98,
+   "ece": 0.0984
+  },
+  "tradeoff": {
+   "n": 20,
+   "accuracy": 0.75,
+   "ece": 0.1927
+  }
+ },
+ "by_form": {
+  "dialogue": {
+   "n": 32,
+   "accuracy": 0.9375,
+   "ece": 0.2088
+  },
+  "narrative": {
+   "n": 87,
+   "accuracy": 0.7126,
+   "ece": 0.0997
+  },
+  "record": {
+   "n": 115,
+   "accuracy": 0.5565,
+   "ece": 0.0949
+  },
+  "ticket": {
+   "n": 46,
+   "accuracy": 0.6739,
+   "ece": 0.1805
+  }
+ },
+ "by_type": {
+  "choice": {
+   "n": 160,
+   "accuracy": 0.7312,
+   "ece": 0.0796
+  },
+  "noul": {
+   "n": 100,
+   "accuracy": 0.62,
+   "ece": 0.0751
+  },
+  "score": {
+   "n": 20,
+   "accuracy": 0.4,
+   "ece": 0.19
+  }
+ },
+ "choice_flips_reversed_order": 0,
+ "latency_p50_s": 0.301,
+ "mean_input_tokens": 870.7
+}

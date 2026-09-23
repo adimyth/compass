@@ -1,0 +1,306 @@
+== fusion 2026-09-23T10:53:31Z
+-- fusion 0.3
+overall accuracy 0.920  top-label ECE 0.116
+choice flips under reversed option order: 0
+-- fusion 0.5
+overall accuracy 0.899  top-label ECE 0.093
+choice flips under reversed option order: 0
+-- fusion 0.7
+overall accuracy 0.904  top-label ECE 0.108
+choice flips under reversed option order: 0
+chosen fusion weight 0.3
+== calibrate 2026-09-23T11:00:02Z
+scored 20/202 (7 s)
+scored 40/202 (14 s)
+scored 60/202 (20 s)
+scored 80/202 (26 s)
+scored 100/202 (32 s)
+scored 120/202 (39 s)
+scored 140/202 (45 s)
+scored 160/202 (51 s)
+scored 180/202 (57 s)
+scored 200/202 (63 s)
+choice {'n': 46, 'fit_half_T': 1.25, 'shipped_T': 1.5, 'held_out_ece_before': 0.1041, 'held_out_ece_after': 0.097, 'held_out_nll_before': 0.399, 'held_out_nll_after': 0.3716}
+score {'n': 93, 'fit_half_T': 1.5, 'shipped_T': 1.25, 'held_out_ece_before': 0.1561, 'held_out_ece_after': 0.1295, 'held_out_nll_before': 0.497, 'held_out_nll_after': 0.5432}
+noul {'n': 63, 'fit_half_T': 2.5, 'shipped_T': 2.25, 'held_out_ece_before': 0.1595, 'held_out_ece_after': 0.0601, 'held_out_nll_before': 0.5631, 'held_out_nll_after': 0.4811}
+wrote release/lora-v3/calibration.json
+== release 2026-09-23T11:01:26Z
+-- frozen compass-0.1.1
+choice  accuracy 165/229 = 0.721
+noul    accuracy 131/233 = 0.562
+score   accuracy 62/120 = 0.517
+overall accuracy 0.615  top-label ECE 0.076
+choice flips under reversed option order: 0
+latency p50 266 ms, max 1871 ms; mean input tokens 576; model compass-fusion-qwen3.5-4b-compass-prompt-2
+-- compass-0.2.0 (lora-v2)
+choice  accuracy 199/229 = 0.869
+noul    accuracy 172/233 = 0.738
+score   accuracy 101/120 = 0.842
+overall accuracy 0.811  top-label ECE 0.065
+choice flips under reversed option order: 0
+latency p50 276 ms, max 1317 ms; mean input tokens 576; model compass-fusion-lora-qwen3.5-4b-compass-prompt-2
+-- lora-v3
+choice  accuracy 202/229 = 0.882
+noul    accuracy 169/233 = 0.725
+score   accuracy 87/120 = 0.725
+overall accuracy 0.787  top-label ECE 0.035
+choice flips under reversed option order: 0
+latency p50 293 ms, max 1309 ms; mean input tokens 576; model compass-fusion-lora-qwen3.5-4b-compass-prompt-2
+== parity 2026-09-23T11:13:36Z
+
+mean |delta| vs fp32: forked-bf16 0.090, flat-bf16 0.098; max: forked 0.149, flat 0.174
+argmax flips vs fp32: forked-bf16 0/12, flat-bf16 0/12
+== baseline_shadow 2026-09-23T11:15:38Z
+{
+ "name": "compass-0.1.1-v3",
+ "model": "compass-fusion-qwen3.5-4b-compass-prompt-2",
+ "n": 280,
+ "overall": {
+  "n": 280,
+  "accuracy": 0.6679,
+  "ece": 0.0431
+ },
+ "core_families": {
+  "n": 170,
+  "accuracy": 0.5941,
+  "ece": 0.067
+ },
+ "by_family": {
+  "adequacy": {
+   "n": 40,
+   "accuracy": 0.65,
+   "ece": 0.0964
+  },
+  "ambiguous": {
+   "n": 30,
+   "accuracy": 0.7333,
+   "ece": 0.092
+  },
+  "multi_hop": {
+   "n": 40,
+   "accuracy": 0.625,
+   "ece": 0.1385
+  },
+  "ordinal": {
+   "n": 20,
+   "accuracy": 0.4,
+   "ece": 0.19
+  },
+  "policy": {
+   "n": 60,
+   "accuracy": 0.4667,
+   "ece": 0.2184
+  },
+  "probability": {
+   "n": 20,
+   "accuracy": 0.7,
+   "ece": 0.1605
+  },
+  "routing": {
+   "n": 50,
+   "accuracy": 0.98,
+   "ece": 0.0984
+  },
+  "tradeoff": {
+   "n": 20,
+   "accuracy": 0.75,
+   "ece": 0.1927
+  }
+ },
+ "by_form": {
+  "dialogue": {
+   "n": 32,
+   "accuracy": 0.9375,
+   "ece": 0.2088
+  },
+  "narrative": {
+   "n": 87,
+   "accuracy": 0.7126,
+   "ece": 0.0997
+  },
+  "record": {
+   "n": 115,
+   "accuracy": 0.5565,
+   "ece": 0.0949
+  },
+  "ticket": {
+   "n": 46,
+   "accuracy": 0.6739,
+   "ece": 0.1805
+  }
+ },
+ "choice_flips_reversed_order": 0,
+ "latency_p50_s": 0.301,
+ "mean_input_tokens": 870.7
+}
+{
+ "name": "compass-0.2.0-v3",
+ "model": "compass-fusion-lora-qwen3.5-4b-compass-prompt-2",
+ "n": 280,
+ "overall": {
+  "n": 280,
+  "accuracy": 0.7679,
+  "ece": 0.0535
+ },
+ "core_families": {
+  "n": 170,
+  "accuracy": 0.6882,
+  "ece": 0.0499
+ },
+ "by_family": {
+  "adequacy": {
+   "n": 40,
+   "accuracy": 0.575,
+   "ece": 0.0361
+  },
+  "ambiguous": {
+   "n": 30,
+   "accuracy": 0.9,
+   "ece": 0.0909
+  },
+  "multi_hop": {
+   "n": 40,
+   "accuracy": 0.775,
+   "ece": 0.1601
+  },
+  "ordinal": {
+   "n": 20,
+   "accuracy": 0.8,
+   "ece": 0.2141
+  },
+  "policy": {
+   "n": 60,
+   "accuracy": 0.6,
+   "ece": 0.1084
+  },
+  "probability": {
+   "n": 20,
+   "accuracy": 0.85,
+   "ece": 0.3113
+  },
+  "routing": {
+   "n": 50,
+   "accuracy": 0.98,
+   "ece": 0.0143
+  },
+  "tradeoff": {
+   "n": 20,
+   "accuracy": 0.8,
+   "ece": 0.1329
+  }
+ },
+ "by_form": {
+  "dialogue": {
+   "n": 32,
+   "accuracy": 1.0,
+   "ece": 0.092
+  },
+  "narrative": {
+   "n": 87,
+   "accuracy": 0.8161,
+   "ece": 0.1051
+  },
+  "record": {
+   "n": 115,
+   "accuracy": 0.6522,
+   "ece": 0.1018
+  },
+  "ticket": {
+   "n": 46,
+   "accuracy": 0.8043,
+   "ece": 0.118
+  }
+ },
+ "choice_flips_reversed_order": 0,
+ "latency_p50_s": 0.297,
+ "mean_input_tokens": 870.7
+}
+== shadow 2026-09-23T11:20:31Z
+{
+ "name": "lora-v3",
+ "model": "compass-fusion-lora-qwen3.5-4b-compass-prompt-2",
+ "n": 280,
+ "overall": {
+  "n": 280,
+  "accuracy": 0.7357,
+  "ece": 0.039
+ },
+ "core_families": {
+  "n": 170,
+  "accuracy": 0.6235,
+  "ece": 0.0986
+ },
+ "by_family": {
+  "adequacy": {
+   "n": 40,
+   "accuracy": 0.575,
+   "ece": 0.131
+  },
+  "ambiguous": {
+   "n": 30,
+   "accuracy": 0.8,
+   "ece": 0.1392
+  },
+  "multi_hop": {
+   "n": 40,
+   "accuracy": 0.675,
+   "ece": 0.1483
+  },
+  "ordinal": {
+   "n": 20,
+   "accuracy": 0.8,
+   "ece": 0.1818
+  },
+  "policy": {
+   "n": 60,
+   "accuracy": 0.5333,
+   "ece": 0.1819
+  },
+  "probability": {
+   "n": 20,
+   "accuracy": 0.9,
+   "ece": 0.3854
+  },
+  "routing": {
+   "n": 50,
+   "accuracy": 0.98,
+   "ece": 0.0155
+  },
+  "tradeoff": {
+   "n": 20,
+   "accuracy": 0.85,
+   "ece": 0.1326
+  }
+ },
+ "by_form": {
+  "dialogue": {
+   "n": 32,
+   "accuracy": 0.9375,
+   "ece": 0.1031
+  },
+  "narrative": {
+   "n": 87,
+   "accuracy": 0.7471,
+   "ece": 0.1181
+  },
+  "record": {
+   "n": 115,
+   "accuracy": 0.6348,
+   "ece": 0.0725
+  },
+  "ticket": {
+   "n": 46,
+   "accuracy": 0.8261,
+   "ece": 0.0968
+  }
+ },
+ "choice_flips_reversed_order": 0,
+ "latency_p50_s": 0.299,
+ "mean_input_tokens": 870.7
+}
+== diag 2026-09-23T11:23:01Z
+-- compass-0.2.0
+overall accuracy 0.750  top-label ECE 0.186
+-- lora-v3
+overall accuracy 0.750  top-label ECE 0.166
+== STAGE_B_V2_DONE
