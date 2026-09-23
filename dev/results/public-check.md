@@ -1,5 +1,20 @@
 # Public-items check (preliminary, public items only)
 
+## Release configuration `compass-0.2.0` (fusion-0.5 + LoRA `adimyth/compass-lora-v2` @ bfa8af07), 23 September 2026, RTX 4090
+
+One run through JevBench's adapter and scorer (`v2/public-check-lora-v2.jsonl`), calibration fitted for the adapter on the hard-like split (T = 2.0 / 2.0 / 2.25).
+
+| Tier | Items | Accuracy | Well-formed answers | Top-label ECE | Mean input tokens |
+| --- | --- | --- | --- | --- | --- |
+| easy | 48 | 100.0 % (48/48) | 48/48 | 0.034 | 390 |
+| standard (original) | 72 | 87.5 % (63/72) | 72/72 | 0.137 | 393 |
+| hard | 111 | 60.4 % (67/111) | 111/111 | 0.069 | 1,528 |
+
+Hard tier by family: trap 8/8, routing_hard 5/5, adversarial 6/6, multi_hop 13/18, judge_hard 11/17, long_policy 9/19, probability 6/10 (TVD 0.216), ambiguous 5/7, tradeoff 3/6, temporal_numeric 1/15. Standard by family: extraction 12/12, ordinal 12/12, policy 12/12, intent 11/12, adequacy 8/12, routing 8/12.
+
+**Projection, not a measurement:** Calibration 82.3, Speed 87.9, Cost 57.7, Intelligence 67–71 for a judge tier of 75–85 %, JevBench Score about 72.7–73.8. The adequacy family regressed on our shadow suite (65 → 52.5 %) and the judge tier is made of it; that assumption is unverified.
+
+
 ## Release configuration `compass-0.1.1` (fusion-0.5, hard-like calibration), 23 September 2026, RTX 4090
 
 Qwen3.5-4B revision `851bf6e8`, frozen, bf16; readout: log-space fusion (weight 0.5) of candidate verification and the direct symbol readout, chosen on the internal selection split (`gate2-selection.log`); `release/calibration.json` fitted on the hard-like calibration split (T = 1.25 / 2.0 / 1.5; PLAN.md gate 4b). Served on a RunPod RTX 4090 with flash-linear-attention. One run through JevBench's `typesafe` adapter and `score_task`; not tuned on. Per-item records: `2026-09-23-public-check-fusion-calhard.jsonl` (the `compass-0.1.0` run with the earlier calibration, `2026-09-22-public-check-fusion.jsonl`, has identical accuracy and hard ECE 0.105).

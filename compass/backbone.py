@@ -78,21 +78,28 @@ def pick_device(name: str | None) -> torch.device:
 class BackboneScorer:
     def __init__(self, model_name: str = "Qwen/Qwen3.5-0.8B", revision: str | None = None, device: str | None = None,
                  dtype: torch.dtype = torch.bfloat16, head_path: str | None = None, model_id: str | None = None,
-                 readout: str = "verify", fusion_weight: float = 0.5, debias: float = 0.0):
+                 readout: str = "verify", fusion_weight: float = 0.5, debias: float = 0.0, adapter: str | None = None, adapter_revision: str | None = None):
         from transformers import AutoModelForCausalLM, AutoTokenizer
 
         self.device = pick_device(device)
         self.tok = AutoTokenizer.from_pretrained(model_name, revision=revision)
         self.model = AutoModelForCausalLM.from_pretrained(model_name, revision=revision, dtype=dtype).to(self.device).eval()
+        if adapter:
+            from peft import PeftModel
+
+            # Stage B v2: a LoRA merged into the frozen weights, so inference is byte-for-byte the same code path.
+            self.model = PeftModel.from_pretrained(self.model, adapter, revision=adapter_revision).merge_and_unload().eval()
+        self.adapter = adapter
+        self.direct_system = SYSTEM  # the direct readout shares the verifier's system prompt (gate 2c showed a dedicated one hurts)
         from .head import CompassHead
 
         self.head = CompassHead.load(head_path, self.device) if head_path else None
         if readout not in READOUTS:
             raise ValueError(f"readout must be one of {READOUTS}")
         self.readout, self.fusion_weight, self.debias = readout, fusion_weight, debias
-        self.model_id = model_id or f"compass-{'head' if self.head else readout}{f'-debias{debias:g}' if debias else ''}-{model_name.split('/')[-1].lower()}-{PROMPT_VERSION}"
+        self.model_id = model_id or f"compass-{'head' if self.head else readout}{f'-debias{debias:g}' if debias else ''}{'-lora' if adapter else ''}-{model_name.split('/')[-1].lower()}-{PROMPT_VERSION}"
         self.backbone = {"model": model_name, "revision": revision, "readout": "head" if self.head else self.readout,
-                         "fusion_weight": fusion_weight if readout == "fusion" else None, "debias": debias or None}
+                         "fusion_weight": fusion_weight if readout == "fusion" else None, "debias": debias or None, "adapter": adapter, "adapter_revision": adapter_revision}
         self.prompt_version = PROMPT_VERSION
         self.yes_ids = self._form_ids(YES_FORMS)
         self.no_ids = self._form_ids(NO_FORMS)
@@ -105,12 +112,12 @@ class BackboneScorer:
 
     # ---- prompt assembly -------------------------------------------------
 
-    def render(self, request: CompiledRequest) -> tuple[str, list[tuple[str, list[str]]]]:
+    def render(self, request: CompiledRequest, system: str = SYSTEM) -> tuple[str, list[tuple[str, list[str]]]]:
         """Return the state prefix text and, per question, (rubric text, branch texts). The chat template is applied once, so its markup lands in the right segments."""
         # Render one full conversation with markers, then cut it: the template's end-of-user and assistant markup ends up in the branch.
         user = f"<document>\n{request.state}\n</document>\n\n{SPLIT}{SPLIT}"
         rendered = self.tok.apply_chat_template(
-            [{"role": "system", "content": SYSTEM}, {"role": "user", "content": user}],
+            [{"role": "system", "content": system}, {"role": "user", "content": user}],
             tokenize=False, add_generation_prompt=True, enable_thinking=False,
         )
         prefix, _, tail = rendered.partition(SPLIT + SPLIT)

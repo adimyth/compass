@@ -1,11 +1,12 @@
 [project]
 name = "compass"
-version = "0.1.1"
+version = "0.2.0"
 description = "An evidence-conditioned decision model serving the /v1/systemone contract"
 requires-python = ">=3.11"
 dependencies = [
     "fastapi>=0.115",
     "huggingface-hub>=1.32.0",
+    "peft>=0.21.0",
     "safetensors>=0.8.0",
     "torch>=2.6",
     "transformers>=5",

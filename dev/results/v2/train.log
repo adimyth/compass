@@ -1,0 +1,52 @@
+trainable params: 30,474,240 || all params: 4,236,225,536 || trainable%: 0.7194
+untrained: selection loss 1.3368 acc 0.708 {'adequacy': '7/10', 'ambiguous': '7/7', 'policy': '11/13', 'probability': '29/60', 'routing': '60/71'}
+epoch 0 step 10/538 seen 80 loss 1.8581 lr 6.24e-05 115s
+epoch 0 step 20/538 seen 160 loss 1.3099 lr 9.97e-05 184s
+epoch 0 step 30/538 seen 240 loss 0.4431 lr 9.92e-05 257s
+epoch 0 step 40/538 seen 320 loss 1.6918 lr 9.86e-05 326s
+epoch 0 step 50/538 seen 400 loss 0.4658 lr 9.79e-05 404s
+  selection: loss 1.0610 acc 0.826 {'adequacy': '6/10', 'ambiguous': '7/7', 'policy': '8/13', 'probability': '47/60', 'routing': '65/71'}
+epoch 0 step 60/538 seen 480 loss 0.8762 lr 9.70e-05 515s
+epoch 0 step 70/538 seen 560 loss 1.6529 lr 9.59e-05 592s
+epoch 0 step 80/538 seen 640 loss 1.7386 lr 9.46e-05 670s
+epoch 0 step 90/538 seen 720 loss 0.7474 lr 9.33e-05 741s
+epoch 0 step 100/538 seen 800 loss 1.8431 lr 9.17e-05 812s
+  selection: loss 1.0314 acc 0.907 {'adequacy': '8/10', 'ambiguous': '7/7', 'policy': '9/13', 'probability': '55/60', 'routing': '67/71'}
+epoch 0 step 110/538 seen 880 loss 0.4000 lr 9.00e-05 925s
+epoch 0 step 120/538 seen 960 loss 1.1349 lr 8.82e-05 1002s
+epoch 0 step 130/538 seen 1040 loss 0.5854 lr 8.63e-05 1070s
+epoch 0 step 140/538 seen 1120 loss 0.7921 lr 8.42e-05 1146s
+epoch 0 step 150/538 seen 1200 loss 0.4398 lr 8.20e-05 1218s
+  selection: loss 0.9625 acc 0.876 {'adequacy': '6/10', 'ambiguous': '6/7', 'policy': '10/13', 'probability': '52/60', 'routing': '67/71'}
+epoch 0 step 160/538 seen 1280 loss 0.6908 lr 7.97e-05 1330s
+epoch 0 step 170/538 seen 1360 loss 1.6916 lr 7.73e-05 1406s
+epoch 0 step 180/538 seen 1440 loss 0.4320 lr 7.48e-05 1483s
+epoch 0 step 190/538 seen 1520 loss 1.0684 lr 7.23e-05 1554s
+epoch 0 step 200/538 seen 1600 loss 0.6557 lr 6.96e-05 1626s
+  selection: loss 0.9322 acc 0.932 {'adequacy': '9/10', 'ambiguous': '6/7', 'policy': '10/13', 'probability': '60/60', 'routing': '65/71'}
+epoch 0 step 210/538 seen 1680 loss 1.2683 lr 6.69e-05 1735s
+epoch 0 step 220/538 seen 1760 loss 0.7012 lr 6.41e-05 1809s
+epoch 0 step 230/538 seen 1840 loss 0.4505 lr 6.13e-05 1879s
+epoch 0 step 240/538 seen 1920 loss 0.6771 lr 5.84e-05 1962s
+epoch 0 step 250/538 seen 2000 loss 0.8497 lr 5.55e-05 2039s
+  selection: loss 0.8873 acc 0.913 {'adequacy': '7/10', 'ambiguous': '6/7', 'policy': '8/13', 'probability': '58/60', 'routing': '68/71'}
+epoch 0 step 260/538 seen 2080 loss 0.4947 lr 5.26e-05 2146s
+epoch 1 step 270/538 seen 2158 loss 0.6362 lr 4.97e-05 2222s
+epoch 1 step 280/538 seen 2238 loss 0.7631 lr 4.68e-05 2300s
+epoch 1 step 290/538 seen 2318 loss 0.8583 lr 4.39e-05 2375s
+epoch 1 step 300/538 seen 2398 loss 0.5275 lr 4.10e-05 2447s
+  selection: loss 0.9988 acc 0.913 {'adequacy': '6/10', 'ambiguous': '6/7', 'policy': '11/13', 'probability': '58/60', 'routing': '66/71'}
+epoch 1 step 310/538 seen 2478 loss 0.7436 lr 3.81e-05 2560s
+epoch 1 step 320/538 seen 2558 loss 0.3196 lr 3.53e-05 2628s
+epoch 1 step 330/538 seen 2638 loss 0.3504 lr 3.26e-05 2702s
+epoch 1 step 340/538 seen 2718 loss 1.5193 lr 2.99e-05 2776s
+epoch 1 step 350/538 seen 2798 loss 0.6423 lr 2.72e-05 2858s
+  selection: loss 1.0363 acc 0.925 {'adequacy': '7/10', 'ambiguous': '6/7', 'policy': '10/13', 'probability': '58/60', 'routing': '68/71'}
+epoch 1 step 360/538 seen 2878 loss 2.9183 lr 2.47e-05 2968s
+epoch 1 step 370/538 seen 2958 loss 0.0453 lr 2.22e-05 3039s
+epoch 1 step 380/538 seen 3038 loss 0.3625 lr 1.98e-05 3110s
+epoch 1 step 390/538 seen 3118 loss 0.3258 lr 1.75e-05 3192s
+epoch 1 step 400/538 seen 3198 loss 0.6735 lr 1.54e-05 3271s
+  selection: loss 0.9908 acc 0.919 {'adequacy': '7/10', 'ambiguous': '6/7', 'policy': '9/13', 'probability': '58/60', 'routing': '68/71'}
+early stop
+saved release/lora-v2 best selection loss 0.8873 at step 250

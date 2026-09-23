@@ -70,6 +70,28 @@ Outcome of gate 2c (23 Sep): direct-v2 50.4 % (was 58.3 %), fusion over direct-v
 
 Three pre-registered attempts to move past the frozen release failed their own tests: a trained residual head (gains on our data, none on JevBench's, worse calibration), content-free debiasing (worse on our data), and a dedicated direct-readout prompt (worse on our data). The frozen 4B rows above us on the standard and judge tiers (SemIf 97.9 % / 95.2 % against our 80.6 % public standard) show that better frozen prompting exists, but our selection split is 65 % generated temporal and multi-hop items and cannot rank prompts on the judgement items where we lose. The one lever with evidence behind it is authored data: a few hundred hand-written routing, policy and adequacy items for selection and calibration, and for any future Stage B.
 
+## Stage B v2 outcome (23 Sep, branch `stage-b-v2`)
+
+Mechanism: LoRA (rank 16, attention and MLP projections, 1.3 % of parameters) trained through the unchanged verification and direct readouts on flattened sequences, with listwise, per-readout, ordinal, permutation-consistency and opaque-label losses (`docs/stage-b-v2/TRAINING_SPEC.md`). Data: 2,150 train items (1,900 code-generated with contrast and held-out language forms, 250 model-drafted), selection 161, calibration 184, release 535, all by template and form, 0 JevBench overlap. Shadow suite: 160 model-drafted items in domains disjoint from every other split (the protocol asked for human-authored; drafting without review was the instruction for this run). Missing from the data: tradeoff everywhere and multi_hop in the shadow suite (the drafting agents for those were cut off).
+
+Results (`dev/results/v2/`, `dev/results/shadow/`):
+
+| | compass-0.1.1 | lora-v2 |
+| --- | --- | --- |
+| selection split | 70.8 % | 91.3 % (best checkpoint, step 250, early stop) |
+| release split (untouched) | 62.1 %, ECE 0.077 | 80.9 %, ECE 0.048 |
+| shadow suite, all 160 | 70.6 %, ECE 0.051 | 75.0 %, ECE 0.030 |
+| shadow core families (policy, adequacy, ambiguous; n = 110) | 58.2 %, ECE 0.066 | 64.5 %, ECE 0.047 |
+| shadow adequacy alone | 65.0 % | 52.5 % |
+| public items: easy / standard / hard | 100 / 80.6 / 56.8 % | 100 / 87.5 / 60.4 % |
+| public hard ECE / TVD | 0.107 / 0.250 | 0.069 / 0.216 |
+| flips / latency / tokens / parity | 0 / 126 ms / 798 / ok | 0 / 127 ms / 798 / ok (forked 0.075 vs flat 0.097 from fp32) |
+| projected JevBench Score (judge 75–85 %) | 70.3–71.3 | 72.7–73.8 |
+
+The promotion rule (higher accuracy and lower ECE on the shadow core families, standing checks passed) is met, and for the first time a trained change also improved JevBench's public items: +7 standard items (policy 8 → 12 of 12), +4 hard items, better hard-tier calibration. The one regression is adequacy (shadow 65 → 52.5 %, public standard 9 → 8 of 12), the family the private judge tier is made of; the projection assumes it holds at 75–85 % there and that is unverified.
+
+Status: candidate `compass-0.2.0`, not pinned yet. Pinning needs the adapter weights published under a revision (116 MB, sha256 `108b48a8d3fa65fc…`, on the pod at `/workspace/compass/release/lora-v2/`; GitHub refuses files over 100 MB, so they go to the Hugging Face Hub). Not submitted.
+
 ## Follow-up, after the row exists
 
 Stage B (LoRA plus verification head on our own corpus) targeting long-policy, multi-hop, probability and ambiguous items, where Jev beats the frozen 4B systems by 20–40 points. Temporal arithmetic is not a target: every no-generation system on the board scores 20–33 % there.
