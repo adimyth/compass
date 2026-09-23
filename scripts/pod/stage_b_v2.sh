@@ -15,7 +15,7 @@ for step in $steps; do
   case $step in
     splits)
       uv run python -m compass.data.splits_v2 --out dev/splits_v2 | tee "$R/splits.log"
-      uv run python scripts/validate_items.py dev/splits_v2/*.jsonl --jevbench "$JB" | tail -1
+      uv run python scripts/validate_items.py dev/splits_v2/train.jsonl dev/splits_v2/selection.jsonl dev/splits_v2/calibration.jsonl dev/splits_v2/release.jsonl --jevbench "$JB" | tail -1
       # the hard-like calibration subset: the families the frozen model is weakest on
       uv run python - <<'EOF'
 import json
