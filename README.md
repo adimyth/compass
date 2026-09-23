@@ -1,72 +1,117 @@
 # Compass
 
-Compass is a decision model for [JevBench](https://github.com/fstandhartinger/jevbench): it reads a document once, checks every allowed answer against it, and returns calibrated probabilities. No text is generated. It serves TypeSafe's `POST /v1/systemone` wire format, so JevBench's unchanged `typesafe` adapter runs it.
+Compass turns a small open language model into a **decision model**: you give it a document and a typed question with a fixed set of allowed answers, and it returns a probability for every answer. It never generates text, so there is nothing to parse, nothing to repair, and one call costs one read of the document.
 
-**Release `compass-0.2.0`**: [Qwen/Qwen3.5-4B](https://huggingface.co/Qwen/Qwen3.5-4B) (Apache-2.0, revision `851bf6e8`) plus a 116 MB LoRA adapter, [`adimyth/compass-lora-v2`](https://huggingface.co/adimyth/compass-lora-v2) (revision `bfa8af07`), merged into the weights at load. Apache-2.0 throughout.
+```json
+POST /v1/systemone
+{
+  "state": "Hi, I was charged twice for September and the app also crashed this morning. Please refund the duplicate.",
+  "questions": {
+    "team":   {"type": "choice", "instructions": "Which team should handle this?",
+               "criteria": {"billing": "Charges and refunds", "technical": "Bugs and outages", "sales": "Pricing"}},
+    "urgent": {"type": "noul",   "instructions": "Does the message ask for a same-day response?"}
+  }
+}
 
-## Results on JevBench's public items
+→ {"answers": {"team":   {"type": "choice", "choice": "billing", "confidence": 0.93,
+                          "probabilities": {"billing": 0.95, "sales": 0.01, "technical": 0.04}},
+               "urgent": {"type": "noul", "noul": 0.22}},
+   "usage": {"input_tokens": 412, "output_tokens": 0}, "model": "compass-0.2.0"}
+```
 
-One run per configuration through JevBench's own adapter and scorer, on an RTX 4090. Public items only; the judge tier and the held-out hard items are the maintainer's.
+Three question types: **choice** (one option from a set), **noul** (a yes/no probability), and **score** (a level on an ordered scale). The wire format is TypeSafe's `/v1/systemone`, so anything written for that API, including the [JevBench](https://github.com/fstandhartinger/jevbench) harness, runs Compass unchanged.
 
-| Tier | Items | Accuracy | Well-formed answers | Top-label ECE |
+**Current release: `compass-0.2.0`.** [Qwen3.5-4B](https://huggingface.co/Qwen/Qwen3.5-4B) (Apache-2.0, revision `851bf6e8`) with a 116 MB LoRA adapter, [`adimyth/compass-lora-v2`](https://huggingface.co/adimyth/compass-lora-v2) (revision `bfa8af07`), merged at load. Everything here is Apache-2.0.
+
+## How it works
+
+Most ways of getting a decision out of a language model ask it to write the answer and then parse the text. Compass never decodes. It reads the model's own probabilities at a single position, for each candidate answer, in a layout designed so that the answer cannot depend on how the options were ordered or named.
+
+```
+request ─► rubric compiler ─► candidates in canonical order
+                                       │
+              ┌────────────────────────┴───────────────────────────┐
+              │  document, read once (prefix, KV cache)            │
+              └──────┬───────────────────────────────┬─────────────┘
+                     │ fork per question             │ fork per question
+                     ▼                               ▼
+          instructions + rubric              instructions + lettered rubric
+                     │ fork per candidate            │
+                     ▼                               ▼
+   "Proposed answer: billing — Charges     "Which one is correct? Reply
+    and refunds. Is this correct under      with its letter."
+    the rubric?"  → log-odds(yes : no)      → log-prob of each letter
+                     │                               │
+                     └────────── fuse in log space ──┘
+                                       │
+                            temperature calibration
+                                       │
+                          probabilities · choice / noul / score
+```
+
+1. **Rubric compiler** ([`compass/contract.py`](compass/contract.py)). The request is validated against the schema in [`api/systemone.schema.json`](api/systemone.schema.json) and each question becomes a list of candidates: choice options sorted by key, score levels in their given order, and a noul question as the pair of propositions `no` / `yes`. Because the model only ever sees candidates in this canonical order, reordering the options in a request cannot change the answer; the test suite checks every permutation.
+
+2. **One read of the document** ([`compass/backbone.py`](compass/backbone.py)). The document is prefilled once and its cache is forked, first per question (the instructions and rubric are appended), then per candidate (a short branch of about 25 tokens). All branches of a question run as one batch. The reported `input_tokens` are exactly the tokens the model processed: the document, one rubric per question, and the branches.
+
+3. **Two readouts.** *Verification*: each candidate is stated as a proposed answer and the model is asked whether it is correct under the rubric; the log-odds of "yes" against "no" is that candidate's score. *Direct*: the candidates are listed with letters and the logits of the letters are read at one position. Verification sees each option in isolation but with the full rubric in view; direct sees them side by side. Their log-probabilities are averaged. On our own evaluation items the fusion beats either readout alone by three to seven points.
+
+4. **Calibration** ([`compass/calibration.py`](compass/calibration.py)). One temperature per question type, fitted after every other design choice is frozen, on our own items in the families the model finds hardest, so that a reported 0.8 means roughly 80 % on hard cases, not on easy ones.
+
+5. **The adapter** ([`compass/train_lora.py`](compass/train_lora.py)). A rank-16 LoRA on the attention and MLP projections, trained through the two readouts above rather than through next-token prediction. The loss is a listwise cross-entropy over each question's candidates (soft targets where the evidence is graded), a per-readout term so both readouts stay useful on their own, an ordinal term for score questions, a permutation-consistency term (the same item under two rubric orders must agree) and an opaque-label term (option names replaced by neutral tokens, so the model cannot lean on what an option is called). Training data is our own: code-generated cases with computed labels (policies with amendments and exceptions, multi-step lookups, count-derived probabilities, ordinal rubrics) plus model-drafted scenarios (routing, answer-adequacy judging, ambiguous and trade-off cases), split by template and language form so that evaluation never sees a template that was trained on. The specification is in [`docs/stage-b-v2/`](docs/stage-b-v2/).
+
+Serving is deterministic: bf16 weights, no sampling, one request at a time, probabilities in float64 that sum to 1. A cache-parity check against fp32 scoring is part of the release pipeline.
+
+## Run it
+
+One GPU with at least 12 GB. The base weights and the adapter download on first use.
+
+```sh
+git clone https://github.com/adimyth/compass && cd compass
+scripts/serve.sh 8000
+```
+
+or
+
+```sh
+docker build -t compass . && docker run --gpus all -p 8000:8000 compass
+```
+
+Then:
+
+```sh
+curl -s http://127.0.0.1:8000/v1/systemone -H 'Content-Type: application/json' -d '{
+  "state": "Order 7731. Placed 9 September. Payment authorised, not captured. Label created, awaiting pickup.",
+  "questions": {"shipped": {"type": "noul", "instructions": "Has the order been shipped? Answer only from the facts stated."}}
+}'
+```
+
+`GET /v1/models` reports the backbone revision, adapter revision, readout and calibration file that answered, and `GET /healthz` says whether the model is loaded. Answers: `noul` carries `noul` (the probability of yes); `choice` carries `choice`, `confidence` and `probabilities`; `score` carries `score` (the probability-weighted level), `confidence`, `legend` and `probabilities`. Malformed requests get a 422 naming the field; the server never returns an invented distribution.
+
+Serving options: `--adapter none --calibration release/calibration-0.1.1.json` runs the previous, adapter-free release (`compass-0.1.1`); `--readout verify|direct|fusion` and `--fusion-weight` select the readout; `--model-name Qwen/Qwen3.5-0.8B` gives a small model for smoke tests on a laptop.
+
+## Evaluation
+
+Compass is measured on [JevBench](https://github.com/fstandhartinger/jevbench) through the benchmark's own adapter and scorer, one run per configuration, public items only (the judge tier and the held-out hard items are the maintainer's).
+
+| Tier | Items | Accuracy | Well-formed | Top-label ECE |
 | --- | --- | --- | --- | --- |
 | easy | 48 | 100.0 % | 48/48 | 0.034 |
 | standard | 72 | 87.5 % | 72/72 | 0.137 |
 | hard | 111 | 60.4 % | 111/111 | 0.069 |
 
-Hard tier by family: trap 8/8, routing 5/5, adversarial 6/6, multi-hop 13/18, judge 11/17, long policy 9/19, probability 6/10 (mean TVD to the gold distributions 0.216), ambiguous 5/7, tradeoff 3/6, temporal arithmetic 1/15. Zero answers change under any reordering of the options.
-
-Per-item records for every run are in [`dev/results/`](dev/results/); the full comparison of everything we tried, including what did not work, is in [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md).
-
-## How it works
-
-1. **Rubric compiler.** The request is validated and each question is turned into candidates: choice options sorted by key, score levels in order, a yes/no question as the pair of propositions `no`/`yes`. Option order in the request cannot reach the model.
-2. **One read of the document.** The state is prefilled once. The cache is forked per question (instructions plus rubric appended) and again per candidate, so the reported `input_tokens` are the document plus one rubric plus about 25 tokens per option.
-3. **Two readouts, fused.** For each candidate the model is asked whether that proposed answer is correct under the rubric, and its yes/no log-odds are read (*verification*). In a second short branch the candidates are listed with letters and the letter logits are read (*direct*). The two are combined in log space with equal weight; each is weaker alone.
-4. **Calibration.** One temperature per question type, fitted after everything else is frozen, on our own items in the families the model finds hardest.
-5. **LoRA.** A rank-16 adapter on the attention and MLP projections, trained through the two readouts above on 2,170 of our own items (code-generated with computed labels, plus model-drafted scenarios), with listwise, per-readout, ordinal, permutation-consistency and opaque-label losses. The prompt wording, readouts, fusion and serving are the same with or without it.
-
-No JevBench item, label or paraphrase was used for training, calibration or selection. Every data file passes an 8-gram overlap check against JevBench's public files before use ([`scripts/validate_items.py`](scripts/validate_items.py)). The data, the split manifest, the shadow evaluation suite and the training specification are in the repository: [`docs/stage-b-v2/`](docs/stage-b-v2/), [`dev/`](dev/), [`shadow/`](shadow/).
-
-## Run it
-
-One GPU with at least 12 GB (bf16, about 9 GB of weights); the adapter and the base weights download on first use.
-
-```sh
-git clone https://github.com/adimyth/compass && cd compass
-scripts/serve.sh 8000
-# or
-docker build -t compass . && docker run --gpus all -p 8000:8000 compass
-```
-
-`GET /v1/models` reports the exact backbone revision, adapter revision, readout and calibration file. Then, from a JevBench checkout:
-
-```sh
-python -m jevbench.cli run --tasks datasets/public/original.jsonl \
-  --adapter typesafe --endpoint http://127.0.0.1:8000 --key-env '' --model compass-0.2.0 \
-  --cost-basis self_hosted_gpu --reserve-usd 0 ...
-```
-
-`noul` answers carry `noul`; `choice` and `score` answers carry `probabilities` keyed by option name and level index, computed in float64 and summing to 1. `usage.input_tokens` counts every token the backbone processed.
-
-The previous release, `compass-0.1.1` (tag `v0.1.1`, frozen backbone, no adapter), runs with `scripts/serve.sh` plus `--adapter none --calibration release/calibration-0.1.1.json`.
-
-## Latency and cost
-
-Measured serially on an RTX 4090 over localhost: p50 about 120 ms at 300–400 input tokens and 145 ms at 1,500 (the hard-tier mean). Cost follows JevBench's rule for open weights: the hosted price of the 4B size class times the reported input tokens; the adapter adds no tokens and no generation.
+No JevBench item, label or paraphrase is used for training, calibration or selection; every data file passes an 8-gram overlap check against the public JevBench files ([`scripts/validate_items.py`](scripts/validate_items.py)). Every configuration we tried, with what worked and what did not, is in [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md); per-item records are in [`dev/results/`](dev/results/).
 
 ## Develop
 
 ```sh
 uv sync
-uv run pytest                                                   # contract, server, backbone and head tests; the model tests use the 0.8B checkpoint if cached
-uv run python -m compass.data.splits_v2 --out dev/splits_v2       # rebuild the training, selection, calibration and release splits
+uv run pytest                                                 # contract, server, backbone and head tests
+uv run python -m compass.data.splits_v2 --out dev/splits_v2     # rebuild the training, selection, calibration and release splits
 uv run python scripts/own_eval.py --tasks dev/splits_v2/release.jsonl
-uv run python scripts/shadow_eval.py --name <config> ...         # one run per configuration on the shadow suite
 uv run python -m compass.train_lora --train dev/splits_v2/train.jsonl --select dev/splits_v2/selection.jsonl --out release/lora-new
 ```
 
-The full GPU pipeline (splits, training, fusion weight, calibration, release split, cache parity against fp32, shadow suite) is [`scripts/pod/stage_b_v2.sh`](scripts/pod/stage_b_v2.sh).
+The GPU pipeline (splits, training, fusion weight, calibration, release split, cache parity, shadow suite) is [`scripts/pod/stage_b_v2.sh`](scripts/pod/stage_b_v2.sh).
 
 ## Licence
 
