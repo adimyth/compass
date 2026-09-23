@@ -92,6 +92,19 @@ The promotion rule (higher accuracy and lower ECE on the shadow core families, s
 
 Status: candidate `compass-0.2.0`, not pinned yet. Pinning needs the adapter weights published under a revision (116 MB, sha256 `108b48a8d3fa65fc…`, on the pod at `/workspace/compass/release/lora-v2/`; GitHub refuses files over 100 MB, so they go to the Hugging Face Hub). Not submitted.
 
+## Stage B v2, second seed on the completed data (23 Sep)
+
+The four missing drafting jobs were completed (train tradeoff 20; eval tradeoff/probability/ordinal 50; shadow policy narratives and multi_hop 60; shadow tradeoff/probability/ordinal 60), giving train 2,170 / selection 169 / calibration 204 / release 557 and a 280-item shadow suite covering all eight families. The same recipe ran with seed 1 (`lora-v2b`); it early-stopped at its first checkpoint (400 items) and chose fusion 0.3.
+
+| shadow suite, 280 items | compass-0.1.1 | compass-0.2.0 (seed 0) | lora-v2b (seed 1) |
+| --- | --- | --- | --- |
+| overall | 66.4 %, ECE 0.059 | 76.4 %, ECE 0.053 | 77.1 %, ECE 0.060 |
+| core (policy, multi_hop, adequacy, ambiguous; n = 170) | 58.8 %, ECE 0.103 | **68.2 %, ECE 0.046** | 68.8 %, ECE 0.097 |
+| adequacy | 65.0 % | 52.5 % | 57.5 % |
+| release split (557) | 61.8 % | 80.8 %, ECE 0.050 | 78.8 %, ECE 0.032 |
+
+Seed 1 ties seed 0 on accuracy but fails the promotion rule on core ECE (0.097 against 0.046; its calibration fit chose sharper temperatures on a small calibration split). **Not promoted; `compass-0.2.0` stands**, now confirmed on the full suite: +9.4 points on the core families over 0.1.1 with ECE halved, and the two seeds agree within a point on accuracy, so the gain is not seed noise. The adequacy regression is consistent across both seeds (65 → 52–58 %) and is the next target: more adequacy data in training (90 items today) and its own loss weight.
+
 ## Follow-up, after the row exists
 
 Stage B (LoRA plus verification head on our own corpus) targeting long-policy, multi-hop, probability and ambiguous items, where Jev beats the frozen 4B systems by 20–40 points. Temporal arithmetic is not a target: every no-generation system on the board scores 20–33 % there.

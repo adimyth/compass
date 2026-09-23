@@ -3,8 +3,10 @@
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 export HF_HOME=${HF_HOME:-/workspace/hf}
-R=dev/results/v2; mkdir -p "$R"
-ADAPTER=release/lora-v2
+TAG=${TAG:-v2}
+R=dev/results/$TAG; mkdir -p "$R"
+ADAPTER=${ADAPTER:-release/lora-$TAG}
+SEED=${SEED:-0}
 JB=${JB:-/workspace/jevbench}
 steps=${*:-"splits train fusion calibrate release parity baseline_shadow shadow"}
 
@@ -13,7 +15,7 @@ for step in $steps; do
   case $step in
     splits)
       uv run python -m compass.data.splits_v2 --out dev/splits_v2 | tee "$R/splits.log"
-      uv run python scripts/validate_items.py dev/splits_v2/*.jsonl --jevbench "$JB" | tail -1
+      uv run python scripts/validate_items.py dev/splits_v2/train.jsonl dev/splits_v2/selection.jsonl dev/splits_v2/calibration.jsonl dev/splits_v2/release.jsonl --jevbench "$JB" | tail -1
       # the hard-like calibration subset: the families the frozen model is weakest on
       uv run python - <<'EOF'
 import json
@@ -24,7 +26,7 @@ print("calibration-hard", len(keep))
 EOF
       ;;
     train)
-      uv run python -m compass.train_lora --train dev/splits_v2/train.jsonl --select dev/splits_v2/selection.jsonl --out "$ADAPTER" 2>&1 | grep -v -i "warn\|fall\|Fetching\|Loading" | tee "$R/train.log"
+      uv run python -m compass.train_lora --train dev/splits_v2/train.jsonl --select dev/splits_v2/selection.jsonl --out "$ADAPTER" --seed "$SEED" 2>&1 | grep -v -i "warn\|fall\|Fetching\|Loading" | tee "$R/train.log"
       ;;
     fusion)
       for w in 0.3 0.5 0.7; do echo "-- fusion $w"; uv run python scripts/own_eval.py --tasks dev/splits_v2/selection.jsonl --adapter "$ADAPTER" --readout fusion --fusion-weight $w 2>&1 | grep -E "overall|flips"; done | tee "$R/fusion.log"
@@ -37,18 +39,20 @@ EOF
       ;;
     release)
       W=$(cat "$R/fusion_weight.txt")
-      echo "-- frozen compass-0.1.1"; uv run python scripts/own_eval.py --tasks dev/splits_v2/release.jsonl --readout fusion --fusion-weight 0.5 --calibration release/calibration.json --dump "$R/release-frozen.jsonl" 2>&1 | grep -E "accuracy|ECE|flips|latency" | tee "$R/release.log"
-      echo "-- lora-v2"; uv run python scripts/own_eval.py --tasks dev/splits_v2/release.jsonl --adapter "$ADAPTER" --readout fusion --fusion-weight "$W" --calibration "$ADAPTER/calibration.json" --dump "$R/release-lora.jsonl" 2>&1 | grep -E "accuracy|ECE|flips|latency" | tee -a "$R/release.log"
+      echo "-- frozen compass-0.1.1"; uv run python scripts/own_eval.py --tasks dev/splits_v2/release.jsonl --readout fusion --fusion-weight 0.5 --calibration release/calibration-0.1.1.json --dump "$R/release-frozen.jsonl" 2>&1 | grep -E "accuracy|ECE|flips|latency" | tee "$R/release.log"
+      echo "-- compass-0.2.0 (lora-v2)"; uv run python scripts/own_eval.py --tasks dev/splits_v2/release.jsonl --adapter release/lora-v2 --readout fusion --fusion-weight 0.5 --calibration release/lora-v2/calibration.json --dump "$R/release-0.2.0.jsonl" 2>&1 | grep -E "accuracy|ECE|flips|latency" | tee -a "$R/release.log"
+      echo "-- lora-$TAG"; uv run python scripts/own_eval.py --tasks dev/splits_v2/release.jsonl --adapter "$ADAPTER" --readout fusion --fusion-weight "$W" --calibration "$ADAPTER/calibration.json" --dump "$R/release-lora.jsonl" 2>&1 | grep -E "accuracy|ECE|flips|latency" | tee -a "$R/release.log"
       ;;
     parity)
       uv run python scripts/parity.py --n 12 --tasks dev/splits_v2/selection.jsonl --adapter "$ADAPTER" 2>&1 | grep -v -i "warn\|fall\|Fetching\|Loading" | tail -3 | tee "$R/parity.log"
       ;;
     baseline_shadow)
-      uv run python scripts/shadow_eval.py --name compass-0.1.1 --readout fusion --fusion-weight 0.5 --calibration release/calibration.json 2>&1 | grep -v -i "warn\|fall\|Fetching\|Loading" | tee "$R/shadow-baseline.log"
+      uv run python scripts/shadow_eval.py --name "compass-0.1.1-$TAG" --readout fusion --fusion-weight 0.5 --calibration release/calibration-0.1.1.json 2>&1 | grep -v -i "warn\|fall\|Fetching\|Loading" | tee "$R/shadow-0.1.1.log"
+      uv run python scripts/shadow_eval.py --name "compass-0.2.0-$TAG" --adapter release/lora-v2 --readout fusion --fusion-weight 0.5 --calibration release/lora-v2/calibration.json 2>&1 | grep -v -i "warn\|fall\|Fetching\|Loading" | tee "$R/shadow-0.2.0.log"
       ;;
     shadow)
       W=$(cat "$R/fusion_weight.txt")
-      uv run python scripts/shadow_eval.py --name lora-v2 --adapter "$ADAPTER" --readout fusion --fusion-weight "$W" --calibration "$ADAPTER/calibration.json" 2>&1 | grep -v -i "warn\|fall\|Fetching\|Loading" | tee "$R/shadow-lora.log"
+      uv run python scripts/shadow_eval.py --name "lora-$TAG" --adapter "$ADAPTER" --readout fusion --fusion-weight "$W" --calibration "$ADAPTER/calibration.json" 2>&1 | grep -v -i "warn\|fall\|Fetching\|Loading" | tee "$R/shadow-lora.log"
       ;;
     *) echo "unknown step $step"; exit 1;;
   esac

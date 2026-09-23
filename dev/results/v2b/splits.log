@@ -1,0 +1,4 @@
+train: 2170 items, 270 authored, {'adequacy': 90, 'ambiguous': 30, 'multi_hop': 600, 'ordinal': 300, 'policy': 740, 'probability': 300, 'routing': 90, 'tradeoff': 20}
+selection: 169 items, 49 authored, {'adequacy': 10, 'ambiguous': 7, 'ordinal': 2, 'policy': 13, 'probability': 62, 'routing': 71, 'tradeoff': 4}
+calibration: 204 items, 54 authored, {'adequacy': 10, 'ambiguous': 10, 'multi_hop': 90, 'ordinal': 63, 'policy': 8, 'probability': 5, 'routing': 6, 'tradeoff': 12}
+release: 557 items, 107 authored, {'adequacy': 25, 'ambiguous': 13, 'multi_hop': 90, 'ordinal': 70, 'policy': 139, 'probability': 68, 'routing': 88, 'temporal_numeric': 60, 'tradeoff': 4}

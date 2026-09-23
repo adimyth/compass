@@ -1,0 +1,28 @@
+trainable params: 30,474,240 || all params: 4,236,225,536 || trainable%: 0.7194
+untrained: selection loss 1.3346 acc 0.716 {'adequacy': '7/10', 'ambiguous': '7/7', 'ordinal': '2/2', 'policy': '11/13', 'probability': '31/62', 'routing': '60/71', 'tradeoff': '3/4'}
+epoch 0 step 10/543 seen 80 loss 2.3339 lr 6.24e-05 84s
+epoch 0 step 20/543 seen 160 loss 1.3638 lr 9.97e-05 163s
+epoch 0 step 30/543 seen 240 loss 1.6651 lr 9.92e-05 236s
+epoch 0 step 40/543 seen 320 loss 0.5840 lr 9.87e-05 318s
+epoch 0 step 50/543 seen 400 loss 1.1282 lr 9.79e-05 403s
+  selection: loss 0.8626 acc 0.905 {'adequacy': '6/10', 'ambiguous': '6/7', 'ordinal': '2/2', 'policy': '9/13', 'probability': '56/62', 'routing': '70/71', 'tradeoff': '4/4'}
+epoch 0 step 60/543 seen 480 loss 0.8274 lr 9.70e-05 512s
+epoch 0 step 70/543 seen 560 loss 0.6604 lr 9.60e-05 583s
+epoch 0 step 80/543 seen 640 loss 1.2491 lr 9.47e-05 657s
+epoch 0 step 90/543 seen 720 loss 0.1735 lr 9.34e-05 734s
+epoch 0 step 100/543 seen 800 loss 1.1796 lr 9.19e-05 806s
+  selection: loss 1.0057 acc 0.846 {'adequacy': '6/10', 'ambiguous': '6/7', 'ordinal': '2/2', 'policy': '8/13', 'probability': '50/62', 'routing': '67/71', 'tradeoff': '4/4'}
+epoch 0 step 110/543 seen 880 loss 0.8091 lr 9.02e-05 927s
+epoch 0 step 120/543 seen 960 loss 1.1350 lr 8.84e-05 1002s
+epoch 0 step 130/543 seen 1040 loss 1.0305 lr 8.65e-05 1086s
+epoch 0 step 140/543 seen 1120 loss 2.9724 lr 8.45e-05 1168s
+epoch 0 step 150/543 seen 1200 loss 1.0468 lr 8.23e-05 1244s
+  selection: loss 0.9163 acc 0.899 {'adequacy': '6/10', 'ambiguous': '7/7', 'ordinal': '2/2', 'policy': '9/13', 'probability': '57/62', 'routing': '67/71', 'tradeoff': '4/4'}
+epoch 0 step 160/543 seen 1280 loss 0.5043 lr 8.01e-05 1359s
+epoch 0 step 170/543 seen 1360 loss 0.9833 lr 7.77e-05 1443s
+epoch 0 step 180/543 seen 1440 loss 0.5539 lr 7.53e-05 1519s
+epoch 0 step 190/543 seen 1520 loss 2.1931 lr 7.27e-05 1592s
+epoch 0 step 200/543 seen 1600 loss 1.9932 lr 7.01e-05 1661s
+  selection: loss 0.8775 acc 0.888 {'adequacy': '7/10', 'ambiguous': '6/7', 'ordinal': '2/2', 'policy': '9/13', 'probability': '55/62', 'routing': '67/71', 'tradeoff': '4/4'}
+early stop
+saved release/lora-v2b best selection loss 0.8626 at step 50
