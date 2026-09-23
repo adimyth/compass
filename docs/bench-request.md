@@ -1,17 +1,17 @@
-# [bench request]: Add Compass 0.2.0 (Qwen3.5-4B frozen, candidate-verification readout, TypeSafe wire format)
+# [bench request]: Add Compass 0.2.0 (Qwen3.5-4B + LoRA, fused verification and option-symbol readouts, TypeSafe wire format)
 
-Draft of the issue for `fstandhartinger/jevbench`. Numbers are from `dev/results/public-check.md`. Replace `<repo URL>` before posting.
+Draft of the issue for `fstandhartinger/jevbench`. Numbers are from `dev/results/public-check.md`. The repository and the adapter must be public before posting.
 
 ---
 
 Request to add **Compass 0.2.0** to the ranked systems.
 
-**What it is.** A decision model over a frozen [Qwen/Qwen3.5-4B](https://huggingface.co/Qwen/Qwen3.5-4B) (Apache-2.0, revision `851bf6e8`) plus a LoRA trained through the readouts below (no JevBench data; 8-gram overlap check on every file), with its own readout: each allowed answer is stated as a proposition and verified against the document in its own branch ("is this proposed answer correct under the rubric?"), and that verification log-odds is fused in log space (equal weight) with a direct read of the answer symbols; the weight was chosen on our own internal items. The state is read once and the cache is forked per question and per candidate, so option order cannot reach the model and the reported input tokens are the state plus one rubric plus ~25 tokens per option. No generation, no answer-letter logits. Per-type temperatures were fitted on our own items (`dev/`), none of them from JevBench. Code, prompt, calibration and dev items: <repo URL>, tag `v0.2.0`, Apache-2.0.
+**What it is.** A decision model over a frozen [Qwen/Qwen3.5-4B](https://huggingface.co/Qwen/Qwen3.5-4B) (Apache-2.0, revision `851bf6e8`) plus a LoRA trained through the readouts below (no JevBench data; 8-gram overlap check on every file), with its own readout: each allowed answer is stated as a proposition and verified against the document in its own branch ("is this proposed answer correct under the rubric?"), and that verification log-odds is fused in log space (equal weight) with a direct read of the answer symbols; the weight was chosen on our own internal items. The state is read once and the cache is forked per question and per candidate, so option order cannot reach the model and the reported input tokens are the state plus one rubric plus ~25 tokens per option. No answer generation: every probability is read from the model's logits at one position per branch. Per-type temperatures were fitted on our own items (`dev/`), none of them from JevBench. Code, prompt, calibration and data: https://github.com/adimyth/compass, tag `v0.2.0-submission`, Apache-2.0.
 
 It serves TypeSafe's wire format, so the unchanged `typesafe` adapter works:
 
 ```sh
-git clone <repo URL> compass && cd compass
+git clone --branch v0.2.0-submission https://github.com/adimyth/compass && cd compass
 scripts/serve.sh 8000          # one GPU, bf16, ~9 GB; downloads the pinned weights on first use
 # or: docker build -t compass . && docker run --gpus all -p 8000:8000 compass
 
