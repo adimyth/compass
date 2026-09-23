@@ -103,7 +103,7 @@ The four missing drafting jobs were completed (train tradeoff 20; eval tradeoff/
 | adequacy | 65.0 % | 52.5 % | 57.5 % |
 | release split (557) | 61.8 % | 80.8 %, ECE 0.050 | 78.8 %, ECE 0.032 |
 
-Seed 1 ties seed 0 on accuracy but fails the promotion rule on core ECE (0.097 against 0.046; its calibration fit chose sharper temperatures on a small calibration split). **Not promoted; `compass-0.2.0` stands**, now confirmed on the full suite: +9.4 points on the core families over 0.1.1 with ECE halved, and the two seeds agree within a point on accuracy, so the gain is not seed noise. The adequacy regression is consistent across both seeds (65 → 52–58 %) and is the next target: more adequacy data in training (90 items today) and its own loss weight.
+Seed 1 (published for the record as `adimyth/compass-lora-v2b@f5b5a926`) ties seed 0 on accuracy but fails the promotion rule on core ECE (0.097 against 0.046; its calibration fit chose sharper temperatures on a small calibration split). **Not promoted; `compass-0.2.0` stands**, now confirmed on the full suite: +9.4 points on the core families over 0.1.1 with ECE halved, and the two seeds agree within a point on accuracy, so the gain is not seed noise. The adequacy regression is consistent across both seeds (65 → 52–58 %) and is the next target: more adequacy data in training (90 items today) and its own loss weight.
 
 ## Follow-up, after the row exists
 
