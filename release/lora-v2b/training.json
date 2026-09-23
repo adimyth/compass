@@ -1,0 +1,117 @@
+{
+  "args": {
+    "train": "dev/splits_v2/train.jsonl",
+    "select": "dev/splits_v2/selection.jsonl",
+    "out": "release/lora-v2b",
+    "model_name": "Qwen/Qwen3.5-4B",
+    "rank": 16,
+    "alpha": 32,
+    "lora_dropout": 0.05,
+    "lr": 0.0001,
+    "weight_decay": 0.01,
+    "epochs": 2,
+    "accum": 8,
+    "fusion": 0.5,
+    "ordinal_w": 0.5,
+    "perm_w": 0.5,
+    "perm_p": 0.5,
+    "opaque_p": 0.5,
+    "eval_every": 400,
+    "patience": 3,
+    "max_select": 400,
+    "seed": 1
+  },
+  "n_train": 2170,
+  "n_select": 169,
+  "best_selection_loss": 0.8625840564926923,
+  "best_step": 50,
+  "log": [
+    {
+      "step": 0,
+      "seen": 0,
+      "loss": 1.3346475614262359,
+      "acc": 0.7159763313609467,
+      "by_family": {
+        "adequacy": "7/10",
+        "ambiguous": "7/7",
+        "ordinal": "2/2",
+        "policy": "11/13",
+        "probability": "31/62",
+        "routing": "60/71",
+        "tradeoff": "3/4"
+      }
+    },
+    {
+      "step": 50,
+      "seen": 400,
+      "loss": 0.8625840564926923,
+      "acc": 0.9053254437869822,
+      "by_family": {
+        "adequacy": "6/10",
+        "ambiguous": "6/7",
+        "ordinal": "2/2",
+        "policy": "9/13",
+        "probability": "56/62",
+        "routing": "70/71",
+        "tradeoff": "4/4"
+      }
+    },
+    {
+      "step": 100,
+      "seen": 800,
+      "loss": 1.0057207983276353,
+      "acc": 0.8461538461538461,
+      "by_family": {
+        "adequacy": "6/10",
+        "ambiguous": "6/7",
+        "ordinal": "2/2",
+        "policy": "8/13",
+        "probability": "50/62",
+        "routing": "67/71",
+        "tradeoff": "4/4"
+      }
+    },
+    {
+      "step": 150,
+      "seen": 1200,
+      "loss": 0.9162802742911691,
+      "acc": 0.8994082840236687,
+      "by_family": {
+        "adequacy": "6/10",
+        "ambiguous": "7/7",
+        "ordinal": "2/2",
+        "policy": "9/13",
+        "probability": "57/62",
+        "routing": "67/71",
+        "tradeoff": "4/4"
+      }
+    },
+    {
+      "step": 200,
+      "seen": 1600,
+      "loss": 0.8775498297164691,
+      "acc": 0.8875739644970414,
+      "by_family": {
+        "adequacy": "7/10",
+        "ambiguous": "6/7",
+        "ordinal": "2/2",
+        "policy": "9/13",
+        "probability": "55/62",
+        "routing": "67/71",
+        "tradeoff": "4/4"
+      }
+    }
+  ],
+  "targets": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj",
+    "in_proj_qkv",
+    "in_proj_z",
+    "out_proj",
+    "gate_proj",
+    "up_proj",
+    "down_proj"
+  ]
+}

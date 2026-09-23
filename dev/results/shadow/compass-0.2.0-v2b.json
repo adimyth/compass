@@ -1,0 +1,117 @@
+{
+ "name": "compass-0.2.0-v2b",
+ "run_utc": "2026-09-23T08:23:17Z",
+ "model": "compass-fusion-lora-qwen3.5-4b-compass-prompt-2",
+ "config": {
+  "name": "compass-0.2.0-v2b",
+  "shadow_dir": "shadow",
+  "model_name": "Qwen/Qwen3.5-4B",
+  "readout": "fusion",
+  "fusion_weight": 0.5,
+  "adapter": "release/lora-v2",
+  "calibration": "release/lora-v2/calibration.json",
+  "out_dir": "dev/results/shadow"
+ },
+ "shadow_files": {
+  "shadow-1.jsonl": "dc82c84c81d39b671c33f8e2e6ae835c7505df73e0caa7561d9e3599626c5328",
+  "shadow-2.jsonl": "9305666ba0acd1e6d1b3876ee4b5653448f43649bad6be749630580492134673",
+  "shadow-2b.jsonl": "5ee6a6eafa7bb5d038325da035ffbba92eb9595e5b119e25b8ce745e78eb3fc0",
+  "shadow-3.jsonl": "9573661150d4fc8d79d9c79e1a8a3f0de91bff784c617d3792c94beba8b96e5b",
+  "shadow-3b.jsonl": "03efc516b6e2e1e926f190e405f86d9f08fee438b6903f902119eacdbec06f43"
+ },
+ "n": 280,
+ "overall": {
+  "n": 280,
+  "accuracy": 0.7643,
+  "ece": 0.0531
+ },
+ "core_families": {
+  "n": 170,
+  "accuracy": 0.6824,
+  "ece": 0.0459
+ },
+ "by_family": {
+  "adequacy": {
+   "n": 40,
+   "accuracy": 0.525,
+   "ece": 0.0578
+  },
+  "ambiguous": {
+   "n": 30,
+   "accuracy": 0.9,
+   "ece": 0.077
+  },
+  "multi_hop": {
+   "n": 40,
+   "accuracy": 0.8,
+   "ece": 0.1474
+  },
+  "ordinal": {
+   "n": 20,
+   "accuracy": 0.8,
+   "ece": 0.24
+  },
+  "policy": {
+   "n": 60,
+   "accuracy": 0.6,
+   "ece": 0.1115
+  },
+  "probability": {
+   "n": 20,
+   "accuracy": 0.85,
+   "ece": 0.3085
+  },
+  "routing": {
+   "n": 50,
+   "accuracy": 0.98,
+   "ece": 0.0147
+  },
+  "tradeoff": {
+   "n": 20,
+   "accuracy": 0.8,
+   "ece": 0.1506
+  }
+ },
+ "by_form": {
+  "dialogue": {
+   "n": 32,
+   "accuracy": 1.0,
+   "ece": 0.0927
+  },
+  "narrative": {
+   "n": 87,
+   "accuracy": 0.8276,
+   "ece": 0.1209
+  },
+  "record": {
+   "n": 115,
+   "accuracy": 0.6348,
+   "ece": 0.0857
+  },
+  "ticket": {
+   "n": 46,
+   "accuracy": 0.8043,
+   "ece": 0.0968
+  }
+ },
+ "by_type": {
+  "choice": {
+   "n": 160,
+   "accuracy": 0.85,
+   "ece": 0.0616
+  },
+  "noul": {
+   "n": 100,
+   "accuracy": 0.62,
+   "ece": 0.0799
+  },
+  "score": {
+   "n": 20,
+   "accuracy": 0.8,
+   "ece": 0.24
+  }
+ },
+ "choice_flips_reversed_order": 0,
+ "latency_p50_s": 0.138,
+ "mean_input_tokens": 870.7
+}

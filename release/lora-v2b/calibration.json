@@ -1,0 +1,44 @@
+{
+  "temperatures": {
+    "choice": 0.75,
+    "score": 1.5,
+    "noul": 0.5
+  },
+  "fitted_on": [
+    "dev/splits_v2/calibration-hard.jsonl"
+  ],
+  "model": "compass-fusion-lora-qwen3.5-4b-compass-prompt-2",
+  "readout": "fusion",
+  "head": null,
+  "fusion_weight": 0.3,
+  "n_items": 186,
+  "report": {
+    "choice": {
+      "n": 46,
+      "fit_half_T": 0.75,
+      "shipped_T": 0.75,
+      "held_out_ece_before": 0.0919,
+      "held_out_ece_after": 0.0984,
+      "held_out_nll_before": 0.3413,
+      "held_out_nll_after": 0.3286
+    },
+    "score": {
+      "n": 93,
+      "fit_half_T": 1.0,
+      "shipped_T": 1.5,
+      "held_out_ece_before": 0.1878,
+      "held_out_ece_after": 0.1878,
+      "held_out_nll_before": 0.9413,
+      "held_out_nll_after": 0.9413
+    },
+    "noul": {
+      "n": 47,
+      "fit_half_T": 0.5,
+      "shipped_T": 0.5,
+      "held_out_ece_before": 0.1585,
+      "held_out_ece_after": 0.128,
+      "held_out_nll_before": 0.4693,
+      "held_out_nll_after": 0.4069
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+ "name": "compass-0.2.0-v2b",
+ "model": "compass-fusion-lora-qwen3.5-4b-compass-prompt-2",
+ "n": 280,
+ "overall": {
+  "n": 280,
+  "accuracy": 0.7643,
+  "ece": 0.0531
+ },
+ "core_families": {
+  "n": 170,
+  "accuracy": 0.6824,
+  "ece": 0.0459
+ },
+ "by_family": {
+  "adequacy": {
+   "n": 40,
+   "accuracy": 0.525,
+   "ece": 0.0578
+  },
+  "ambiguous": {
+   "n": 30,
+   "accuracy": 0.9,
+   "ece": 0.077
+  },
+  "multi_hop": {
+   "n": 40,
+   "accuracy": 0.8,
+   "ece": 0.1474
+  },
+  "ordinal": {
+   "n": 20,
+   "accuracy": 0.8,
+   "ece": 0.24
+  },
+  "policy": {
+   "n": 60,
+   "accuracy": 0.6,
+   "ece": 0.1115
+  },
+  "probability": {
+   "n": 20,
+   "accuracy": 0.85,
+   "ece": 0.3085
+  },
+  "routing": {
+   "n": 50,
+   "accuracy": 0.98,
+   "ece": 0.0147
+  },
+  "tradeoff": {
+   "n": 20,
+   "accuracy": 0.8,
+   "ece": 0.1506
+  }
+ },
+ "by_form": {
+  "dialogue": {
+   "n": 32,
+   "accuracy": 1.0,
+   "ece": 0.0927
+  },
+  "narrative": {
+   "n": 87,
+   "accuracy": 0.8276,
+   "ece": 0.1209
+  },
+  "record": {
+   "n": 115,
+   "accuracy": 0.6348,
+   "ece": 0.0857
+  },
+  "ticket": {
+   "n": 46,
+   "accuracy": 0.8043,
+   "ece": 0.0968
+  }
+ },
+ "choice_flips_reversed_order": 0,
+ "latency_p50_s": 0.138,
+ "mean_input_tokens": 870.7
+}
