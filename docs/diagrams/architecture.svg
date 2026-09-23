@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 760" width="640" height="760" role="img" aria-labelledby="compass-arch-title compass-arch-desc">
+  <title id="compass-arch-title">How Compass answers a question</title>
+  <desc id="compass-arch-desc">A request carries a document and typed questions. The rubric compiler puts each question's candidates in a canonical order. The backbone reads the document once and forks its cache per question and per candidate. Two readouts score every candidate: verification asks whether each proposed answer is correct under the rubric and reads the yes/no log-odds; direct lists the candidates with letters and reads the letter log-probabilities. The two are fused, calibrated with one temperature per question type, and returned as probabilities.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6b6460"/>
+    </marker>
+    <style>
+      .band { fill: #fbfaf7; stroke: #d9d4cc; stroke-width: 1.1; }
+      .box { fill: #f4f1ea; stroke: #a39b90; stroke-width: 1.25; }
+      .readout { fill: #edf4f2; stroke: #2f7375; stroke-width: 1.5; }
+      .fusion { fill: #f7ede8; stroke: #b65c45; stroke-width: 1.5; }
+      .side { fill: #f9f7f3; stroke: #a39b90; stroke-width: 1.25; stroke-dasharray: 4 3; }
+      .name { fill: #857c73; font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-anchor: middle; dominant-baseline: middle; }
+      .label { fill: #111111; font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: 14px; font-weight: 600; text-anchor: middle; dominant-baseline: middle; }
+      .sub { fill: #4f4945; font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: 12px; text-anchor: middle; dominant-baseline: middle; }
+      .quote { fill: #4f4945; font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: 11.5px; font-style: italic; text-anchor: middle; dominant-baseline: middle; }
+      .edge { fill: #3f3a36; font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: 12px; font-weight: 600; text-anchor: middle; dominant-baseline: middle; }
+      .zone { fill: #6b6460; font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-anchor: start; dominant-baseline: middle; }
+      .line { stroke: #6b6460; stroke-width: 1.5; fill: none; marker-end: url(#arrow); }
+      .plain { stroke: #6b6460; stroke-width: 1.5; fill: none; }
+    </style>
+  </defs>
+
+  <!-- request -->
+  <text class="zone" x="40" y="26">REQUEST</text>
+  <rect class="band" x="40" y="38" width="560" height="176" rx="14"/>
+  <rect class="box" x="170" y="52" width="300" height="50" rx="9"/>
+  <text class="label" x="320" y="70">Document + typed questions</text>
+  <text class="sub" x="320" y="88">choice · noul · score, each with its allowed answers</text>
+  <path class="line" d="M320 102 V130"/>
+  <rect class="box" x="170" y="132" width="300" height="66" rx="9"/>
+  <text class="label" x="320" y="152">Rubric compiler</text>
+  <text class="sub" x="320" y="171">candidates in a fixed order: options sorted by key,</text>
+  <text class="sub" x="320" y="186">levels as given, a yes/no question as {no, yes}</text>
+
+  <!-- backbone -->
+  <text class="zone" x="40" y="232">BACKBONE · QWEN3.5-4B</text>
+  <rect class="band" x="40" y="244" width="560" height="330" rx="14"/>
+  <path class="line" d="M320 198 V256"/>
+  <rect class="box" x="150" y="258" width="260" height="56" rx="9"/>
+  <text class="label" x="280" y="278">Document read once</text>
+  <text class="sub" x="280" y="297">prefill · KV cache kept and forked</text>
+  <rect class="side" x="432" y="258" width="156" height="56" rx="9"/>
+  <text class="name" x="510" y="274">LORA · RANK 16</text>
+  <text class="sub" x="510" y="290">trained through the</text>
+  <text class="sub" x="510" y="304">two readouts below</text>
+  <path class="plain" d="M432 286 H410"/>
+
+  <text class="edge" x="418" y="328">fork per question, then per candidate</text>
+  <path class="line" d="M280 314 V342 H181 V354"/>
+  <path class="line" d="M280 314 V342 H459 V354"/>
+
+  <rect class="readout" x="56" y="356" width="250" height="122" rx="9"/>
+  <text class="name" x="181" y="372">VERIFICATION</text>
+  <text class="label" x="181" y="392">One branch per candidate</text>
+  <text class="quote" x="181" y="412">“Proposed answer: billing — charges and</text>
+  <text class="quote" x="181" y="427">refunds. Is this correct under the rubric?”</text>
+  <text class="sub" x="181" y="446">→ log-odds of yes against no,</text>
+  <text class="sub" x="181" y="461">all candidates of a question in one batch</text>
+
+  <rect class="readout" x="334" y="356" width="250" height="122" rx="9"/>
+  <text class="name" x="459" y="372">DIRECT</text>
+  <text class="label" x="459" y="392">One branch, lettered rubric</text>
+  <text class="quote" x="459" y="412">“A. billing  B. sales  C. technical.</text>
+  <text class="quote" x="459" y="427">Which one is correct? Reply with its letter.”</text>
+  <text class="sub" x="459" y="452">→ log-probability of each letter</text>
+
+  <path class="plain" d="M459 478 V494 H320"/>
+  <path class="line" d="M181 478 V494 H320 V508"/>
+  <rect class="fusion" x="195" y="510" width="250" height="50" rx="9"/>
+  <text class="label" x="320" y="528">Fusion</text>
+  <text class="sub" x="320" y="546">mean of the two log-probabilities</text>
+
+
+  <!-- response -->
+  <text class="zone" x="40" y="594">RESPONSE</text>
+  <rect class="band" x="40" y="606" width="560" height="140" rx="14"/>
+  <path class="line" d="M320 560 V618"/>
+  <rect class="box" x="170" y="620" width="300" height="50" rx="9"/>
+  <text class="label" x="320" y="638">Calibration</text>
+  <text class="sub" x="320" y="656">one temperature per question type, fitted after the freeze</text>
+  <path class="line" d="M320 670 V688"/>
+  <rect class="box" x="170" y="690" width="300" height="46" rx="9"/>
+  <text class="label" x="320" y="707">Probabilities for every answer</text>
+  <text class="sub" x="320" y="725">choice / noul / score · confidence · input_tokens</text>
+</svg>

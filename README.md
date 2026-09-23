@@ -27,27 +27,7 @@ Three question types: **choice** (one option from a set), **noul** (a yes/no pro
 
 Most ways of getting a decision out of a language model ask it to write the answer and then parse the text. Compass never decodes. It reads the model's own probabilities at a single position, for each candidate answer, in a layout designed so that the answer cannot depend on how the options were ordered or named.
 
-```
-request ─► rubric compiler ─► candidates in canonical order
-                                       │
-              ┌────────────────────────┴───────────────────────────┐
-              │  document, read once (prefix, KV cache)            │
-              └──────┬───────────────────────────────┬─────────────┘
-                     │ fork per question             │ fork per question
-                     ▼                               ▼
-          instructions + rubric              instructions + lettered rubric
-                     │ fork per candidate            │
-                     ▼                               ▼
-   "Proposed answer: billing — Charges     "Which one is correct? Reply
-    and refunds. Is this correct under      with its letter."
-    the rubric?"  → log-odds(yes : no)      → log-prob of each letter
-                     │                               │
-                     └────────── fuse in log space ──┘
-                                       │
-                            temperature calibration
-                                       │
-                          probabilities · choice / noul / score
-```
+<p align="center"><img src="docs/diagrams/architecture.svg" alt="How Compass answers a question: the rubric compiler orders the candidates, the backbone reads the document once and forks its cache per question and per candidate, two readouts score each candidate and are fused, then calibrated" width="640"></p>
 
 1. **Rubric compiler** ([`compass/contract.py`](compass/contract.py)). The request is validated against the schema in [`api/systemone.schema.json`](api/systemone.schema.json) and each question becomes a list of candidates: choice options sorted by key, score levels in their given order, and a noul question as the pair of propositions `no` / `yes`. Because the model only ever sees candidates in this canonical order, reordering the options in a request cannot change the answer; the test suite checks every permutation.
 
