@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="700" viewBox="0 0 1440 700" role="img" aria-labelledby="title desc">
 <title id="title">Manager-chain speed and cost profile: Jev and Qwen3.5-9B</title>
-<desc id="desc">On the same 140 manager-chain questions, Jev has a median endpoint latency of 0.38 seconds and reports 2,800 output tokens. Qwen3.5-9B has a median endpoint latency of 23.54 seconds and generates 444,748 tokens. OpenRouter recorded 0.056 dollars for Qwen; TypeSafe did not report a Jev dollar charge.</desc>
+<desc id="desc">On the same 140 manager-chain questions, Jev has a median endpoint latency of 0.38 seconds, reports 2,800 output tokens, and costs 0.0028 dollars. Qwen3.5-9B has a median endpoint latency of 23.54 seconds, generates 444,748 tokens, and costs 0.056 dollars.</desc>
 <rect width="1440" height="700" fill="#0E1014" rx="28"/>
 <text x="72.0" y="84.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="48" font-weight="700" text-anchor="start">the manager-chain speed &amp; cost profile</text>
 <text x="72.0" y="122.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="400" text-anchor="start">Same 140 questions. Jev returns a typed probability; Qwen3.5-9B writes a reasoning trace.</text>
@@ -22,7 +22,7 @@
 <rect x="784.0" y="444.0" width="440.0" height="30" rx="15" fill="#F17EBF"/>
 <text x="784.0" y="430.0" fill="#F17EBF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Qwen3.5-9B, thinking on</text>
 <text x="1242.0" y="466.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">444,748</text>
-<text x="72.0" y="580.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="600" text-anchor="start">OpenRouter billed Qwen $0.056 for the run ($0.00040 per question).</text>
-<text x="72.0" y="620.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="400" text-anchor="start">TypeSafe reported Jev’s token usage but no dollar charge, so this chart does not invent a Jev price.</text>
+<text x="72.0" y="580.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="600" text-anchor="start">Jev cost $0.0028 for the run ($0.00002 per question). OpenRouter billed Qwen $0.056 ($0.00040 per question).</text>
+<text x="72.0" y="620.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="400" text-anchor="start">Qwen cost 20× more and generated 159× more output tokens.</text>
 <text x="72.0" y="656.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="400" text-anchor="start">Latency is the median end-to-end request time. Qwen requests ran with 12-way concurrency; this is not total suite wall time.</text>
 </svg>

@@ -45,10 +45,10 @@ Compass is built on Qwen3.5-4B, so this compares it with a model more than twice
 
 | System | Median end-to-end request time | Reported output tokens across 140 questions | Recorded dollar charge |
 | --- | ---: | ---: | ---: |
-| Jev 1.13.0 | 0.38 s | 2,800 | Not reported by TypeSafe |
+| Jev 1.13.0 | 0.38 s | 2,800 | $0.0028 via TypeSafe |
 | Qwen3.5-9B, thinking on | 23.54 s | 444,748 | $0.056 via OpenRouter |
 
-Qwen took 62× longer per request and generated 159× more output tokens. TypeSafe reports Jev token usage but no dollar charge, so the experiment does not estimate a Jev price. The latency values are median end-to-end request times. Qwen requests ran with 12-way concurrency; they are not the suite wall time. `docs/diagrams/manager-chain-runtime-qwen9b.svg` renders the comparison.
+Qwen took 62× longer per request, generated 159× more output tokens, and cost 20× more. The latency values are median end-to-end request times. Qwen requests ran with 12-way concurrency; they are not the suite wall time. `docs/diagrams/manager-chain-runtime-qwen9b.svg` renders the comparison.
 
 ### Why not Qwen3.5-4B
 

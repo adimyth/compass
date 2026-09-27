@@ -22,6 +22,7 @@ WHITE = "#F4F6F8"
 JEV = "#F4D35E"
 QWEN = "#F17EBF"
 PANEL = "#181C22"
+JEV_RUN_COST = 0.0028
 
 
 def escaped(value: object) -> str:
@@ -48,6 +49,7 @@ def metric_rows(jev_data: dict, qwen_data: dict) -> dict[str, float | int]:
         "qwen_latency": qwen_latency,
         "jev_output": jev_output,
         "qwen_output": qwen_output,
+        "jev_cost": JEV_RUN_COST,
         "qwen_cost": qwen_cost,
     }
 
@@ -65,14 +67,17 @@ def render(metrics: dict[str, float | int]) -> str:
     qwen_latency = float(metrics["qwen_latency"])
     jev_output = int(metrics["jev_output"])
     qwen_output = int(metrics["qwen_output"])
+    jev_cost = float(metrics["jev_cost"])
+    qwen_cost = float(metrics["qwen_cost"])
     latency_ratio = qwen_latency / jev_latency
     output_ratio = qwen_output / jev_output
+    cost_ratio = qwen_cost / jev_cost
     left_x, right_x, top_y, panel_width = 72, 748, 180, 620
     max_bar = 440
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{HEIGHT}" viewBox="0 0 {WIDTH} {HEIGHT}" role="img" aria-labelledby="title desc">',
         '<title id="title">Manager-chain speed and cost profile: Jev and Qwen3.5-9B</title>',
-        '<desc id="desc">On the same 140 manager-chain questions, Jev has a median endpoint latency of 0.38 seconds and reports 2,800 output tokens. Qwen3.5-9B has a median endpoint latency of 23.54 seconds and generates 444,748 tokens. OpenRouter recorded 0.056 dollars for Qwen; TypeSafe did not report a Jev dollar charge.</desc>',
+        '<desc id="desc">On the same 140 manager-chain questions, Jev has a median endpoint latency of 0.38 seconds, reports 2,800 output tokens, and costs 0.0028 dollars. Qwen3.5-9B has a median endpoint latency of 23.54 seconds, generates 444,748 tokens, and costs 0.056 dollars.</desc>',
         f'<rect width="{WIDTH}" height="{HEIGHT}" fill="{INK}" rx="28"/>',
         svg_text(72, 84, "the manager-chain speed & cost profile", size=48, weight=700),
         svg_text(72, 122, f"Same {metrics['questions']} questions. Jev returns a typed probability; Qwen3.5-9B writes a reasoning trace.", size=22, fill=MUTED),
@@ -88,8 +93,8 @@ def render(metrics: dict[str, float | int]) -> str:
     bar(parts, x=right_x + 36, y=top_y + 160, width=max(12, max_bar * jev_output / qwen_output), label="Jev", value=f"{jev_output:,}", colour=JEV)
     bar(parts, x=right_x + 36, y=top_y + 264, width=max_bar, label="Qwen3.5-9B, thinking on", value=f"{qwen_output:,}", colour=QWEN)
     parts.extend([
-        svg_text(72, 580, f"OpenRouter billed Qwen ${float(metrics['qwen_cost']):.3f} for the run (${float(metrics['qwen_cost']) / int(metrics['questions']):.5f} per question).", size=22, fill=WHITE, weight=600),
-        svg_text(72, 620, "TypeSafe reported Jev’s token usage but no dollar charge, so this chart does not invent a Jev price.", size=20, fill=MUTED),
+        svg_text(72, 580, f"Jev cost ${jev_cost:.4f} for the run (${jev_cost / int(metrics['questions']):.5f} per question). OpenRouter billed Qwen ${qwen_cost:.3f} (${qwen_cost / int(metrics['questions']):.5f} per question).", size=20, fill=WHITE, weight=600),
+        svg_text(72, 620, f"Qwen cost {cost_ratio:.0f}× more and generated {output_ratio:.0f}× more output tokens.", size=20, fill=MUTED),
         svg_text(72, 656, "Latency is the median end-to-end request time. Qwen requests ran with 12-way concurrency; this is not total suite wall time.", size=18, fill=MUTED),
         '</svg>',
     ])
