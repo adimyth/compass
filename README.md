@@ -1,6 +1,6 @@
 # Compass
 
-Compass turns a small open language model into a **decision model**: you give it a document and a typed question with a fixed set of allowed answers, and it returns a probability for every answer. It never generates text, so there is nothing to parse, nothing to repair, and one call costs one read of the document.
+Compass is an open decision model. Give it a document and a typed question with a fixed answer set; it returns a probability for every permitted answer. It does not generate an answer for you to parse.
 
 ```json
 POST /v1/systemone
@@ -68,6 +68,18 @@ curl -s http://127.0.0.1:8000/v1/systemone -H 'Content-Type: application/json' -
 `GET /v1/models` reports the backbone revision, adapter revision, readout and calibration file that answered, and `GET /healthz` says whether the model is loaded. Answers: `noul` carries `noul` (the probability of yes); `choice` carries `choice`, `confidence` and `probabilities`; `score` carries `score` (the probability-weighted level), `confidence`, `legend` and `probabilities`. Malformed requests get a 422 naming the field; the server never returns an invented distribution.
 
 Serving options: `--adapter none --calibration release/calibration-0.1.1.json` runs the previous, adapter-free release (`compass-0.1.1`); `--readout verify|direct|fusion` and `--fusion-weight` select the readout; `--model-name Qwen/Qwen3.5-0.8B` gives a small model for smoke tests on a laptop.
+
+## Scope Check
+
+[Scope Check](docs/SCOPE_CHECK_DEMO.md) is the Compass demo. An agent reads untrusted inbox or drive content, then proposes a structured tool call. Compass compares that call with the user’s request and returns `authorize` or `reject`. Deterministic code then simulates a read, requires confirmation for a write, or blocks the action.
+
+With Compass serving on port 8000, run:
+
+```sh
+scripts/run_scope_check.sh
+```
+
+Open `http://127.0.0.1:8052`. Scope Check binds to loopback and refuses a non-local Compass endpoint. It is an integration demo, not a security benchmark or production guarantee.
 
 ## Evaluation
 

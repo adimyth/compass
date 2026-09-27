@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="950" viewBox="0 0 1440 950" role="img" aria-labelledby="title desc">
+<title id="title">Manager-chain accuracy: Compass, Jev, and Qwen thinking</title>
+<desc id="desc">Accuracy on balanced reporting-chain questions as chain length increases. Compass and Jev are fixed-compute System One decision models. Qwen generates a reasoning trace.</desc>
+<rect width="1440" height="950" fill="#0E1014" rx="28"/>
+<text x="72.0" y="84.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="48" font-weight="700" text-anchor="start">the manager-chain test</text>
+<text x="72.0" y="122.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="400" text-anchor="start">Same reporting questions. System One scoring versus generated reasoning.</text>
+<line x1="170.0" y1="250.0" x2="1340.0" y2="250.0" stroke="#3B414A" stroke-width="2"/>
+<text x="150.0" y="257.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="400" text-anchor="end">100%</text>
+<line x1="170.0" y1="402.5" x2="1340.0" y2="402.5" stroke="#3B414A" stroke-width="1"/>
+<text x="150.0" y="409.5" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="400" text-anchor="end">50%</text>
+<line x1="170.0" y1="555.0" x2="1340.0" y2="555.0" stroke="#F4F6F8" stroke-width="2"/>
+<text x="150.0" y="562.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="400" text-anchor="end">0%</text>
+<line x1="170.0" y1="250.0" x2="170.0" y2="555.0" stroke="#F4F6F8" stroke-width="2"/>
+<line x1="170.0" y1="555.0" x2="170.0" y2="567.0" stroke="#F4F6F8" stroke-width="2"/>
+<text x="170.0" y="603.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="400" text-anchor="middle">1</text>
+<line x1="365.0" y1="555.0" x2="365.0" y2="567.0" stroke="#F4F6F8" stroke-width="2"/>
+<text x="365.0" y="603.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="400" text-anchor="middle">2</text>
+<line x1="560.0" y1="555.0" x2="560.0" y2="567.0" stroke="#F4F6F8" stroke-width="2"/>
+<text x="560.0" y="603.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="400" text-anchor="middle">3</text>
+<line x1="755.0" y1="555.0" x2="755.0" y2="567.0" stroke="#F4F6F8" stroke-width="2"/>
+<text x="755.0" y="603.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="400" text-anchor="middle">4</text>
+<line x1="950.0" y1="555.0" x2="950.0" y2="567.0" stroke="#F4F6F8" stroke-width="2"/>
+<text x="950.0" y="603.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="400" text-anchor="middle">6</text>
+<line x1="1145.0" y1="555.0" x2="1145.0" y2="567.0" stroke="#F4F6F8" stroke-width="2"/>
+<text x="1145.0" y="603.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="400" text-anchor="middle">8</text>
+<line x1="1340.0" y1="555.0" x2="1340.0" y2="567.0" stroke="#F4F6F8" stroke-width="2"/>
+<text x="1340.0" y="603.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="400" text-anchor="middle">12</text>
+<polyline points="170.0,250.0 365.0,402.5 560.0,402.5 755.0,402.5 950.0,402.5 1145.0,372.0 1340.0,402.5" fill="none" stroke="#57D6E8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="170.0,250.0 365.0,341.5 560.0,372.0 755.0,356.8 950.0,387.2 1145.0,402.5 1340.0,402.5" fill="none" stroke="#F4D35E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="170.0,311.0 365.0,295.8 560.0,295.8 755.0,265.2 950.0,250.0 1145.0,250.0 1340.0,250.0" fill="none" stroke="#F17EBF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="170.0" cy="250.0" r="8" fill="#57D6E8" stroke="#0E1014" stroke-width="3"/>
+<circle cx="365.0" cy="402.5" r="8" fill="#57D6E8" stroke="#0E1014" stroke-width="3"/>
+<circle cx="560.0" cy="402.5" r="8" fill="#57D6E8" stroke="#0E1014" stroke-width="3"/>
+<circle cx="755.0" cy="402.5" r="8" fill="#57D6E8" stroke="#0E1014" stroke-width="3"/>
+<circle cx="950.0" cy="402.5" r="8" fill="#57D6E8" stroke="#0E1014" stroke-width="3"/>
+<circle cx="1145.0" cy="372.0" r="8" fill="#57D6E8" stroke="#0E1014" stroke-width="3"/>
+<circle cx="1340.0" cy="402.5" r="8" fill="#57D6E8" stroke="#0E1014" stroke-width="3"/>
+<circle cx="170.0" cy="250.0" r="8" fill="#F4D35E" stroke="#0E1014" stroke-width="3"/>
+<circle cx="365.0" cy="341.5" r="8" fill="#F4D35E" stroke="#0E1014" stroke-width="3"/>
+<circle cx="560.0" cy="372.0" r="8" fill="#F4D35E" stroke="#0E1014" stroke-width="3"/>
+<circle cx="755.0" cy="356.8" r="8" fill="#F4D35E" stroke="#0E1014" stroke-width="3"/>
+<circle cx="950.0" cy="387.2" r="8" fill="#F4D35E" stroke="#0E1014" stroke-width="3"/>
+<circle cx="1145.0" cy="402.5" r="8" fill="#F4D35E" stroke="#0E1014" stroke-width="3"/>
+<circle cx="1340.0" cy="402.5" r="8" fill="#F4D35E" stroke="#0E1014" stroke-width="3"/>
+<circle cx="170.0" cy="311.0" r="8" fill="#F17EBF" stroke="#0E1014" stroke-width="3"/>
+<circle cx="365.0" cy="295.8" r="8" fill="#F17EBF" stroke="#0E1014" stroke-width="3"/>
+<circle cx="560.0" cy="295.8" r="8" fill="#F17EBF" stroke="#0E1014" stroke-width="3"/>
+<circle cx="755.0" cy="265.2" r="8" fill="#F17EBF" stroke="#0E1014" stroke-width="3"/>
+<circle cx="950.0" cy="250.0" r="8" fill="#F17EBF" stroke="#0E1014" stroke-width="3"/>
+<circle cx="1145.0" cy="250.0" r="8" fill="#F17EBF" stroke="#0E1014" stroke-width="3"/>
+<circle cx="1340.0" cy="250.0" r="8" fill="#F17EBF" stroke="#0E1014" stroke-width="3"/>
+<text x="72.0" y="662.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="16" font-weight="400" text-anchor="start">Numbers below axis: Compass / Jev / Qwen correct out of 20</text>
+<line x1="72.0" y1="706.0" x2="110.0" y2="706.0" stroke="#57D6E8" stroke-width="5" stroke-linecap="round"/>
+<text x="122.0" y="713.0" fill="#57D6E8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="600" text-anchor="start">Compass 0.2.0</text>
+<line x1="72.0" y1="749.0" x2="110.0" y2="749.0" stroke="#F4D35E" stroke-width="5" stroke-linecap="round"/>
+<text x="122.0" y="756.0" fill="#F4D35E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="600" text-anchor="start">Jev 1.13.0</text>
+<line x1="72.0" y1="792.0" x2="110.0" y2="792.0" stroke="#F17EBF" stroke-width="5" stroke-linecap="round"/>
+<text x="122.0" y="799.0" fill="#F17EBF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="600" text-anchor="start">Qwen3.5-9B, thinking on</text>
+<text x="72.0" y="856.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="400" text-anchor="start">20 balanced yes/no questions at each length. Compass emits no answer tokens.</text>
+<text x="72.0" y="890.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="400" text-anchor="start">Qwen can generate a working trace before it commits to an answer.</text>
+<text x="170.0" y="638.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="16" font-weight="400" text-anchor="middle">20/20   20/20   16/20</text>
+<text x="170.0" y="212.0" fill="#FFB45E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="15" font-weight="600" text-anchor="middle">842 tokens</text>
+<text x="170.0" y="236.0" fill="#FFB45E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="400" text-anchor="middle">4/20 gave no final answer</text>
+<text x="365.0" y="638.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="16" font-weight="400" text-anchor="middle">10/20   14/20   17/20</text>
+<text x="365.0" y="212.0" fill="#FFB45E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="15" font-weight="600" text-anchor="middle">987 tokens</text>
+<text x="365.0" y="236.0" fill="#FFB45E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="400" text-anchor="middle">3/20 gave no final answer</text>
+<text x="560.0" y="638.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="16" font-weight="400" text-anchor="middle">10/20   12/20   17/20</text>
+<text x="560.0" y="212.0" fill="#FFB45E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="15" font-weight="600" text-anchor="middle">981 tokens</text>
+<text x="560.0" y="236.0" fill="#FFB45E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="400" text-anchor="middle">3/20 gave no final answer</text>
+<text x="755.0" y="638.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="16" font-weight="400" text-anchor="middle">10/20   13/20   19/20</text>
+<text x="755.0" y="212.0" fill="#FFB45E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="15" font-weight="600" text-anchor="middle">988 tokens</text>
+<text x="755.0" y="236.0" fill="#FFB45E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="400" text-anchor="middle">1/20 gave no final answer</text>
+<text x="950.0" y="638.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="16" font-weight="400" text-anchor="middle">10/20   11/20   20/20</text>
+<text x="950.0" y="212.0" fill="#FFB45E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="15" font-weight="600" text-anchor="middle">1139 tokens</text>
+<text x="1145.0" y="638.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="16" font-weight="400" text-anchor="middle">12/20   10/20   20/20</text>
+<text x="1145.0" y="212.0" fill="#FFB45E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="15" font-weight="600" text-anchor="middle">1242 tokens</text>
+<text x="1340.0" y="638.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="16" font-weight="400" text-anchor="middle">10/20   10/20   20/20</text>
+<text x="1340.0" y="212.0" fill="#FFB45E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="15" font-weight="600" text-anchor="middle">2260 tokens</text>
+</svg>

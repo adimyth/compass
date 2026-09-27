@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="title desc">
+  <title id="title">Three-link manager-chain question</title>
+  <desc id="desc">A reporting chain shows Maya reporting to Priya, Priya to Omar, and Omar to Riya. The question asks whether Riya is three manager links above Maya. The answer is yes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#10211e"/><stop offset="1" stop-color="#07100f"/></linearGradient>
+    <style>
+      .k { font: 600 13px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 1.8px; }
+      .name { font: 700 22px system-ui, sans-serif; }
+      .body { font: 500 19px system-ui, sans-serif; }
+      .small { font: 500 15px system-ui, sans-serif; }
+      .node { fill: #111e1c; stroke: #8ba8a0; stroke-width: 2; }
+      .link { stroke: #7deed4; stroke-width: 3; }
+      .muted-link { stroke: #36554d; stroke-width: 2; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7deed4"/></marker>
+  </defs>
+  <rect width="1200" height="640" fill="url(#bg)"/>
+  <path d="M0 109H1200M0 557H1200" stroke="#2c453e" stroke-width="1"/>
+  <text x="58" y="62" class="k" fill="#caff50">THE MANAGER-CHAIN QUESTION</text>
+  <text x="58" y="94" class="body" fill="#c4d3cd">“Is Riya exactly three manager links above Maya?”</text>
+  <text x="58" y="143" class="k" fill="#7deed4">MAYA REPORTS TO PRIYA. PRIYA REPORTS TO OMAR. OMAR REPORTS TO RIYA.</text>
+  <path d="M247 328H407" class="link" marker-end="url(#arrow)"/>
+  <path d="M527 328H687" class="link" marker-end="url(#arrow)"/>
+  <path d="M807 328H967" class="link" marker-end="url(#arrow)"/>
+  <g>
+    <circle cx="187" cy="328" r="60" class="node" stroke="#caff50" stroke-width="3"/>
+    <text x="187" y="336" text-anchor="middle" class="name" fill="#eff3ee">Maya</text>
+    <text x="187" y="418" text-anchor="middle" class="k" fill="#caff50">START</text>
+  </g>
+  <g>
+    <circle cx="467" cy="328" r="60" class="node"/>
+    <text x="467" y="336" text-anchor="middle" class="name" fill="#eff3ee">Priya</text>
+    <text x="467" y="418" text-anchor="middle" class="k" fill="#7deed4">LINK 1</text>
+  </g>
+  <g>
+    <circle cx="747" cy="328" r="60" class="node"/>
+    <text x="747" y="336" text-anchor="middle" class="name" fill="#eff3ee">Omar</text>
+    <text x="747" y="418" text-anchor="middle" class="k" fill="#7deed4">LINK 2</text>
+  </g>
+  <g>
+    <circle cx="1027" cy="328" r="60" class="node" stroke="#caff50" stroke-width="3"/>
+    <text x="1027" y="336" text-anchor="middle" class="name" fill="#eff3ee">Riya</text>
+    <text x="1027" y="418" text-anchor="middle" class="k" fill="#caff50">LINK 3 / TARGET</text>
+  </g>
+  <text x="58" y="498" class="small" fill="#a7bbb4">A reasoning model can write “Maya → Priya → Omar → Riya” before answering.</text>
+  <text x="58" y="523" class="small" fill="#a7bbb4">Compass scores the fixed YES / NO decision without generating that trace.</text>
+  <text x="58" y="599" class="k" fill="#caff50">EXPECTED ANSWER: YES</text>
+</svg>
