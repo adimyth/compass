@@ -41,6 +41,15 @@ Compass and Jev are at chance from length 2 onward. Qwen answered every item it 
 
 Compass is built on Qwen3.5-4B, so this compares it with a model more than twice its size. Hosted temperature-0 decoding is not bit-for-bit reproducible.
 
+### Speed and token work
+
+| System | Median end-to-end request time | Reported output tokens across 140 questions | Recorded dollar charge |
+| --- | ---: | ---: | ---: |
+| Jev 1.13.0 | 0.38 s | 2,800 | Not reported by TypeSafe |
+| Qwen3.5-9B, thinking on | 23.54 s | 444,748 | $0.056 via OpenRouter |
+
+Qwen took 62× longer per request and generated 159× more output tokens. TypeSafe reports Jev token usage but no dollar charge, so the experiment does not estimate a Jev price. The latency values are median end-to-end request times. Qwen requests ran with 12-way concurrency; they are not the suite wall time. `docs/diagrams/manager-chain-runtime-qwen9b.svg` renders the comparison.
+
 ### Why not Qwen3.5-4B
 
 - The first 4B run, sampled at temperature 0.6 with a 1,024-token cap, is the `qwen_thinking` block in `dev/results/manager-chain-2026-09-27.json`. 80 of 140 traces hit the cap, so it measures the cap, not the model. It is superseded.
@@ -57,6 +66,10 @@ uv run python scripts/render_manager_chain_chart.py \
   --jev-input dev/results/manager-chain-jev-2026-09-27.json \
   --qwen-input dev/results/manager-chain-qwen9b-2026-09-27.json \
   --out docs/diagrams/manager-chain-results-qwen9b.svg
+uv run python scripts/render_manager_chain_runtime_chart.py \
+  --jev-input dev/results/manager-chain-jev-2026-09-27.json \
+  --qwen-input dev/results/manager-chain-qwen9b-2026-09-27.json \
+  --out docs/diagrams/manager-chain-runtime-qwen9b.svg
 ```
 
 The OpenRouter runner reads `OPENROUTER_API_KEY` from the environment or `.env`, checkpoints after every answer, and continues an interrupted run with `--resume`. Parasail rate-limits above about 12 concurrent requests.
