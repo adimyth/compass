@@ -72,8 +72,8 @@ def render(metrics: dict[str, float | int]) -> str:
     latency_ratio = qwen_latency / jev_latency
     output_ratio = qwen_output / jev_output
     cost_ratio = qwen_cost / jev_cost
-    left_x, right_x, top_y, panel_width = 72, 748, 180, 620
-    max_bar = 440
+    left_x, middle_x, right_x, top_y, panel_width = 72, 520, 968, 180, 400
+    max_bar = 240
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{HEIGHT}" viewBox="0 0 {WIDTH} {HEIGHT}" role="img" aria-labelledby="title desc">',
         '<title id="title">Manager-chain speed and cost profile: Jev and Qwen3.5-9B</title>',
@@ -82,19 +82,24 @@ def render(metrics: dict[str, float | int]) -> str:
         svg_text(72, 84, "the manager-chain speed & cost profile", size=48, weight=700),
         svg_text(72, 122, f"Same {metrics['questions']} questions. Jev returns a typed probability; Qwen3.5-9B writes a reasoning trace.", size=22, fill=MUTED),
         f'<rect x="{left_x}" y="{top_y}" width="{panel_width}" height="330" rx="20" fill="{PANEL}"/>',
+        f'<rect x="{middle_x}" y="{top_y}" width="{panel_width}" height="330" rx="20" fill="{PANEL}"/>',
         f'<rect x="{right_x}" y="{top_y}" width="{panel_width}" height="330" rx="20" fill="{PANEL}"/>',
-        svg_text(left_x + 36, top_y + 52, "MEDIAN END-TO-END LATENCY", size=18, fill=MUTED, weight=700),
-        svg_text(left_x + 36, top_y + 91, f"Qwen took {latency_ratio:.0f}× longer per request", size=28, weight=700),
-        svg_text(right_x + 36, top_y + 52, "REPORTED OUTPUT TOKENS (COST WORK)", size=18, fill=MUTED, weight=700),
-        svg_text(right_x + 36, top_y + 91, f"Qwen generated {output_ratio:.0f}× more token work", size=28, weight=700),
+        svg_text(left_x + 36, top_y + 52, "MEDIAN REQUEST LATENCY", size=18, fill=MUTED, weight=700),
+        svg_text(left_x + 36, top_y + 91, f"Qwen was {latency_ratio:.0f}× slower", size=26, weight=700),
+        svg_text(middle_x + 36, top_y + 52, "REPORTED OUTPUT TOKENS", size=18, fill=MUTED, weight=700),
+        svg_text(middle_x + 36, top_y + 91, f"Qwen used {output_ratio:.0f}× tokens", size=26, weight=700),
+        svg_text(right_x + 36, top_y + 52, "RECORDED RUN COST", size=18, fill=MUTED, weight=700),
+        svg_text(right_x + 36, top_y + 91, f"Qwen cost {cost_ratio:.0f}× more", size=26, weight=700),
     ]
     bar(parts, x=left_x + 36, y=top_y + 160, width=max(12, max_bar * jev_latency / qwen_latency), label="Jev", value=f"{jev_latency:.2f}s", colour=JEV)
     bar(parts, x=left_x + 36, y=top_y + 264, width=max_bar, label="Qwen3.5-9B, thinking on", value=f"{qwen_latency:.2f}s", colour=QWEN)
-    bar(parts, x=right_x + 36, y=top_y + 160, width=max(12, max_bar * jev_output / qwen_output), label="Jev", value=f"{jev_output:,}", colour=JEV)
-    bar(parts, x=right_x + 36, y=top_y + 264, width=max_bar, label="Qwen3.5-9B, thinking on", value=f"{qwen_output:,}", colour=QWEN)
+    bar(parts, x=middle_x + 36, y=top_y + 160, width=max(12, max_bar * jev_output / qwen_output), label="Jev", value=f"{jev_output:,}", colour=JEV)
+    bar(parts, x=middle_x + 36, y=top_y + 264, width=max_bar, label="Qwen3.5-9B, thinking on", value=f"{qwen_output:,}", colour=QWEN)
+    bar(parts, x=right_x + 36, y=top_y + 160, width=max(12, max_bar * jev_cost / qwen_cost), label="Jev", value=f"${jev_cost:.4f}", colour=JEV)
+    bar(parts, x=right_x + 36, y=top_y + 264, width=max_bar, label="Qwen3.5-9B, thinking on", value=f"${qwen_cost:.3f}", colour=QWEN)
     parts.extend([
         svg_text(72, 580, f"Jev cost ${jev_cost:.4f} for the run (${jev_cost / int(metrics['questions']):.5f} per question). OpenRouter billed Qwen ${qwen_cost:.3f} (${qwen_cost / int(metrics['questions']):.5f} per question).", size=20, fill=WHITE, weight=600),
-        svg_text(72, 620, f"Qwen cost {cost_ratio:.0f}× more and generated {output_ratio:.0f}× more output tokens.", size=20, fill=MUTED),
+        svg_text(72, 620, "Each panel compares the same 140 questions.", size=20, fill=MUTED),
         svg_text(72, 656, "Latency is the median end-to-end request time. Qwen requests ran with 12-way concurrency; this is not total suite wall time.", size=18, fill=MUTED),
         '</svg>',
     ])

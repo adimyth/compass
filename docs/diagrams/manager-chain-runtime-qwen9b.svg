@@ -4,25 +4,34 @@
 <rect width="1440" height="700" fill="#0E1014" rx="28"/>
 <text x="72.0" y="84.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="48" font-weight="700" text-anchor="start">the manager-chain speed &amp; cost profile</text>
 <text x="72.0" y="122.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="400" text-anchor="start">Same 140 questions. Jev returns a typed probability; Qwen3.5-9B writes a reasoning trace.</text>
-<rect x="72" y="180" width="620" height="330" rx="20" fill="#181C22"/>
-<rect x="748" y="180" width="620" height="330" rx="20" fill="#181C22"/>
-<text x="108.0" y="232.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" text-anchor="start">MEDIAN END-TO-END LATENCY</text>
-<text x="108.0" y="271.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="28" font-weight="700" text-anchor="start">Qwen took 62× longer per request</text>
-<text x="784.0" y="232.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" text-anchor="start">REPORTED OUTPUT TOKENS (COST WORK)</text>
-<text x="784.0" y="271.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="28" font-weight="700" text-anchor="start">Qwen generated 159× more token work</text>
+<rect x="72" y="180" width="400" height="330" rx="20" fill="#181C22"/>
+<rect x="520" y="180" width="400" height="330" rx="20" fill="#181C22"/>
+<rect x="968" y="180" width="400" height="330" rx="20" fill="#181C22"/>
+<text x="108.0" y="232.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" text-anchor="start">MEDIAN REQUEST LATENCY</text>
+<text x="108.0" y="271.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="700" text-anchor="start">Qwen was 62× slower</text>
+<text x="556.0" y="232.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" text-anchor="start">REPORTED OUTPUT TOKENS</text>
+<text x="556.0" y="271.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="700" text-anchor="start">Qwen used 159× tokens</text>
+<text x="1004.0" y="232.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" text-anchor="start">RECORDED RUN COST</text>
+<text x="1004.0" y="271.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="700" text-anchor="start">Qwen cost 20× more</text>
 <rect x="108.0" y="340.0" width="12.0" height="30" rx="15" fill="#F4D35E"/>
 <text x="108.0" y="326.0" fill="#F4D35E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Jev</text>
 <text x="138.0" y="362.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">0.38s</text>
-<rect x="108.0" y="444.0" width="440.0" height="30" rx="15" fill="#F17EBF"/>
+<rect x="108.0" y="444.0" width="240.0" height="30" rx="15" fill="#F17EBF"/>
 <text x="108.0" y="430.0" fill="#F17EBF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Qwen3.5-9B, thinking on</text>
-<text x="566.0" y="466.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">23.54s</text>
-<rect x="784.0" y="340.0" width="12.0" height="30" rx="15" fill="#F4D35E"/>
-<text x="784.0" y="326.0" fill="#F4D35E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Jev</text>
-<text x="814.0" y="362.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">2,800</text>
-<rect x="784.0" y="444.0" width="440.0" height="30" rx="15" fill="#F17EBF"/>
-<text x="784.0" y="430.0" fill="#F17EBF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Qwen3.5-9B, thinking on</text>
-<text x="1242.0" y="466.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">444,748</text>
+<text x="366.0" y="466.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">23.54s</text>
+<rect x="556.0" y="340.0" width="12.0" height="30" rx="15" fill="#F4D35E"/>
+<text x="556.0" y="326.0" fill="#F4D35E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Jev</text>
+<text x="586.0" y="362.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">2,800</text>
+<rect x="556.0" y="444.0" width="240.0" height="30" rx="15" fill="#F17EBF"/>
+<text x="556.0" y="430.0" fill="#F17EBF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Qwen3.5-9B, thinking on</text>
+<text x="814.0" y="466.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">444,748</text>
+<rect x="1004.0" y="340.0" width="12.0" height="30" rx="15" fill="#F4D35E"/>
+<text x="1004.0" y="326.0" fill="#F4D35E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Jev</text>
+<text x="1034.0" y="362.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">$0.0028</text>
+<rect x="1004.0" y="444.0" width="240.0" height="30" rx="15" fill="#F17EBF"/>
+<text x="1004.0" y="430.0" fill="#F17EBF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Qwen3.5-9B, thinking on</text>
+<text x="1262.0" y="466.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">$0.056</text>
 <text x="72.0" y="580.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="600" text-anchor="start">Jev cost $0.0028 for the run ($0.00002 per question). OpenRouter billed Qwen $0.056 ($0.00040 per question).</text>
-<text x="72.0" y="620.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="400" text-anchor="start">Qwen cost 20× more and generated 159× more output tokens.</text>
+<text x="72.0" y="620.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="400" text-anchor="start">Each panel compares the same 140 questions.</text>
 <text x="72.0" y="656.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="400" text-anchor="start">Latency is the median end-to-end request time. Qwen requests ran with 12-way concurrency; this is not total suite wall time.</text>
 </svg>
