@@ -16,7 +16,7 @@ import statistics
 from pathlib import Path
 
 
-WIDTH, HEIGHT = 1440, 760
+WIDTH, HEIGHT = 1440, 1050
 INK = "#0E1014"
 MUTED = "#9EA5AF"
 WHITE = "#F4F6F8"
@@ -54,11 +54,19 @@ def metric_rows(compass_data: dict, jev_data: dict, qwen_data: dict) -> dict[str
     }
 
 
-def bar(parts: list[str], *, x: float, y: float, width: float, label: str, value: str, colour: str) -> None:
+def metric_row(parts: list[str], *, y: float, label: str, value: str, colour: str, width: float | None) -> None:
+    label_x, bar_x, value_x = 108, 390, 1110
+    parts.append(svg_text(label_x, y + 10, label, size=21, fill=colour, weight=700))
+    if width is not None:
+        parts.append(f'<rect x="{bar_x:.1f}" y="{y - 16:.1f}" width="{width:.1f}" height="30" rx="15" fill="{colour}"/>')
+    parts.append(svg_text(value_x, y + 10, value, size=24, fill=WHITE, weight=700))
+
+
+def panel(parts: list[str], *, y: float, heading: str, takeaway: str) -> None:
     parts.extend([
-        f'<rect x="{x:.1f}" y="{y:.1f}" width="{width:.1f}" height="30" rx="15" fill="{colour}"/>',
-        svg_text(x, y - 14, label, size=20, fill=colour, weight=700),
-        svg_text(x + width + 18, y + 22, value, size=24, fill=WHITE, weight=700),
+        f'<rect x="72" y="{y:.1f}" width="1296" height="238" rx="20" fill="{PANEL}"/>',
+        svg_text(108, y + 48, heading, size=18, fill=MUTED, weight=700),
+        svg_text(108, y + 88, takeaway, size=27, weight=700),
     ])
 
 
@@ -71,46 +79,34 @@ def render(metrics: dict[str, float | int]) -> str:
     qwen_output = int(metrics["qwen_output"])
     jev_cost = float(metrics["jev_cost"])
     qwen_cost = float(metrics["qwen_cost"])
-    compass_jev_latency_ratio = jev_latency / compass_latency
-    qwen_compass_latency_ratio = qwen_latency / compass_latency
+    max_bar = 610
+    latency_ratio = jev_latency / compass_latency
+    qwen_latency_ratio = qwen_latency / compass_latency
     output_ratio = qwen_output / jev_output
     cost_ratio = qwen_cost / jev_cost
-    left_x, middle_x, right_x, top_y, panel_width = 72, 520, 968, 180, 400
-    max_bar = 240
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{HEIGHT}" viewBox="0 0 {WIDTH} {HEIGHT}" role="img" aria-labelledby="title desc">',
         '<title id="title">Manager-chain deployment profile: Compass, Jev, and Qwen3.5-9B</title>',
-        '<desc id="desc">On the same 140 manager-chain questions, Compass has a 0.29-second median localhost endpoint latency on an RTX 4090 and generates no answer tokens. Jev has a 0.33-second median TypeSafe API latency, reports 2,800 output tokens, and costs 0.0028 dollars. Qwen3.5-9B has a 23.54-second median OpenRouter endpoint latency, generates 444,748 tokens, and costs 0.056 dollars.</desc>',
+        '<desc id="desc">On the same 140 manager-chain questions, Compass has a 0.287-second median localhost endpoint latency on an RTX 4090 and generates no answer tokens. Jev has a 0.334-second median TypeSafe API latency, reports 2,800 output tokens, and costs 0.0028 dollars. Qwen3.5-9B has a 23.54-second median OpenRouter endpoint latency, generates 444,748 tokens, and costs 0.056 dollars.</desc>',
         f'<rect width="{WIDTH}" height="{HEIGHT}" fill="{INK}" rx="28"/>',
         svg_text(72, 84, "the manager-chain deployment profile", size=48, weight=700),
         svg_text(72, 122, f"Same {metrics['questions']} questions. Compass and Jev return a typed probability; Qwen3.5-9B writes a reasoning trace.", size=22, fill=MUTED),
-        f'<rect x="{left_x}" y="{top_y}" width="{panel_width}" height="390" rx="20" fill="{PANEL}"/>',
-        f'<rect x="{middle_x}" y="{top_y}" width="{panel_width}" height="390" rx="20" fill="{PANEL}"/>',
-        f'<rect x="{right_x}" y="{top_y}" width="{panel_width}" height="390" rx="20" fill="{PANEL}"/>',
-        svg_text(left_x + 36, top_y + 52, "MEDIAN REQUEST LATENCY", size=18, fill=MUTED, weight=700),
-        svg_text(left_x + 36, top_y + 91, f"Compass was {compass_jev_latency_ratio:.1f}× faster than Jev", size=24, weight=700),
-        svg_text(middle_x + 36, top_y + 52, "GENERATED ANSWER TOKENS", size=18, fill=MUTED, weight=700),
-        svg_text(middle_x + 36, top_y + 91, f"Qwen used {output_ratio:.0f}× Jev's tokens", size=26, weight=700),
-        svg_text(right_x + 36, top_y + 52, "HOSTED API RUN CHARGE", size=18, fill=MUTED, weight=700),
-        svg_text(right_x + 36, top_y + 91, f"Qwen cost {cost_ratio:.0f}× Jev's API charge", size=24, weight=700),
     ]
-    bar(parts, x=left_x + 36, y=top_y + 160, width=max(12, max_bar * compass_latency / qwen_latency), label="Compass, RTX 4090", value=f"{compass_latency:.3f}s", colour=COMPASS)
-    bar(parts, x=left_x + 36, y=top_y + 256, width=max(12, max_bar * jev_latency / qwen_latency), label="Jev 1.13.0 API", value=f"{jev_latency:.3f}s", colour=JEV)
-    bar(parts, x=left_x + 36, y=top_y + 352, width=max_bar, label="Qwen3.5-9B, thinking on", value=f"{qwen_latency:.2f}s ({qwen_compass_latency_ratio:.0f}×)", colour=QWEN)
-    bar(parts, x=middle_x + 36, y=top_y + 160, width=12, label="Compass, RTX 4090", value=f"{compass_output} (fixed readout)", colour=COMPASS)
-    bar(parts, x=middle_x + 36, y=top_y + 256, width=max(12, max_bar * jev_output / qwen_output), label="Jev 1.13.0 API", value=f"{jev_output:,}", colour=JEV)
-    bar(parts, x=middle_x + 36, y=top_y + 352, width=max_bar, label="Qwen3.5-9B, thinking on", value=f"{qwen_output:,}", colour=QWEN)
+    panel(parts, y=170, heading="MEDIAN REQUEST LATENCY", takeaway=f"Compass was {latency_ratio:.1f}× faster than Jev on these endpoint routes")
+    metric_row(parts, y=284, label="Compass, local RTX 4090", value=f"{compass_latency:.3f}s", colour=COMPASS, width=max(18, max_bar * compass_latency / qwen_latency))
+    metric_row(parts, y=344, label="Jev 1.13.0, TypeSafe API", value=f"{jev_latency:.3f}s", colour=JEV, width=max(18, max_bar * jev_latency / qwen_latency))
+    metric_row(parts, y=404, label="Qwen3.5-9B, thinking on", value=f"{qwen_latency:.2f}s ({qwen_latency_ratio:.0f}×)", colour=QWEN, width=max_bar)
+    panel(parts, y=432, heading="GENERATED ANSWER TOKENS", takeaway=f"Qwen used {output_ratio:.0f}× Jev’s answer tokens")
+    metric_row(parts, y=546, label="Compass, fixed readout", value=f"{compass_output}", colour=COMPASS, width=18)
+    metric_row(parts, y=606, label="Jev 1.13.0, TypeSafe API", value=f"{jev_output:,}", colour=JEV, width=max(18, max_bar * jev_output / qwen_output))
+    metric_row(parts, y=666, label="Qwen3.5-9B, thinking on", value=f"{qwen_output:,}", colour=QWEN, width=max_bar)
+    panel(parts, y=694, heading="HOSTED API RUN CHARGE", takeaway=f"Qwen cost {cost_ratio:.0f}× Jev’s API charge")
+    metric_row(parts, y=808, label="Compass, local RTX 4090", value="self-hosted GPU", colour=COMPASS, width=None)
+    metric_row(parts, y=868, label="Jev 1.13.0, TypeSafe API", value=f"${jev_cost:.4f}", colour=JEV, width=max(18, max_bar * jev_cost / qwen_cost))
+    metric_row(parts, y=928, label="Qwen3.5-9B, thinking on", value=f"${qwen_cost:.3f}", colour=QWEN, width=max_bar)
     parts.extend([
-        svg_text(right_x + 36, top_y + 146, "Compass, RTX 4090", size=20, fill=COMPASS, weight=700),
-        svg_text(right_x + 36, top_y + 180, "self-hosted GPU", size=24, fill=WHITE, weight=700),
-        svg_text(right_x + 36, top_y + 208, "No hosted API charge assigned", size=17, fill=MUTED),
-    ])
-    bar(parts, x=right_x + 36, y=top_y + 256, width=max(12, max_bar * jev_cost / qwen_cost), label="Jev 1.13.0 API", value=f"${jev_cost:.4f}", colour=JEV)
-    bar(parts, x=right_x + 36, y=top_y + 352, width=max_bar, label="Qwen3.5-9B, thinking on", value=f"${qwen_cost:.3f}", colour=QWEN)
-    parts.extend([
-        svg_text(72, 640, f"Jev cost ${jev_cost:.4f} for the run (${jev_cost / int(metrics['questions']):.5f} per question). OpenRouter billed Qwen ${qwen_cost:.3f} (${qwen_cost / int(metrics['questions']):.5f} per question).", size=20, fill=WHITE, weight=600),
-        svg_text(72, 680, "Latency is client-observed end-to-end time: Compass ran locally on an RTX 4090; Jev was called serially from that host; Qwen used OpenRouter with 12 concurrent requests.", size=17, fill=MUTED),
-        svg_text(72, 716, "Compass uses a self-hosted GPU, so its cost is not comparable with the two hosted API charges.", size=17, fill=MUTED),
+        svg_text(72, 994, "Latency is client-observed end-to-end time: Compass ran locally on an RTX 4090; Jev was called serially from that host; Qwen used OpenRouter with 12 concurrent requests.", size=17, fill=MUTED),
+        svg_text(72, 1028, "The two dollar figures are hosted API charges. Compass uses a self-hosted GPU, so its hardware cost is not shown beside them.", size=17, fill=MUTED),
         '</svg>',
     ])
     return "\n".join(parts) + "\n"
