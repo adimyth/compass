@@ -7,38 +7,38 @@
 <rect x="72" y="170.0" width="1296" height="238" rx="20" fill="#181C22"/>
 <text x="108.0" y="218.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" text-anchor="start">MEDIAN REQUEST LATENCY</text>
 <text x="108.0" y="258.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="27" font-weight="700" text-anchor="start">Compass was 1.2× faster than Jev on these endpoint routes</text>
-<text x="108.0" y="294.0" fill="#57D6E8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="21" font-weight="700" text-anchor="start">Compass, local RTX 4090</text>
-<rect x="390.0" y="268.0" width="18.0" height="30" rx="15" fill="#57D6E8"/>
-<text x="1110.0" y="294.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">0.287s</text>
-<text x="108.0" y="354.0" fill="#F4D35E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="21" font-weight="700" text-anchor="start">Jev 1.13.0, TypeSafe API</text>
-<rect x="390.0" y="328.0" width="18.0" height="30" rx="15" fill="#F4D35E"/>
-<text x="1110.0" y="354.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">0.334s</text>
-<text x="108.0" y="414.0" fill="#F17EBF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="21" font-weight="700" text-anchor="start">Qwen3.5-9B, thinking on</text>
-<rect x="390.0" y="388.0" width="610.0" height="30" rx="15" fill="#F17EBF"/>
-<text x="1110.0" y="414.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">23.54s (82×)</text>
+<text x="108.0" y="296.0" fill="#57D6E8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="21" font-weight="700" text-anchor="start">Compass, local RTX 4090</text>
+<rect x="390.0" y="270.0" width="18.0" height="30" rx="15" fill="#57D6E8"/>
+<text x="1110.0" y="296.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">0.287s</text>
+<text x="108.0" y="348.0" fill="#F4D35E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="21" font-weight="700" text-anchor="start">Jev 1.13.0, TypeSafe API</text>
+<rect x="390.0" y="322.0" width="18.0" height="30" rx="15" fill="#F4D35E"/>
+<text x="1110.0" y="348.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">0.334s</text>
+<text x="108.0" y="400.0" fill="#F17EBF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="21" font-weight="700" text-anchor="start">Qwen3.5-9B, thinking on</text>
+<rect x="390.0" y="374.0" width="610.0" height="30" rx="15" fill="#F17EBF"/>
+<text x="1110.0" y="400.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">23.54s (82×)</text>
 <rect x="72" y="432.0" width="1296" height="238" rx="20" fill="#181C22"/>
 <text x="108.0" y="480.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" text-anchor="start">GENERATED ANSWER TOKENS</text>
 <text x="108.0" y="520.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="27" font-weight="700" text-anchor="start">Qwen used 159× Jev’s answer tokens</text>
-<text x="108.0" y="556.0" fill="#57D6E8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="21" font-weight="700" text-anchor="start">Compass, fixed readout</text>
-<rect x="390.0" y="530.0" width="18.0" height="30" rx="15" fill="#57D6E8"/>
-<text x="1110.0" y="556.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">0</text>
-<text x="108.0" y="616.0" fill="#F4D35E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="21" font-weight="700" text-anchor="start">Jev 1.13.0, TypeSafe API</text>
-<rect x="390.0" y="590.0" width="18.0" height="30" rx="15" fill="#F4D35E"/>
-<text x="1110.0" y="616.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">2,800</text>
-<text x="108.0" y="676.0" fill="#F17EBF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="21" font-weight="700" text-anchor="start">Qwen3.5-9B, thinking on</text>
-<rect x="390.0" y="650.0" width="610.0" height="30" rx="15" fill="#F17EBF"/>
-<text x="1110.0" y="676.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">444,748</text>
+<text x="108.0" y="558.0" fill="#57D6E8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="21" font-weight="700" text-anchor="start">Compass, fixed readout</text>
+<rect x="390.0" y="532.0" width="18.0" height="30" rx="15" fill="#57D6E8"/>
+<text x="1110.0" y="558.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">0</text>
+<text x="108.0" y="610.0" fill="#F4D35E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="21" font-weight="700" text-anchor="start">Jev 1.13.0, TypeSafe API</text>
+<rect x="390.0" y="584.0" width="18.0" height="30" rx="15" fill="#F4D35E"/>
+<text x="1110.0" y="610.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">2,800</text>
+<text x="108.0" y="662.0" fill="#F17EBF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="21" font-weight="700" text-anchor="start">Qwen3.5-9B, thinking on</text>
+<rect x="390.0" y="636.0" width="610.0" height="30" rx="15" fill="#F17EBF"/>
+<text x="1110.0" y="662.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">444,748</text>
 <rect x="72" y="694.0" width="1296" height="238" rx="20" fill="#181C22"/>
 <text x="108.0" y="742.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" text-anchor="start">HOSTED API RUN CHARGE</text>
 <text x="108.0" y="782.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="27" font-weight="700" text-anchor="start">Qwen cost 20× Jev’s API charge</text>
-<text x="108.0" y="818.0" fill="#57D6E8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="21" font-weight="700" text-anchor="start">Compass, local RTX 4090</text>
-<text x="1110.0" y="818.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">self-hosted GPU</text>
-<text x="108.0" y="878.0" fill="#F4D35E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="21" font-weight="700" text-anchor="start">Jev 1.13.0, TypeSafe API</text>
-<rect x="390.0" y="852.0" width="30.4" height="30" rx="15" fill="#F4D35E"/>
-<text x="1110.0" y="878.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">$0.0028</text>
-<text x="108.0" y="938.0" fill="#F17EBF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="21" font-weight="700" text-anchor="start">Qwen3.5-9B, thinking on</text>
-<rect x="390.0" y="912.0" width="610.0" height="30" rx="15" fill="#F17EBF"/>
-<text x="1110.0" y="938.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">$0.056</text>
+<text x="108.0" y="820.0" fill="#57D6E8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="21" font-weight="700" text-anchor="start">Compass, local RTX 4090</text>
+<text x="1110.0" y="820.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">self-hosted GPU</text>
+<text x="108.0" y="872.0" fill="#F4D35E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="21" font-weight="700" text-anchor="start">Jev 1.13.0, TypeSafe API</text>
+<rect x="390.0" y="846.0" width="30.4" height="30" rx="15" fill="#F4D35E"/>
+<text x="1110.0" y="872.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">$0.0028</text>
+<text x="108.0" y="924.0" fill="#F17EBF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="21" font-weight="700" text-anchor="start">Qwen3.5-9B, thinking on</text>
+<rect x="390.0" y="898.0" width="610.0" height="30" rx="15" fill="#F17EBF"/>
+<text x="1110.0" y="924.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">$0.056</text>
 <text x="72.0" y="994.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="17" font-weight="400" text-anchor="start">Latency is client-observed end-to-end time: Compass ran locally on an RTX 4090; Jev was called serially from that host; Qwen used OpenRouter with 12 concurrent requests.</text>
 <text x="72.0" y="1028.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="17" font-weight="400" text-anchor="start">The two dollar figures are hosted API charges. Compass uses a self-hosted GPU, so its hardware cost is not shown beside them.</text>
 </svg>
