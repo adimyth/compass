@@ -1,0 +1,3008 @@
+{
+  "suite": "manager_chain",
+  "seed": 20260927,
+  "lengths": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    8,
+    12
+  ],
+  "samples_per_length": 20,
+  "tasks": [
+    {
+      "id": "chain-d1-q00",
+      "depth": 1,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Nia reports to Niko.\n- Arun reports to Hal.\n- Jae reports to Chen.",
+      "question": "Is Niko exactly 1 manager links above Nia?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d1-q01",
+      "depth": 1,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Vic reports to Tia.\n- Caro reports to Ira.\n- Arun reports to Eli.",
+      "question": "Is Ira exactly 1 manager links above Vic?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d1-q02",
+      "depth": 1,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Aadi reports to Cleo.\n- Ravi reports to Hana.\n- Jo reports to Ava.",
+      "question": "Is Hana exactly 1 manager links above Ravi?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d1-q03",
+      "depth": 1,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Omar reports to Finn.\n- Noa reports to Dara.\n- Aiko reports to Emi.",
+      "question": "Is Dara exactly 1 manager links above Aiko?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d1-q04",
+      "depth": 1,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Yara reports to Mara.\n- Chen reports to Ian.\n- Lio reports to Sana.",
+      "question": "Is Sana exactly 1 manager links above Lio?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d1-q05",
+      "depth": 1,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Arun reports to Uma.\n- Amir reports to Cleo.\n- Kai reports to Lena.",
+      "question": "Is Lena exactly 1 manager links above Arun?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d1-q06",
+      "depth": 1,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Niko reports to Cleo.\n- Ravi reports to Ian.\n- Anya reports to Eli.",
+      "question": "Is Eli exactly 1 manager links above Anya?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d1-q07",
+      "depth": 1,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Kai reports to Dina.\n- Sana reports to Omar.\n- Mara reports to Amir.",
+      "question": "Is Dina exactly 1 manager links above Mara?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d1-q08",
+      "depth": 1,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Finn reports to Bela.\n- Mina reports to Sol.\n- Xia reports to Amir.",
+      "question": "Is Bela exactly 1 manager links above Finn?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d1-q09",
+      "depth": 1,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Ian reports to Ava.\n- Dara reports to Ena.\n- Mo reports to Quin.",
+      "question": "Is Ava exactly 1 manager links above Dara?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d1-q10",
+      "depth": 1,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Amir reports to Noa.\n- Yara reports to Ena.\n- Gus reports to Nia.",
+      "question": "Is Noa exactly 1 manager links above Amir?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d1-q11",
+      "depth": 1,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- June reports to Eli.\n- Oto reports to Cai.\n- Una reports to Faye.",
+      "question": "Is Faye exactly 1 manager links above Oto?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d1-q12",
+      "depth": 1,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Dina reports to Zia.\n- Mina reports to Kira.\n- Chen reports to Jin.",
+      "question": "Is Zia exactly 1 manager links above Dina?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d1-q13",
+      "depth": 1,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Ava reports to Aadi.\n- Zane reports to Finn.\n- Dara reports to Niko.",
+      "question": "Is Finn exactly 1 manager links above Dara?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d1-q14",
+      "depth": 1,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Jae reports to Kira.\n- Luz reports to Mara.\n- Ian reports to Dee.",
+      "question": "Is Mara exactly 1 manager links above Luz?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d1-q15",
+      "depth": 1,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Ava reports to Oto.\n- Dee reports to Caro.\n- Eli reports to Xia.",
+      "question": "Is Xia exactly 1 manager links above Ava?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d1-q16",
+      "depth": 1,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Arun reports to Kavi.\n- Finn reports to Cleo.\n- Rhea reports to Sol.",
+      "question": "Is Cleo exactly 1 manager links above Finn?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d1-q17",
+      "depth": 1,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Quin reports to Kira.\n- Amir reports to Lena.\n- Bea reports to Noa.",
+      "question": "Is Lena exactly 1 manager links above Quin?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d1-q18",
+      "depth": 1,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Kavi reports to Inez.\n- Emi reports to Una.\n- Mo reports to Oto.",
+      "question": "Is Una exactly 1 manager links above Emi?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d1-q19",
+      "depth": 1,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- June reports to Faye.\n- Mina reports to Aadi.\n- Xia reports to Tia.",
+      "question": "Is Tia exactly 1 manager links above June?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d2-q00",
+      "depth": 2,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Hugo reports to Oto.\n- Aadi reports to Nia.\n- Ira reports to Aadi.\n- Sana reports to Tia.\n- Rhea reports to Sana.\n- Oto reports to Hana.",
+      "question": "Is Hana exactly 2 manager links above Hugo?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d2-q01",
+      "depth": 2,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Hal reports to Gia.\n- Tara reports to Ava.\n- Pia reports to Dina.\n- Tia reports to Hal.\n- Zane reports to Pia.\n- Dara reports to Tara.",
+      "question": "Is Hal exactly 2 manager links above Tia?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d2-q02",
+      "depth": 2,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Gus reports to Sana.\n- Hana reports to Bea.\n- Bea reports to Tia.\n- Anya reports to Faye.\n- Dina reports to Gus.\n- Amir reports to Anya.",
+      "question": "Is Tia exactly 2 manager links above Hana?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d2-q03",
+      "depth": 2,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Gabe reports to Hugo.\n- Ted reports to Bea.\n- Bea reports to Quin.\n- Tara reports to Pia.\n- Cleo reports to Tara.\n- Hugo reports to Nia.",
+      "question": "Is Hugo exactly 2 manager links above Gabe?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d2-q04",
+      "depth": 2,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Hal reports to Quin.\n- Chen reports to Caro.\n- Tara reports to Bea.\n- Quin reports to Mara.\n- Mo reports to Tara.\n- Caro reports to Bela.",
+      "question": "Is Bela exactly 2 manager links above Chen?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d2-q05",
+      "depth": 2,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Lena reports to Inez.\n- Pia reports to Omar.\n- Chen reports to Faye.\n- Omar reports to Nia.\n- Cai reports to Lena.\n- Faye reports to Ravi.",
+      "question": "Is Lena exactly 2 manager links above Cai?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d2-q06",
+      "depth": 2,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Aadi reports to Cleo.\n- Hana reports to Caro.\n- Dara reports to Omar.\n- Caro reports to Hugo.\n- Cleo reports to Finn.\n- Cai reports to Dara.",
+      "question": "Is Finn exactly 2 manager links above Aadi?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d2-q07",
+      "depth": 2,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Hana reports to Dina.\n- Luz reports to Sana.\n- Finn reports to Luz.\n- Ravi reports to Hana.\n- Omar reports to Kavi.\n- Wen reports to Omar.",
+      "question": "Is Luz exactly 2 manager links above Finn?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d2-q08",
+      "depth": 2,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Lena reports to Vic.\n- Aiko reports to Faye.\n- Sana reports to Zia.\n- Finn reports to Sana.\n- Aadi reports to Aiko.\n- Vic reports to Jae.",
+      "question": "Is Zia exactly 2 manager links above Finn?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d2-q09",
+      "depth": 2,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Ena reports to Gabe.\n- Rhea reports to Bela.\n- Caro reports to Rhea.\n- Dina reports to Arun.\n- Gabe reports to Niko.\n- Tara reports to Dina.",
+      "question": "Is Rhea exactly 2 manager links above Caro?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d2-q10",
+      "depth": 2,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- June reports to Anya.\n- Emi reports to June.\n- Jin reports to Inez.\n- Hana reports to Pia.\n- Quin reports to Jin.\n- Aiko reports to Hana.",
+      "question": "Is Inez exactly 2 manager links above Quin?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d2-q11",
+      "depth": 2,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Gus reports to Inez.\n- Lio reports to Cai.\n- Caro reports to Dara.\n- Cai reports to Tara.\n- Vic reports to Gus.\n- Dara reports to Noa.",
+      "question": "Is Dara exactly 2 manager links above Caro?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d2-q12",
+      "depth": 2,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Kai reports to Ena.\n- Omar reports to Oto.\n- Oto reports to Eli.\n- Ena reports to Bea.\n- Gia reports to Ted.\n- Zia reports to Gia.",
+      "question": "Is Ted exactly 2 manager links above Zia?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d2-q13",
+      "depth": 2,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Hana reports to Emi.\n- Quin reports to Jin.\n- Niko reports to Ava.\n- Kavi reports to Niko.\n- Ira reports to Hana.\n- June reports to Quin.",
+      "question": "Is Niko exactly 2 manager links above Kavi?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d2-q14",
+      "depth": 2,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Sana reports to Eli.\n- Inez reports to Ian.\n- Oto reports to Sana.\n- Kavi reports to Dee.\n- Uma reports to Kavi.\n- Ian reports to Ena.",
+      "question": "Is Eli exactly 2 manager links above Oto?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d2-q15",
+      "depth": 2,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Hugo reports to Sol.\n- Rhea reports to Bea.\n- Inez reports to Hugo.\n- Chen reports to Rhea.\n- Aadi reports to Faye.\n- Faye reports to Zia.",
+      "question": "Is Hugo exactly 2 manager links above Inez?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d2-q16",
+      "depth": 2,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Noa reports to Hal.\n- Gabe reports to Dara.\n- Kira reports to Quin.\n- Zane reports to Kira.\n- Hal reports to Anya.\n- Dara reports to Luz.",
+      "question": "Is Anya exactly 2 manager links above Noa?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d2-q17",
+      "depth": 2,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Amir reports to Finn.\n- Dee reports to Ted.\n- Ted reports to Pia.\n- Dara reports to Kavi.\n- Kira reports to Amir.\n- Gia reports to Dara.",
+      "question": "Is Amir exactly 2 manager links above Kira?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d2-q18",
+      "depth": 2,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Aiko reports to Gabe.\n- Bea reports to Aiko.\n- Jin reports to Una.\n- Finn reports to Luz.\n- Kai reports to Jin.\n- Luz reports to Dara.",
+      "question": "Is Gabe exactly 2 manager links above Bea?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d2-q19",
+      "depth": 2,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- June reports to Ian.\n- Mina reports to Jae.\n- Jin reports to Mina.\n- Aiko reports to June.\n- Kavi reports to Mo.\n- Mo reports to Arun.",
+      "question": "Is Mo exactly 2 manager links above Kavi?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d3-q00",
+      "depth": 3,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Ava reports to Luz.\n- Yara reports to Hugo.\n- Mina reports to Ava.\n- Tara reports to Dee.\n- Jin reports to Quin.\n- Gia reports to Mina.\n- Lena reports to Eli.\n- Quin reports to Yara.\n- Dee reports to Lena.",
+      "question": "Is Eli exactly 3 manager links above Tara?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d3-q01",
+      "depth": 3,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Caro reports to Vic.\n- Sol reports to Ava.\n- Bea reports to Zane.\n- Emi reports to Arun.\n- Pia reports to Bea.\n- Zane reports to Jo.\n- Dina reports to Caro.\n- Ava reports to Emi.\n- Una reports to Dina.",
+      "question": "Is Emi exactly 3 manager links above Sol?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d3-q02",
+      "depth": 3,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Kavi reports to Bea.\n- Oto reports to Faye.\n- Bea reports to Nia.\n- Cleo reports to Noa.\n- Faye reports to Tia.\n- Nia reports to Ira.\n- Tia reports to Yara.\n- Arun reports to Cleo.\n- Ena reports to Arun.",
+      "question": "Is Noa exactly 3 manager links above Ena?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d3-q03",
+      "depth": 3,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Noa reports to Faye.\n- Gabe reports to Pia.\n- Ted reports to Niko.\n- Pia reports to Emi.\n- Jo reports to Ted.\n- Faye reports to Aiko.\n- Emi reports to Hana.\n- Nia reports to Noa.\n- Chen reports to Jo.",
+      "question": "Is Faye exactly 3 manager links above Nia?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d3-q04",
+      "depth": 3,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Sol reports to Finn.\n- Aiko reports to Sol.\n- Gabe reports to Noa.\n- Quin reports to Dee.\n- Dee reports to Kavi.\n- Noa reports to Una.\n- Una reports to Luz.\n- Finn reports to Bea.\n- Ira reports to Quin.",
+      "question": "Is Kavi exactly 3 manager links above Ira?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d3-q05",
+      "depth": 3,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Hana reports to June.\n- Gabe reports to Luz.\n- Nia reports to Kai.\n- Zane reports to Inez.\n- Dee reports to Hana.\n- Mo reports to Dee.\n- Inez reports to Ava.\n- Luz reports to Nia.\n- Ava reports to Jae.",
+      "question": "Is Hana exactly 3 manager links above Mo?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d3-q06",
+      "depth": 3,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Ava reports to Jin.\n- Caro reports to Zane.\n- Amir reports to Anya.\n- Arun reports to Finn.\n- Mo reports to Aiko.\n- Jin reports to Caro.\n- Vic reports to June.\n- Anya reports to Arun.\n- Aiko reports to Vic.",
+      "question": "Is Zane exactly 3 manager links above Ava?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d3-q07",
+      "depth": 3,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Kavi reports to Gia.\n- Mo reports to Hugo.\n- Hugo reports to Xia.\n- Gabe reports to Bela.\n- Chen reports to Kavi.\n- Xia reports to Yara.\n- Emi reports to Ravi.\n- Bela reports to Emi.\n- Gia reports to Tara.",
+      "question": "Is Emi exactly 3 manager links above Gabe?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d3-q08",
+      "depth": 3,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Inez reports to Finn.\n- Bea reports to Ian.\n- Ian reports to Inez.\n- Faye reports to Rhea.\n- Cleo reports to Ira.\n- Lio reports to Hugo.\n- Jin reports to Una.\n- Una reports to Cleo.\n- Hugo reports to Faye.",
+      "question": "Is Finn exactly 3 manager links above Bea?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d3-q09",
+      "depth": 3,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Quin reports to Lio.\n- Noa reports to Kavi.\n- Lio reports to Zia.\n- Niko reports to Bea.\n- Gabe reports to Niko.\n- Zia reports to Mo.\n- Kavi reports to Jae.\n- Bea reports to Caro.\n- Aadi reports to Noa.",
+      "question": "Is Zia exactly 3 manager links above Quin?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d3-q10",
+      "depth": 3,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Una reports to Ena.\n- Aadi reports to Ira.\n- June reports to Wen.\n- Hugo reports to Oto.\n- Zane reports to Omar.\n- Wen reports to Dee.\n- Ira reports to Una.\n- Oto reports to Zane.\n- Gia reports to June.",
+      "question": "Is Ena exactly 3 manager links above Aadi?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d3-q11",
+      "depth": 3,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Una reports to Finn.\n- Hugo reports to Gia.\n- Tia reports to Una.\n- Gia reports to Nia.\n- Finn reports to Dara.\n- Nia reports to Aadi.\n- Kira reports to Kavi.\n- Aiko reports to Kira.\n- Kavi reports to Zia.",
+      "question": "Is Finn exactly 3 manager links above Tia?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d3-q12",
+      "depth": 3,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Hugo reports to Rhea.\n- Rhea reports to Caro.\n- Anya reports to Gus.\n- Kai reports to Mara.\n- Bela reports to Hugo.\n- Mara reports to Tara.\n- Jae reports to Kai.\n- Gus reports to Noa.\n- Noa reports to Inez.",
+      "question": "Is Tara exactly 3 manager links above Jae?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d3-q13",
+      "depth": 3,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Tia reports to Zane.\n- Xia reports to Faye.\n- Dee reports to Rhea.\n- Hugo reports to Caro.\n- Jin reports to Arun.\n- Mina reports to Eli.\n- Caro reports to Dee.\n- Faye reports to Jin.\n- Zane reports to Mina.",
+      "question": "Is Jin exactly 3 manager links above Xia?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d3-q14",
+      "depth": 3,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Zane reports to Quin.\n- Gia reports to Yara.\n- Hana reports to Gia.\n- Una reports to Xia.\n- Jae reports to Una.\n- Uma reports to Pia.\n- Xia reports to Anya.\n- Pia reports to Zane.\n- Yara reports to Kai.",
+      "question": "Is Anya exactly 3 manager links above Jae?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d3-q15",
+      "depth": 3,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Bela reports to Tara.\n- Mina reports to Finn.\n- Aiko reports to Omar.\n- Hal reports to Hana.\n- Lio reports to Mina.\n- Omar reports to Bela.\n- Luz reports to Jin.\n- Hana reports to Luz.\n- Jae reports to Lio.",
+      "question": "Is Bela exactly 3 manager links above Aiko?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d3-q16",
+      "depth": 3,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Rhea reports to Tara.\n- Hal reports to Oto.\n- Caro reports to Hal.\n- Mo reports to Jae.\n- Jae reports to Gabe.\n- Oto reports to Ravi.\n- Kavi reports to Rhea.\n- Gabe reports to Bea.\n- Lio reports to Kavi.",
+      "question": "Is Ravi exactly 3 manager links above Caro?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d3-q17",
+      "depth": 3,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Bela reports to Faye.\n- Vic reports to Cleo.\n- Cai reports to Bela.\n- Mo reports to Hugo.\n- Cleo reports to Lio.\n- Uma reports to Kai.\n- Hugo reports to Uma.\n- Lio reports to Pia.\n- Faye reports to Lena.",
+      "question": "Is Faye exactly 3 manager links above Cai?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d3-q18",
+      "depth": 3,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Kai reports to Luz.\n- Una reports to June.\n- Luz reports to Ira.\n- Ira reports to Jin.\n- Emi reports to Una.\n- June reports to Rhea.\n- Aadi reports to Finn.\n- Cai reports to Aadi.\n- Finn reports to Caro.",
+      "question": "Is Rhea exactly 3 manager links above Emi?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d3-q19",
+      "depth": 3,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Rhea reports to Mo.\n- Kai reports to Sol.\n- Sol reports to Ira.\n- Ena reports to Jin.\n- June reports to Finn.\n- Mo reports to Ena.\n- Kavi reports to June.\n- Vic reports to Kai.\n- Finn reports to Uma.",
+      "question": "Is Finn exactly 3 manager links above Kavi?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d4-q00",
+      "depth": 4,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Gabe reports to Oto.\n- Ted reports to Jae.\n- Inez reports to Rhea.\n- Quin reports to Gabe.\n- Kavi reports to Faye.\n- Eli reports to Gia.\n- Rhea reports to Ted.\n- Faye reports to Vic.\n- Jae reports to Sol.\n- Vic reports to Eli.\n- Oto reports to Zane.\n- Cleo reports to Quin.",
+      "question": "Is Zane exactly 4 manager links above Cleo?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d4-q01",
+      "depth": 4,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Ira reports to Gia.\n- Dara reports to Arun.\n- Hana reports to Emi.\n- Gia reports to Bela.\n- Mina reports to Mara.\n- Sana reports to Tara.\n- Wen reports to Yara.\n- Bela reports to Wen.\n- Inez reports to Sana.\n- Mara reports to Inez.\n- Zane reports to Hana.\n- Emi reports to Dara.",
+      "question": "Is Dara exactly 4 manager links above Zane?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d4-q02",
+      "depth": 4,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Kavi reports to Ted.\n- Inez reports to Kavi.\n- Emi reports to Caro.\n- Anya reports to Gia.\n- Gabe reports to Emi.\n- Amir reports to Gabe.\n- Finn reports to Zia.\n- Mina reports to Hana.\n- Hana reports to Anya.\n- Zia reports to Inez.\n- Gia reports to Faye.\n- Caro reports to Omar.",
+      "question": "Is Omar exactly 4 manager links above Amir?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d4-q03",
+      "depth": 4,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Xia reports to Jo.\n- Noa reports to Xia.\n- Ravi reports to Gus.\n- Oto reports to Hal.\n- Emi reports to Noa.\n- Hal reports to Bela.\n- Zia reports to Emi.\n- Gus reports to Gabe.\n- Sana reports to Anya.\n- Lio reports to Ravi.\n- Gabe reports to Jae.\n- Anya reports to Oto.",
+      "question": "Is Gabe exactly 4 manager links above Lio?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d4-q04",
+      "depth": 4,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Hal reports to Oto.\n- Niko reports to Uma.\n- Gia reports to Hal.\n- Ava reports to Rhea.\n- Oto reports to Kira.\n- Ena reports to Gabe.\n- Aadi reports to Jo.\n- Gabe reports to Niko.\n- Kira reports to Aiko.\n- Rhea reports to Mina.\n- Anya reports to Ena.\n- Jo reports to Ava.",
+      "question": "Is Mina exactly 4 manager links above Aadi?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d4-q05",
+      "depth": 4,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Inez reports to Zane.\n- Dina reports to Vic.\n- Quin reports to Ravi.\n- Pia reports to Uma.\n- Uma reports to Ira.\n- Ira reports to Dina.\n- Una reports to Quin.\n- June reports to Una.\n- Hana reports to Caro.\n- Zane reports to Luz.\n- Caro reports to Inez.\n- Ravi reports to Anya.",
+      "question": "Is Dina exactly 4 manager links above Pia?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d4-q06",
+      "depth": 4,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Gus reports to Quin.\n- Bea reports to Tia.\n- Niko reports to Eli.\n- Mina reports to Gus.\n- Gia reports to Rhea.\n- Rhea reports to Gabe.\n- Jin reports to Inez.\n- Quin reports to Jae.\n- Eli reports to June.\n- Tia reports to Niko.\n- Jae reports to Xia.\n- Gabe reports to Jin.",
+      "question": "Is Inez exactly 4 manager links above Gia?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d4-q07",
+      "depth": 4,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Wen reports to Kira.\n- Eli reports to Sana.\n- Arun reports to Caro.\n- Tara reports to Nia.\n- Omar reports to Cleo.\n- Kira reports to Gia.\n- Ava reports to Aiko.\n- Caro reports to Tara.\n- Sana reports to Ava.\n- Cleo reports to Wen.\n- Aiko reports to Gabe.\n- Nia reports to Mo.",
+      "question": "Is Kira exactly 4 manager links above Omar?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d4-q08",
+      "depth": 4,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Finn reports to Hana.\n- Faye reports to Caro.\n- Eli reports to Ira.\n- Kavi reports to Lio.\n- Lio reports to Arun.\n- Uma reports to Kira.\n- Emi reports to Kavi.\n- Caro reports to Uma.\n- Arun reports to Amir.\n- Ira reports to Finn.\n- Kira reports to Cai.\n- Hana reports to Dina.",
+      "question": "Is Dina exactly 4 manager links above Eli?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d4-q09",
+      "depth": 4,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Noa reports to Sol.\n- Finn reports to Bela.\n- Rhea reports to Amir.\n- Sol reports to Hugo.\n- Bela reports to Gia.\n- Arun reports to Mina.\n- Hugo reports to Anya.\n- Amir reports to Arun.\n- Zia reports to Noa.\n- Lio reports to Rhea.\n- Jin reports to Sana.\n- Sana reports to Finn.",
+      "question": "Is Hugo exactly 4 manager links above Zia?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d4-q10",
+      "depth": 4,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Bela reports to Ena.\n- Caro reports to Nia.\n- Quin reports to Chen.\n- Dee reports to Xia.\n- Oto reports to Hugo.\n- Inez reports to June.\n- Zia reports to Quin.\n- Chen reports to Bela.\n- Xia reports to Oto.\n- Ira reports to Dee.\n- Gus reports to Inez.\n- June reports to Caro.",
+      "question": "Is Ena exactly 4 manager links above Zia?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d4-q11",
+      "depth": 4,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Dina reports to Dee.\n- Hal reports to Cleo.\n- Cai reports to Lio.\n- Mo reports to Tara.\n- Cleo reports to Anya.\n- Lio reports to Jo.\n- Tara reports to Hal.\n- Jo reports to Mara.\n- Mara reports to Emi.\n- Dee reports to Zane.\n- Wen reports to Dina.\n- Hugo reports to Wen.",
+      "question": "Is Dee exactly 4 manager links above Hugo?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d4-q12",
+      "depth": 4,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Pia reports to Kavi.\n- Una reports to Wen.\n- Cai reports to Rhea.\n- Sana reports to Eli.\n- Wen reports to Lio.\n- Jo reports to Cai.\n- Kavi reports to Dina.\n- Chen reports to Una.\n- Dina reports to Kira.\n- Kira reports to Cleo.\n- Dara reports to Chen.\n- Rhea reports to Sana.",
+      "question": "Is Cleo exactly 4 manager links above Pia?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d4-q13",
+      "depth": 4,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Yara reports to Tia.\n- Chen reports to Hana.\n- Tara reports to Aadi.\n- Noa reports to Inez.\n- Hana reports to Yara.\n- Gabe reports to Anya.\n- Anya reports to Niko.\n- Tia reports to Kira.\n- Kai reports to Tara.\n- Sana reports to Kai.\n- Niko reports to Noa.\n- Dara reports to Sana.",
+      "question": "Is Tara exactly 4 manager links above Dara?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d4-q14",
+      "depth": 4,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Cleo reports to Mina.\n- Mina reports to Dina.\n- Nia reports to Aadi.\n- Zane reports to Omar.\n- Dee reports to Arun.\n- Hal reports to Nia.\n- Caro reports to Ted.\n- Aadi reports to Una.\n- Pia reports to Hal.\n- Dina reports to Dee.\n- Ted reports to Oto.\n- Omar reports to Caro.",
+      "question": "Is Arun exactly 4 manager links above Cleo?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d4-q15",
+      "depth": 4,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Tia reports to Faye.\n- Oto reports to Tara.\n- Una reports to Gus.\n- Yara reports to Kira.\n- Mina reports to Ian.\n- Bea reports to Tia.\n- Gus reports to Bea.\n- Kira reports to Mina.\n- Gia reports to Aiko.\n- Aiko reports to Uma.\n- Tara reports to Gia.\n- Jae reports to Yara.",
+      "question": "Is Tia exactly 4 manager links above Una?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d4-q16",
+      "depth": 4,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Jo reports to Aiko.\n- Luz reports to June.\n- Xia reports to Faye.\n- Aiko reports to Mara.\n- Arun reports to Xia.\n- Mo reports to Jo.\n- Gia reports to Arun.\n- Emi reports to Luz.\n- Ava reports to Kavi.\n- June reports to Ava.\n- Gus reports to Mo.\n- Faye reports to Tara.",
+      "question": "Is Kavi exactly 4 manager links above Emi?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d4-q17",
+      "depth": 4,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Cleo reports to Niko.\n- Niko reports to Kai.\n- Eli reports to Cleo.\n- Ena reports to Dara.\n- Dara reports to Rhea.\n- Yara reports to Emi.\n- Zane reports to Tia.\n- Emi reports to Bea.\n- Rhea reports to Zane.\n- Ava reports to Vic.\n- Kai reports to Quin.\n- Bea reports to Ava.",
+      "question": "Is Zane exactly 4 manager links above Ena?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d4-q18",
+      "depth": 4,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Ena reports to Mo.\n- Ira reports to Caro.\n- Caro reports to Sol.\n- Bea reports to Noa.\n- Wen reports to Faye.\n- Faye reports to Mina.\n- Dara reports to Ena.\n- Gus reports to Gabe.\n- Hal reports to Ira.\n- Kavi reports to Hal.\n- Mo reports to Bea.\n- Mina reports to Gus.",
+      "question": "Is Gabe exactly 4 manager links above Wen?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d4-q19",
+      "depth": 4,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Una reports to Tia.\n- Quin reports to Noa.\n- Nia reports to Kira.\n- Vic reports to Caro.\n- Dee reports to Quin.\n- Kira reports to Zane.\n- Mina reports to Cleo.\n- Pia reports to Jae.\n- Jae reports to Dee.\n- Sol reports to Vic.\n- Cleo reports to Nia.\n- Tia reports to Sol.",
+      "question": "Is Quin exactly 4 manager links above Pia?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d6-q00",
+      "depth": 6,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Mina reports to Tia.\n- Hal reports to Aiko.\n- Aiko reports to Mina.\n- Ted reports to Eli.\n- Cai reports to Luz.\n- Wen reports to Arun.\n- Cleo reports to Jin.\n- Noa reports to Ian.\n- Una reports to Noa.\n- Luz reports to Ted.\n- Jin reports to Kavi.\n- Kavi reports to Hal.\n- Bea reports to Uma.\n- Nia reports to Bea.\n- Uma reports to Xia.\n- Arun reports to Bela.\n- Eli reports to Wen.\n- Ian reports to Nia.",
+      "question": "Is Tia exactly 6 manager links above Cleo?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d6-q01",
+      "depth": 6,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Ravi reports to Ted.\n- Gabe reports to Pia.\n- Hana reports to Jae.\n- Pia reports to Sana.\n- Mo reports to Luz.\n- Jae reports to Noa.\n- Noa reports to Ravi.\n- June reports to Bela.\n- Uma reports to Caro.\n- Yara reports to Mo.\n- Caro reports to Dara.\n- Una reports to Gabe.\n- Ted reports to June.\n- Gia reports to Aadi.\n- Luz reports to Kai.\n- Sana reports to Gia.\n- Kai reports to Uma.\n- Tara reports to Una.",
+      "question": "Is June exactly 6 manager links above Hana?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d6-q02",
+      "depth": 6,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Arun reports to Cleo.\n- Niko reports to Vic.\n- Wen reports to Quin.\n- Cleo reports to Niko.\n- Faye reports to Kira.\n- Jo reports to Luz.\n- Mina reports to Gus.\n- Hugo reports to Xia.\n- Zane reports to Ena.\n- Ena reports to Una.\n- Kira reports to Hugo.\n- Ava reports to Zane.\n- Ted reports to Jo.\n- Una reports to Kai.\n- Gus reports to Ava.\n- Luz reports to Arun.\n- Quin reports to Faye.\n- Xia reports to Oto.",
+      "question": "Is Kai exactly 6 manager links above Mina?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d6-q03",
+      "depth": 6,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Dara reports to Emi.\n- Mina reports to Lio.\n- Jo reports to Eli.\n- Mara reports to Lena.\n- Dee reports to Mina.\n- Omar reports to Tia.\n- Cleo reports to Mara.\n- Ena reports to Dee.\n- Tia reports to Ena.\n- Emi reports to Inez.\n- Pia reports to Ted.\n- Ira reports to Rhea.\n- Eli reports to Pia.\n- Ted reports to Zane.\n- Lena reports to Dara.\n- Inez reports to Jae.\n- Rhea reports to Jo.\n- Lio reports to Sol.",
+      "question": "Is Ted exactly 6 manager links above Ira?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d6-q04",
+      "depth": 6,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Anya reports to Niko.\n- Caro reports to Yara.\n- Omar reports to Inez.\n- Inez reports to Chen.\n- Chen reports to Vic.\n- Ira reports to Zia.\n- Xia reports to Aadi.\n- Aadi reports to Amir.\n- Wen reports to Anya.\n- Emi reports to Ira.\n- Sol reports to Ava.\n- Zia reports to Wen.\n- Vic reports to Sol.\n- Niko reports to Una.\n- Mara reports to Omar.\n- Lio reports to Xia.\n- Amir reports to Caro.\n- Arun reports to Lio.",
+      "question": "Is Yara exactly 6 manager links above Arun?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d6-q05",
+      "depth": 6,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Ena reports to Jo.\n- Wen reports to Ted.\n- Anya reports to June.\n- June reports to Hugo.\n- Cleo reports to Mara.\n- Mo reports to Cleo.\n- Ted reports to Mo.\n- Aadi reports to Niko.\n- Hal reports to Wen.\n- Dee reports to Aadi.\n- Faye reports to Dara.\n- Mara reports to Hana.\n- Niko reports to Gia.\n- Gia reports to Sana.\n- Sana reports to Nia.\n- Jo reports to Anya.\n- Jin reports to Dee.\n- Hugo reports to Faye.",
+      "question": "Is Mara exactly 6 manager links above Hal?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d6-q06",
+      "depth": 6,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Cleo reports to Una.\n- Ravi reports to Omar.\n- Inez reports to Ena.\n- Arun reports to Mara.\n- June reports to Hal.\n- Luz reports to Arun.\n- Ena reports to Aadi.\n- Hal reports to Inez.\n- Aadi reports to Oto.\n- Ted reports to Ravi.\n- Chen reports to Jo.\n- Vic reports to Quin.\n- Mo reports to Ted.\n- Quin reports to Luz.\n- Mara reports to Cleo.\n- Aiko reports to June.\n- Niko reports to Chen.\n- Omar reports to Niko.",
+      "question": "Is Jo exactly 6 manager links above Mo?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d6-q07",
+      "depth": 6,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Dina reports to Pia.\n- Emi reports to Vic.\n- Finn reports to Bea.\n- Una reports to Oto.\n- Oto reports to Lena.\n- Pia reports to Ava.\n- Sana reports to Mo.\n- Bea reports to Uma.\n- Tia reports to Sana.\n- Vic reports to Zane.\n- Dee reports to Tia.\n- Ava reports to Dee.\n- Caro reports to Hal.\n- Zane reports to Luz.\n- Xia reports to Una.\n- Lena reports to Finn.\n- Cai reports to Emi.\n- Hal reports to Cai.",
+      "question": "Is Bea exactly 6 manager links above Xia?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d6-q08",
+      "depth": 6,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Ava reports to June.\n- Chen reports to Mara.\n- Finn reports to Sol.\n- Zia reports to Chen.\n- Noa reports to Finn.\n- Hugo reports to Kira.\n- June reports to Luz.\n- Aiko reports to Bea.\n- Rhea reports to Noa.\n- Luz reports to Hal.\n- Hal reports to Una.\n- Mara reports to Caro.\n- Sol reports to Lio.\n- Una reports to Hugo.\n- Nia reports to Zia.\n- Caro reports to Aiko.\n- Lio reports to Mo.\n- Mo reports to Pia.",
+      "question": "Is Pia exactly 6 manager links above Rhea?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d6-q09",
+      "depth": 6,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Emi reports to Tia.\n- Tia reports to Omar.\n- Tara reports to Aiko.\n- Omar reports to Zia.\n- Oto reports to Arun.\n- Bea reports to Emi.\n- Ravi reports to Dara.\n- Dara reports to Hal.\n- Faye reports to Una.\n- Arun reports to Ravi.\n- Quin reports to Niko.\n- Wen reports to Quin.\n- Xia reports to Faye.\n- Nia reports to Xia.\n- Niko reports to Nia.\n- Aiko reports to Bea.\n- Inez reports to Oto.\n- Jin reports to Inez.",
+      "question": "Is Faye exactly 6 manager links above Wen?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d6-q10",
+      "depth": 6,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Nia reports to Emi.\n- Dina reports to Oto.\n- Jae reports to Uma.\n- Hana reports to Tia.\n- Oto reports to Jo.\n- Noa reports to Yara.\n- Tia reports to Sana.\n- Uma reports to Nia.\n- Bea reports to Eli.\n- Emi reports to Gabe.\n- Lio reports to Hana.\n- Gabe reports to Kavi.\n- Gia reports to Zane.\n- Sana reports to Gia.\n- Kavi reports to Jin.\n- Eli reports to Dina.\n- Yara reports to Bea.\n- Niko reports to Lio.",
+      "question": "Is Jin exactly 6 manager links above Jae?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d6-q11",
+      "depth": 6,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Ira reports to Kai.\n- June reports to Uma.\n- Finn reports to Ravi.\n- Mara reports to Sol.\n- Luz reports to Ena.\n- Cleo reports to Finn.\n- Ena reports to Ira.\n- Kai reports to Aadi.\n- Kira reports to Dee.\n- Yara reports to Cleo.\n- Noa reports to Yara.\n- Jae reports to Noa.\n- Sol reports to Luz.\n- Hugo reports to Kira.\n- Arun reports to Jae.\n- Hal reports to June.\n- Ava reports to Hugo.\n- Uma reports to Ava.",
+      "question": "Is Finn exactly 6 manager links above Arun?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d6-q12",
+      "depth": 6,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- June reports to Tia.\n- Dina reports to Noa.\n- Noa reports to Wen.\n- Una reports to Mo.\n- Faye reports to Pia.\n- Ian reports to Finn.\n- Hugo reports to Jo.\n- Ira reports to Luz.\n- Xia reports to Faye.\n- Jo reports to Xia.\n- Ravi reports to Hugo.\n- Luz reports to Una.\n- Wen reports to Ian.\n- Arun reports to Mina.\n- Finn reports to June.\n- Mo reports to Kira.\n- Mina reports to Ira.\n- Pia reports to Tara.",
+      "question": "Is Kira exactly 6 manager links above Arun?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d6-q13",
+      "depth": 6,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- June reports to Jo.\n- Hugo reports to Ted.\n- Ravi reports to Sol.\n- Tara reports to Ravi.\n- Oto reports to Kai.\n- Kai reports to Hugo.\n- Noa reports to Ira.\n- Ian reports to Oto.\n- Dee reports to Kira.\n- Dina reports to Caro.\n- Jo reports to Inez.\n- Inez reports to Dee.\n- Sol reports to Noa.\n- Faye reports to Tara.\n- Ira reports to Cai.\n- Caro reports to June.\n- Emi reports to Sana.\n- Sana reports to Ian.",
+      "question": "Is Dee exactly 6 manager links above Dina?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d6-q14",
+      "depth": 6,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Eli reports to Hana.\n- Una reports to Rhea.\n- Jo reports to Ted.\n- Nia reports to Caro.\n- Rhea reports to Ira.\n- Luz reports to Jo.\n- Tia reports to Gabe.\n- Ted reports to Nia.\n- Dara reports to Emi.\n- Noa reports to Cleo.\n- Tara reports to Tia.\n- Emi reports to Quin.\n- Hana reports to Tara.\n- Cleo reports to Eli.\n- Quin reports to Vic.\n- Aadi reports to Ian.\n- Caro reports to Aadi.\n- Vic reports to Una.",
+      "question": "Is Ian exactly 6 manager links above Luz?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d6-q15",
+      "depth": 6,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Lena reports to Dara.\n- Dee reports to Aadi.\n- Amir reports to Finn.\n- Mina reports to Luz.\n- Inez reports to Jin.\n- Finn reports to June.\n- June reports to Mina.\n- Quin reports to Oto.\n- Aadi reports to Quin.\n- Oto reports to Mara.\n- Dina reports to Vic.\n- Bela reports to Bea.\n- Yara reports to Eli.\n- Jin reports to Yara.\n- Eli reports to Bela.\n- Vic reports to Dee.\n- Bea reports to Uma.\n- Luz reports to Lena.",
+      "question": "Is Bea exactly 6 manager links above Inez?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d6-q16",
+      "depth": 6,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Mo reports to Bela.\n- Arun reports to Niko.\n- Ira reports to Arun.\n- Ted reports to June.\n- Inez reports to Rhea.\n- Gia reports to Hana.\n- Rhea reports to Eli.\n- Bela reports to Chen.\n- Sana reports to Mo.\n- Eli reports to Tara.\n- Anya reports to Ira.\n- Chen reports to Sol.\n- Gus reports to Caro.\n- Jo reports to Anya.\n- June reports to Cai.\n- Tara reports to Ted.\n- Niko reports to Gus.\n- Hana reports to Sana.",
+      "question": "Is Cai exactly 6 manager links above Inez?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d6-q17",
+      "depth": 6,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Yara reports to Finn.\n- Finn reports to Cleo.\n- June reports to Yara.\n- Lio reports to Anya.\n- Dee reports to Ravi.\n- Ted reports to Nia.\n- Ravi reports to Rhea.\n- Luz reports to Dara.\n- Amir reports to June.\n- Ira reports to Eli.\n- Ena reports to Luz.\n- Rhea reports to Inez.\n- Dara reports to Dee.\n- Uma reports to Arun.\n- Arun reports to Ted.\n- Jo reports to Lio.\n- Cleo reports to Ira.\n- Anya reports to Uma.",
+      "question": "Is Rhea exactly 6 manager links above Ena?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d6-q18",
+      "depth": 6,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Quin reports to Niko.\n- Inez reports to Finn.\n- Gia reports to Uma.\n- Vic reports to Inez.\n- Omar reports to Nia.\n- Niko reports to Kai.\n- Jae reports to Ian.\n- Chen reports to Hugo.\n- Uma reports to Vic.\n- Lio reports to Omar.\n- Hugo reports to Quin.\n- Ian reports to Noa.\n- Caro reports to Eli.\n- Zia reports to Dara.\n- Noa reports to Lio.\n- Nia reports to Jin.\n- Dara reports to Gia.\n- Eli reports to Chen.",
+      "question": "Is Kai exactly 6 manager links above Caro?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d6-q19",
+      "depth": 6,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Hana reports to Finn.\n- Kira reports to Chen.\n- Yara reports to Arun.\n- Sol reports to Ian.\n- Arun reports to Lena.\n- Vic reports to Aiko.\n- Chen reports to Sol.\n- Niko reports to Eli.\n- Finn reports to Zia.\n- Cai reports to Faye.\n- Luz reports to Yara.\n- Zia reports to Pia.\n- Lena reports to Wen.\n- Pia reports to Vic.\n- Aiko reports to Tia.\n- Mo reports to Niko.\n- Ian reports to Mo.\n- Wen reports to Cai.",
+      "question": "Is Aiko exactly 6 manager links above Hana?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d8-q00",
+      "depth": 8,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Cleo reports to Arun.\n- Ted reports to June.\n- Chen reports to Hal.\n- Tara reports to Bela.\n- Luz reports to Ian.\n- Mara reports to Hugo.\n- Yara reports to Dina.\n- Amir reports to Kira.\n- Dee reports to Quin.\n- Rhea reports to Chen.\n- Quin reports to Rhea.\n- Vic reports to Ted.\n- Faye reports to Kavi.\n- Bela reports to Dee.\n- Hal reports to Amir.\n- Hugo reports to Cleo.\n- Dina reports to Gabe.\n- Ian reports to Yara.\n- Kavi reports to Bea.\n- Bea reports to Mara.\n- Gabe reports to Anya.\n- Arun reports to Noa.\n- Noa reports to Mina.\n- Anya reports to Vic.",
+      "question": "Is Kira exactly 8 manager links above Tara?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d8-q01",
+      "depth": 8,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Lio reports to Yara.\n- Hugo reports to Lena.\n- Jo reports to Omar.\n- Gus reports to Finn.\n- Sana reports to Ted.\n- Jin reports to Sana.\n- Kira reports to Ravi.\n- Dee reports to Xia.\n- Yara reports to Aiko.\n- Zia reports to Mara.\n- Ira reports to Hugo.\n- Dara reports to Tia.\n- Xia reports to Gus.\n- Mara reports to Jin.\n- Tara reports to Dee.\n- Ted reports to Ira.\n- Bela reports to Dara.\n- Dina reports to Arun.\n- Tia reports to Dina.\n- Omar reports to Kira.\n- Arun reports to Jo.\n- Lena reports to Amir.\n- Cleo reports to Lio.\n- Finn reports to Cleo.",
+      "question": "Is Yara exactly 8 manager links above Tara?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d8-q02",
+      "depth": 8,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Anya reports to Luz.\n- Tia reports to Mara.\n- Gia reports to Omar.\n- Inez reports to Pia.\n- June reports to Zane.\n- Amir reports to Inez.\n- Mara reports to Faye.\n- Faye reports to Ira.\n- Pia reports to Dara.\n- Gus reports to Wen.\n- Kavi reports to Gia.\n- Zane reports to Aadi.\n- Wen reports to Anya.\n- Jo reports to Tara.\n- Arun reports to Jo.\n- Omar reports to June.\n- Ted reports to Gus.\n- Ira reports to Ted.\n- Kai reports to Kavi.\n- Tara reports to Amir.\n- Jin reports to Dina.\n- Noa reports to Kai.\n- Zia reports to Noa.\n- Dara reports to Jin.",
+      "question": "Is Dina exactly 8 manager links above Arun?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d8-q03",
+      "depth": 8,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Ira reports to Caro.\n- Arun reports to Luz.\n- Tara reports to Faye.\n- Uma reports to Arun.\n- Una reports to Hana.\n- Luz reports to Ena.\n- Jae reports to Cai.\n- Gabe reports to Zia.\n- Nia reports to Eli.\n- Hugo reports to Una.\n- Quin reports to Nia.\n- Chen reports to Gabe.\n- Bela reports to Kira.\n- Caro reports to Kai.\n- Mara reports to Bela.\n- Yara reports to Niko.\n- Kai reports to Ravi.\n- Kira reports to Uma.\n- Ian reports to Quin.\n- Cai reports to Ian.\n- Ravi reports to Tara.\n- Hana reports to Jae.\n- Zia reports to Ira.\n- Ena reports to Yara.",
+      "question": "Is Tara exactly 8 manager links above Chen?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d8-q04",
+      "depth": 8,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Ted reports to Quin.\n- Gus reports to Lena.\n- Cai reports to Jae.\n- Rhea reports to Ira.\n- Ira reports to Faye.\n- Dina reports to Ted.\n- Mina reports to Hugo.\n- Jae reports to Niko.\n- Oto reports to Lio.\n- Ravi reports to Ena.\n- Vic reports to Rhea.\n- Hugo reports to Ravi.\n- Wen reports to Vic.\n- Lio reports to Wen.\n- Quin reports to Mina.\n- Mara reports to Cai.\n- Aadi reports to Kavi.\n- Finn reports to Caro.\n- Zia reports to Luz.\n- Lena reports to Dina.\n- Niko reports to Aadi.\n- Kavi reports to Emi.\n- Emi reports to Finn.\n- Faye reports to Zia.",
+      "question": "Is Luz exactly 8 manager links above Oto?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d8-q05",
+      "depth": 8,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Cai reports to Yara.\n- Quin reports to Arun.\n- June reports to Una.\n- Ena reports to Bea.\n- Bea reports to Bela.\n- Gia reports to Cai.\n- Caro reports to Niko.\n- Una reports to Kavi.\n- Dee reports to Dina.\n- Oto reports to June.\n- Aiko reports to Ted.\n- Mina reports to Nia.\n- Eli reports to Gabe.\n- Gabe reports to Hugo.\n- Ted reports to Eli.\n- Kavi reports to Mina.\n- Amir reports to Caro.\n- Bela reports to Quin.\n- Arun reports to Aadi.\n- Cleo reports to Dee.\n- Yara reports to Oto.\n- Niko reports to Jo.\n- Dina reports to Ena.\n- Jo reports to Aiko.",
+      "question": "Is Gabe exactly 8 manager links above Amir?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d8-q06",
+      "depth": 8,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Niko reports to Omar.\n- Finn reports to Amir.\n- Lio reports to Ava.\n- Caro reports to Hal.\n- Tara reports to Una.\n- Cai reports to Bela.\n- Uma reports to June.\n- Quin reports to Ian.\n- Ena reports to Pia.\n- Hugo reports to Cai.\n- Ravi reports to Mara.\n- Sana reports to Dee.\n- Ian reports to Caro.\n- Una reports to Hugo.\n- Ted reports to Quin.\n- Pia reports to Uma.\n- June reports to Niko.\n- Chen reports to Finn.\n- Ava reports to Ted.\n- Hal reports to Ravi.\n- Dara reports to Cleo.\n- Omar reports to Chen.\n- Dee reports to Dara.\n- Bela reports to Sana.",
+      "question": "Is Cleo exactly 8 manager links above Tara?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d8-q07",
+      "depth": 8,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Aadi reports to Quin.\n- Jin reports to Aadi.\n- June reports to Oto.\n- Cai reports to Vic.\n- Dina reports to Amir.\n- Kai reports to Ena.\n- Yara reports to Kira.\n- Vic reports to Hana.\n- Eli reports to Mina.\n- Hana reports to Yara.\n- Kira reports to Eli.\n- Xia reports to Ian.\n- Mina reports to Bea.\n- Oto reports to Dina.\n- Quin reports to Ravi.\n- Gabe reports to Sol.\n- Rhea reports to Zane.\n- Mo reports to Cai.\n- Zane reports to Jin.\n- Nia reports to Rhea.\n- Sol reports to June.\n- Ena reports to Gabe.\n- Ravi reports to Xia.\n- Amir reports to Niko.",
+      "question": "Is Amir exactly 8 manager links above Kai?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d8-q08",
+      "depth": 8,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Vic reports to Uma.\n- Chen reports to Zane.\n- Dina reports to Sana.\n- Lio reports to Dina.\n- Amir reports to Dee.\n- Sol reports to Jo.\n- Ava reports to Bela.\n- Jae reports to Dara.\n- Hal reports to Ava.\n- June reports to Chen.\n- Bela reports to Amir.\n- Ira reports to Nia.\n- Dee reports to Sol.\n- Sana reports to Vic.\n- Uma reports to Ted.\n- Dara reports to Ira.\n- Yara reports to Jae.\n- Eli reports to Cleo.\n- Cleo reports to Hal.\n- Zane reports to Luz.\n- Ted reports to Rhea.\n- Rhea reports to Lena.\n- Luz reports to Yara.\n- Lena reports to Arun.",
+      "question": "Is Nia exactly 8 manager links above June?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d8-q09",
+      "depth": 8,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Dee reports to Jae.\n- Tia reports to Mara.\n- Ira reports to Omar.\n- Jin reports to Niko.\n- Eli reports to Tia.\n- Sol reports to Lena.\n- Ava reports to Faye.\n- Caro reports to Dee.\n- Cai reports to Ava.\n- Omar reports to Mo.\n- Bela reports to Cai.\n- Mo reports to Inez.\n- Ted reports to Oto.\n- Finn reports to Ted.\n- Oto reports to Bea.\n- Faye reports to Vic.\n- Jae reports to Zane.\n- Inez reports to Sol.\n- Bea reports to Hana.\n- Zane reports to Bela.\n- Hana reports to Hal.\n- Lena reports to Eli.\n- Hal reports to Jin.\n- Zia reports to Finn.",
+      "question": "Is Tia exactly 8 manager links above Ira?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d8-q10",
+      "depth": 8,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Ava reports to Xia.\n- Omar reports to June.\n- Gus reports to Kavi.\n- Cleo reports to Caro.\n- Kavi reports to Mo.\n- Anya reports to Oto.\n- Eli reports to Sana.\n- Lena reports to Cai.\n- Bela reports to Gus.\n- Niko reports to Tia.\n- Xia reports to Eli.\n- Gia reports to Bela.\n- Sana reports to Uma.\n- Arun reports to Pia.\n- Uma reports to Aiko.\n- Zia reports to Rhea.\n- Hugo reports to Niko.\n- Emi reports to Ava.\n- Cai reports to Emi.\n- June reports to Cleo.\n- Caro reports to Arun.\n- Tia reports to Omar.\n- Oto reports to Gia.\n- Mo reports to Zia.",
+      "question": "Is Pia exactly 8 manager links above Hugo?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d8-q11",
+      "depth": 8,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Tara reports to Emi.\n- Mara reports to Lena.\n- Caro reports to Dee.\n- Uma reports to Arun.\n- June reports to Gus.\n- Gus reports to Inez.\n- Dee reports to Gia.\n- Emi reports to Aiko.\n- Zane reports to Chen.\n- Inez reports to Jin.\n- Xia reports to Jo.\n- Aadi reports to Mara.\n- Jin reports to Lio.\n- Sol reports to Tara.\n- Mina reports to June.\n- Vic reports to Xia.\n- Luz reports to Zia.\n- Arun reports to Luz.\n- Eli reports to Uma.\n- Lena reports to Mina.\n- Gia reports to Zane.\n- Wen reports to Caro.\n- Aiko reports to Eli.\n- Jo reports to Wen.",
+      "question": "Is Jin exactly 8 manager links above Aadi?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d8-q12",
+      "depth": 8,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Kira reports to Cai.\n- Hana reports to Eli.\n- Nia reports to Hana.\n- Cai reports to Ira.\n- Bela reports to Tia.\n- Pia reports to Hugo.\n- Emi reports to June.\n- Tia reports to Sol.\n- Aiko reports to Jin.\n- Aadi reports to Ian.\n- Arun reports to Hal.\n- Mina reports to Niko.\n- Hugo reports to Cleo.\n- Xia reports to Ravi.\n- Hal reports to Pia.\n- Eli reports to Oto.\n- Sol reports to Lio.\n- June reports to Aiko.\n- Niko reports to Arun.\n- Ian reports to Mina.\n- Ravi reports to Kira.\n- Ira reports to Emi.\n- Oto reports to Anya.\n- Lio reports to Nia.",
+      "question": "Is Cleo exactly 8 manager links above Aadi?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d8-q13",
+      "depth": 8,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Jae reports to Aadi.\n- Xia reports to Tara.\n- Kavi reports to Ira.\n- Aiko reports to Kai.\n- Dara reports to Rhea.\n- Mina reports to Una.\n- Chen reports to Lena.\n- Dee reports to Pia.\n- Una reports to Dee.\n- Mara reports to Ava.\n- Tara reports to Hal.\n- June reports to Mina.\n- Cai reports to Vic.\n- Vic reports to Sana.\n- Oto reports to Kavi.\n- Kai reports to Jae.\n- Aadi reports to Xia.\n- Pia reports to Chen.\n- Hal reports to Dara.\n- Gabe reports to Emi.\n- Ira reports to Gabe.\n- Sana reports to Oto.\n- Emi reports to Quin.\n- Lena reports to Mara.",
+      "question": "Is Mara exactly 8 manager links above June?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d8-q14",
+      "depth": 8,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Dee reports to Hugo.\n- Cai reports to Uma.\n- Lena reports to Aadi.\n- Caro reports to Quin.\n- Omar reports to Cleo.\n- Niko reports to Emi.\n- Ravi reports to Caro.\n- Uma reports to Zane.\n- Aadi reports to Kira.\n- Gus reports to Noa.\n- Ava reports to Amir.\n- Kira reports to Kavi.\n- Kavi reports to Omar.\n- Pia reports to Ava.\n- Sana reports to Ravi.\n- Finn reports to Dee.\n- Jae reports to Finn.\n- Hugo reports to Sana.\n- Hana reports to Jae.\n- June reports to Niko.\n- Emi reports to Lena.\n- Gia reports to Cai.\n- Amir reports to Gus.\n- Zane reports to Pia.",
+      "question": "Is Noa exactly 8 manager links above Gia?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d8-q15",
+      "depth": 8,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Vic reports to Inez.\n- Hugo reports to Eli.\n- Lena reports to Faye.\n- Inez reports to Lena.\n- Mo reports to Kai.\n- Nia reports to Hugo.\n- Kira reports to Dara.\n- Chen reports to Vic.\n- Bela reports to Mo.\n- Rhea reports to Hal.\n- Emi reports to Chen.\n- Gia reports to Quin.\n- Ena reports to Nia.\n- Aiko reports to Caro.\n- Dee reports to Bea.\n- Uma reports to Wen.\n- Quin reports to Anya.\n- Faye reports to Kira.\n- Wen reports to Bela.\n- Eli reports to Uma.\n- Bea reports to Aiko.\n- Dara reports to Zane.\n- Hal reports to Gia.\n- Caro reports to Rhea.",
+      "question": "Is Mo exactly 8 manager links above Ena?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d8-q16",
+      "depth": 8,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Anya reports to Ian.\n- Dina reports to Omar.\n- Kavi reports to Hugo.\n- Rhea reports to Tia.\n- Nia reports to Aadi.\n- Ian reports to Jo.\n- Jo reports to Yara.\n- Yara reports to Chen.\n- Dara reports to Finn.\n- Noa reports to Jae.\n- Omar reports to Ena.\n- Aadi reports to Lena.\n- Tara reports to Rhea.\n- Ira reports to Nia.\n- Tia reports to Ira.\n- June reports to Anya.\n- Pia reports to Hal.\n- Uma reports to Kavi.\n- Finn reports to Tara.\n- Jin reports to Uma.\n- Ena reports to Noa.\n- Hal reports to June.\n- Chen reports to Hana.\n- Jae reports to Jin.",
+      "question": "Is Lena exactly 8 manager links above Dara?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d8-q17",
+      "depth": 8,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Luz reports to Ava.\n- Jin reports to Bea.\n- Mara reports to Emi.\n- Una reports to Chen.\n- Xia reports to Luz.\n- Cleo reports to Anya.\n- Chen reports to Ira.\n- Inez reports to Jin.\n- Niko reports to Kavi.\n- Ira reports to Mara.\n- Cai reports to Una.\n- Bea reports to Xia.\n- Kai reports to Nia.\n- Aiko reports to Pia.\n- Pia reports to Cleo.\n- Bela reports to Inez.\n- Dina reports to Bela.\n- June reports to Mo.\n- Dee reports to Cai.\n- Quin reports to Dina.\n- Nia reports to Caro.\n- Mo reports to Dee.\n- Caro reports to Aiko.\n- Anya reports to Niko.",
+      "question": "Is Niko exactly 8 manager links above Kai?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d8-q18",
+      "depth": 8,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Bea reports to Tia.\n- Anya reports to Amir.\n- Kira reports to Pia.\n- Gia reports to Zia.\n- Kavi reports to Niko.\n- Cleo reports to Lena.\n- Hana reports to Gia.\n- Amir reports to Noa.\n- Lena reports to Sana.\n- Lio reports to Yara.\n- Niko reports to Luz.\n- Zane reports to Chen.\n- Zia reports to Mo.\n- Dina reports to Gus.\n- Mo reports to Jo.\n- Gus reports to Zane.\n- Ian reports to Lio.\n- Sana reports to Kira.\n- Pia reports to Kavi.\n- Dee reports to Cleo.\n- Jo reports to Anya.\n- Noa reports to Emi.\n- Chen reports to Ian.\n- Tia reports to Dina.",
+      "question": "Is Luz exactly 8 manager links above Dee?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d8-q19",
+      "depth": 8,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Kavi reports to Ian.\n- Gus reports to Finn.\n- Mina reports to Gus.\n- June reports to Faye.\n- Bela reports to Jin.\n- Quin reports to June.\n- Sol reports to Chen.\n- Kai reports to Sana.\n- Ted reports to Rhea.\n- Faye reports to Lio.\n- Anya reports to Kai.\n- Chen reports to Xia.\n- Lio reports to Tara.\n- Rhea reports to Quin.\n- Luz reports to Arun.\n- Jin reports to Kavi.\n- Tara reports to Eli.\n- Arun reports to Anya.\n- Aiko reports to Bela.\n- Eli reports to Dee.\n- Xia reports to Aiko.\n- Finn reports to Ava.\n- Ian reports to Omar.\n- Sana reports to Mina.",
+      "question": "Is Eli exactly 8 manager links above Ted?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d12-q00",
+      "depth": 12,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Emi reports to Xia.\n- Xia reports to Gabe.\n- Bela reports to Sol.\n- Una reports to Caro.\n- Noa reports to Gia.\n- Zane reports to Mara.\n- Mo reports to Luz.\n- Ian reports to Ava.\n- Cleo reports to Aadi.\n- Dee reports to Kai.\n- Ena reports to Anya.\n- Gia reports to Ena.\n- Yara reports to Bela.\n- Inez reports to Ravi.\n- Hana reports to Gus.\n- Ava reports to Yara.\n- Lena reports to Noa.\n- Quin reports to Cleo.\n- Aadi reports to Wen.\n- Kai reports to Zia.\n- Caro reports to Bea.\n- Tara reports to Hana.\n- Wen reports to Uma.\n- Luz reports to Dee.\n- Gabe reports to Kavi.\n- Anya reports to Tara.\n- Pia reports to Mo.\n- Uma reports to Hal.\n- Mara reports to Lio.\n- Niko reports to Zane.\n- Hal reports to Emi.\n- Jae reports to Inez.\n- Sol reports to Lena.\n- Ravi reports to Quin.\n- Lio reports to Una.\n- Bea reports to Pia.",
+      "question": "Is Zia exactly 12 manager links above Niko?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d12-q01",
+      "depth": 12,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Faye reports to Sana.\n- Amir reports to Niko.\n- Mara reports to Yara.\n- Kira reports to Kai.\n- Dee reports to Ena.\n- Tara reports to Kira.\n- Sana reports to Hal.\n- Kai reports to Tia.\n- Cai reports to Caro.\n- Lena reports to Hana.\n- Dara reports to Zane.\n- Yara reports to Vic.\n- Gus reports to Gia.\n- Chen reports to Noa.\n- Ravi reports to Dara.\n- Mo reports to Faye.\n- Vic reports to Finn.\n- Bela reports to Mo.\n- Dina reports to Omar.\n- Cleo reports to Ravi.\n- Una reports to Mara.\n- Caro reports to Dina.\n- Nia reports to Bela.\n- Kavi reports to Dee.\n- Gia reports to Chen.\n- Zane reports to Gus.\n- Hal reports to Tara.\n- Jo reports to Nia.\n- Omar reports to Una.\n- Hugo reports to Sol.\n- Niko reports to Jo.\n- Sol reports to Lena.\n- Quin reports to Hugo.\n- Noa reports to Quin.\n- Finn reports to Jae.\n- Ena reports to Cai.",
+      "question": "Is Finn exactly 12 manager links above Kavi?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d12-q02",
+      "depth": 12,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Gia reports to Emi.\n- Uma reports to Quin.\n- Kavi reports to Jo.\n- Hal reports to Cai.\n- Ena reports to Finn.\n- Jo reports to Zane.\n- Chen reports to Gia.\n- Zia reports to Sol.\n- Kira reports to Aiko.\n- Arun reports to Tia.\n- Emi reports to Lena.\n- Mo reports to Faye.\n- Xia reports to Aadi.\n- Quin reports to Hal.\n- Lena reports to Mo.\n- Aadi reports to Eli.\n- Zane reports to Gus.\n- Gabe reports to Chen.\n- Noa reports to Lio.\n- Mina reports to Ted.\n- Vic reports to Kira.\n- Niko reports to Vic.\n- Lio reports to Ena.\n- Mara reports to Rhea.\n- Eli reports to Mina.\n- Rhea reports to Cleo.\n- Aiko reports to Zia.\n- Gus reports to Inez.\n- Inez reports to Niko.\n- Faye reports to Noa.\n- Cleo reports to Xia.\n- Sol reports to Arun.\n- Ava reports to Omar.\n- Finn reports to Ava.\n- Nia reports to Mara.\n- Cai reports to Nia.",
+      "question": "Is Omar exactly 12 manager links above Gabe?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d12-q03",
+      "depth": 12,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Cai reports to Noa.\n- Sana reports to Chen.\n- Dee reports to Arun.\n- Jae reports to Pia.\n- Rhea reports to Finn.\n- Hal reports to Zia.\n- Jo reports to Faye.\n- Luz reports to Uma.\n- Mara reports to Mo.\n- Chen reports to Oto.\n- Cleo reports to Xia.\n- Bela reports to Luz.\n- Faye reports to Dee.\n- Tia reports to Rhea.\n- Ava reports to Hal.\n- Niko reports to Mara.\n- Dina reports to Kavi.\n- June reports to Dina.\n- Pia reports to June.\n- Arun reports to Vic.\n- Gia reports to Cleo.\n- Mina reports to Ava.\n- Noa reports to Sana.\n- Ira reports to Ena.\n- Ena reports to Tara.\n- Kira reports to Cai.\n- Oto reports to Eli.\n- Eli reports to Jae.\n- Mo reports to Mina.\n- Zane reports to Tia.\n- Xia reports to Una.\n- Vic reports to Zane.\n- Uma reports to Ira.\n- Zia reports to Bela.\n- Finn reports to Gia.\n- Caro reports to Kira.",
+      "question": "Is Xia exactly 12 manager links above Jo?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d12-q04",
+      "depth": 12,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Cai reports to Inez.\n- Zia reports to Arun.\n- Gia reports to Sol.\n- Cleo reports to Cai.\n- Ravi reports to Zane.\n- Ted reports to Kai.\n- Ena reports to Ted.\n- Dina reports to Niko.\n- Mina reports to Dara.\n- Kira reports to Nia.\n- Niko reports to Gia.\n- Arun reports to Finn.\n- Jin reports to Kira.\n- Bea reports to Ena.\n- Jo reports to Jin.\n- Wen reports to Dina.\n- Sol reports to Jo.\n- Vic reports to Amir.\n- Kavi reports to Tara.\n- Lena reports to Hal.\n- Dara reports to Luz.\n- Kai reports to June.\n- Gus reports to Kavi.\n- Eli reports to Ravi.\n- Tara reports to Wen.\n- Gabe reports to Bea.\n- Hal reports to Eli.\n- Nia reports to Rhea.\n- Zane reports to Bela.\n- Amir reports to Anya.\n- Inez reports to Zia.\n- Omar reports to Lena.\n- Anya reports to Cleo.\n- Finn reports to Mina.\n- June reports to Omar.\n- Luz reports to Emi.",
+      "question": "Is Rhea exactly 12 manager links above Gus?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d12-q05",
+      "depth": 12,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Luz reports to Noa.\n- Zane reports to Tia.\n- Vic reports to Chen.\n- Jo reports to Amir.\n- Xia reports to Ava.\n- Chen reports to Rhea.\n- Ian reports to Hugo.\n- Eli reports to Dina.\n- Uma reports to Ena.\n- Oto reports to Vic.\n- Dee reports to Hal.\n- Nia reports to Dee.\n- June reports to Bea.\n- Tia reports to Gia.\n- Bea reports to Omar.\n- Gus reports to Ted.\n- Omar reports to Bela.\n- Noa reports to Lena.\n- Sana reports to June.\n- Tara reports to Pia.\n- Bela reports to Eli.\n- Rhea reports to Mara.\n- Amir reports to Gus.\n- Hal reports to Tara.\n- Gia reports to Sol.\n- Lena reports to Kira.\n- Arun reports to Uma.\n- Niko reports to Nia.\n- Sol reports to Niko.\n- Kira reports to Finn.\n- Ted reports to Ian.\n- Pia reports to Arun.\n- Hugo reports to Oto.\n- Dina reports to Luz.\n- Zia reports to Sana.\n- Ava reports to Jo.",
+      "question": "Is Kira exactly 12 manager links above Zia?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d12-q06",
+      "depth": 12,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Bea reports to June.\n- Ian reports to Uma.\n- Hana reports to Lena.\n- Ted reports to Nia.\n- Ena reports to Zia.\n- Quin reports to Ena.\n- Sol reports to Kai.\n- Noa reports to Hal.\n- Nia reports to Aiko.\n- Zia reports to Dee.\n- June reports to Chen.\n- Eli reports to Ted.\n- Gus reports to Finn.\n- Caro reports to Lio.\n- Niko reports to Eli.\n- Chen reports to Niko.\n- Lio reports to Arun.\n- Lena reports to Gus.\n- Finn reports to Dara.\n- Jin reports to Bea.\n- Ava reports to Kavi.\n- Wen reports to Anya.\n- Uma reports to Hana.\n- Zane reports to Ian.\n- Dee reports to Gia.\n- Dara reports to Ira.\n- Arun reports to Sol.\n- Kavi reports to Mo.\n- Jo reports to Quin.\n- Vic reports to Ava.\n- Pia reports to Yara.\n- Aiko reports to Vic.\n- Anya reports to Caro.\n- Ira reports to Noa.\n- Yara reports to Zane.\n- Gia reports to Wen.",
+      "question": "Is Mo exactly 12 manager links above Jin?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d12-q07",
+      "depth": 12,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- June reports to Lena.\n- Gia reports to Zane.\n- Inez reports to Yara.\n- Anya reports to Niko.\n- Finn reports to Hana.\n- Omar reports to Bela.\n- Dee reports to Anya.\n- Bela reports to Pia.\n- Sana reports to Dara.\n- Hugo reports to Chen.\n- Chen reports to Rhea.\n- Mina reports to Cleo.\n- Zane reports to Ian.\n- Rhea reports to Hal.\n- Hal reports to Gia.\n- Uma reports to Ena.\n- Ena reports to Finn.\n- Cai reports to Faye.\n- Jae reports to Cai.\n- Cleo reports to Inez.\n- Eli reports to June.\n- Niko reports to Kira.\n- Ian reports to Quin.\n- Pia reports to Eli.\n- Amir reports to Caro.\n- Hana reports to Mina.\n- Dara reports to Arun.\n- Arun reports to Uma.\n- Lena reports to Ravi.\n- Quin reports to Amir.\n- Tia reports to Sana.\n- Ava reports to Ira.\n- Aadi reports to Tia.\n- Ira reports to Dee.\n- Ravi reports to Ava.\n- Caro reports to Jae.",
+      "question": "Is Inez exactly 12 manager links above Aadi?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d12-q08",
+      "depth": 12,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Dara reports to Sana.\n- Bea reports to Jin.\n- Caro reports to Bela.\n- Sana reports to Aadi.\n- Amir reports to Ravi.\n- Ira reports to Quin.\n- Wen reports to Caro.\n- Inez reports to Chen.\n- Finn reports to Eli.\n- Pia reports to Bea.\n- Quin reports to Una.\n- Jin reports to Oto.\n- Zia reports to Faye.\n- Hal reports to Dara.\n- Tara reports to Pia.\n- Anya reports to Aiko.\n- Vic reports to Xia.\n- Niko reports to Zia.\n- Kai reports to Anya.\n- Una reports to Ava.\n- Noa reports to Niko.\n- June reports to Inez.\n- Oto reports to Amir.\n- Xia reports to Tara.\n- Dina reports to Gus.\n- Lena reports to Ian.\n- Eli reports to Lena.\n- Gus reports to Jae.\n- Faye reports to June.\n- Ava reports to Hal.\n- Jae reports to Hugo.\n- Aiko reports to Noa.\n- Ravi reports to Finn.\n- Bela reports to Kai.\n- Hana reports to Ira.\n- Hugo reports to Hana.",
+      "question": "Is Aadi exactly 12 manager links above Dina?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d12-q09",
+      "depth": 12,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Cai reports to Bea.\n- Lena reports to Inez.\n- Anya reports to Aiko.\n- Quin reports to Amir.\n- Arun reports to Ira.\n- Dee reports to Wen.\n- Emi reports to Gabe.\n- Kira reports to Nia.\n- Mara reports to Bela.\n- Aadi reports to Chen.\n- Omar reports to Lena.\n- Rhea reports to Arun.\n- Wen reports to Cai.\n- Ted reports to Emi.\n- Ian reports to Quin.\n- Nia reports to Mo.\n- Caro reports to Anya.\n- Dina reports to Lio.\n- Ira reports to Ted.\n- Inez reports to Ian.\n- Kavi reports to Dina.\n- Dara reports to Zane.\n- Ava reports to Dee.\n- Aiko reports to Ava.\n- Luz reports to Zia.\n- Sana reports to Dara.\n- Eli reports to Pia.\n- Bea reports to Aadi.\n- Pia reports to Caro.\n- Bela reports to Omar.\n- Mo reports to Mara.\n- Amir reports to Luz.\n- Chen reports to Hugo.\n- Gabe reports to Sana.\n- Niko reports to Kavi.\n- Lio reports to Rhea.",
+      "question": "Is Luz exactly 12 manager links above Kira?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d12-q10",
+      "depth": 12,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Ira reports to Ava.\n- Hal reports to Eli.\n- Rhea reports to Wen.\n- Quin reports to Dee.\n- Kai reports to Hana.\n- Finn reports to Sana.\n- Hana reports to Uma.\n- Tia reports to Niko.\n- Zia reports to Quin.\n- Una reports to Kavi.\n- Caro reports to Yara.\n- Dee reports to Mina.\n- Jin reports to Hal.\n- Yara reports to Ira.\n- Mara reports to Amir.\n- Hugo reports to Ian.\n- Ava reports to Zia.\n- Uma reports to Cleo.\n- Lio reports to Kira.\n- June reports to Vic.\n- Eli reports to Hugo.\n- Pia reports to June.\n- Mina reports to Jin.\n- Vic reports to Mara.\n- Omar reports to Finn.\n- Niko reports to Pia.\n- Ravi reports to Sol.\n- Amir reports to Kai.\n- Kira reports to Jae.\n- Kavi reports to Omar.\n- Wen reports to Noa.\n- Luz reports to Jo.\n- Jo reports to Lio.\n- Sana reports to Luz.\n- Cleo reports to Ravi.\n- Jae reports to Rhea.",
+      "question": "Is Sol exactly 12 manager links above Tia?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d12-q11",
+      "depth": 12,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Mo reports to Jae.\n- Xia reports to Mo.\n- Bea reports to Cleo.\n- Chen reports to Dina.\n- Kai reports to Aiko.\n- Una reports to Gia.\n- Hal reports to Emi.\n- Jae reports to Jin.\n- Tia reports to Caro.\n- Oto reports to Wen.\n- Zane reports to Kai.\n- Sana reports to Ava.\n- Dara reports to Xia.\n- Uma reports to Eli.\n- Caro reports to Kira.\n- Mina reports to Uma.\n- Ena reports to Hal.\n- Amir reports to Cai.\n- Emi reports to Sol.\n- Ted reports to Ian.\n- Gia reports to Dara.\n- Wen reports to Bea.\n- Lio reports to Faye.\n- Sol reports to Mina.\n- Kira reports to Una.\n- June reports to Tia.\n- Ian reports to Jo.\n- Eli reports to Kavi.\n- Jo reports to Tara.\n- Dina reports to Ted.\n- Ava reports to June.\n- Faye reports to Zane.\n- Tara reports to Amir.\n- Cleo reports to Ena.\n- Cai reports to Lio.\n- Kavi reports to Ira.",
+      "question": "Is Kavi exactly 12 manager links above Oto?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d12-q12",
+      "depth": 12,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Nia reports to Emi.\n- Dee reports to Niko.\n- Ava reports to Ira.\n- Omar reports to Tia.\n- Amir reports to Inez.\n- Anya reports to Gus.\n- Niko reports to Xia.\n- Jo reports to Aiko.\n- Mo reports to Hana.\n- Yara reports to Hugo.\n- Gia reports to Kai.\n- Sana reports to Rhea.\n- Eli reports to Chen.\n- Bea reports to Mo.\n- Zane reports to Vic.\n- Rhea reports to Ian.\n- Ira reports to Dina.\n- Emi reports to Dee.\n- Dina reports to Mara.\n- Kai reports to Ava.\n- Mara reports to Aadi.\n- Faye reports to Sol.\n- Jae reports to Quin.\n- Dara reports to Omar.\n- Sol reports to Jae.\n- Chen reports to Dara.\n- Aadi reports to Sana.\n- Hugo reports to Amir.\n- Quin reports to Eli.\n- Inez reports to Bea.\n- Tia reports to Jo.\n- Jin reports to Anya.\n- Hana reports to Una.\n- Vic reports to Faye.\n- Gus reports to Gia.\n- Xia reports to Yara.",
+      "question": "Is Aiko exactly 12 manager links above Zane?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d12-q13",
+      "depth": 12,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Oto reports to Zane.\n- Hana reports to Niko.\n- Cai reports to Kai.\n- Lena reports to Luz.\n- Sol reports to Bea.\n- Dara reports to Dina.\n- Chen reports to Ava.\n- Ava reports to Xia.\n- Tia reports to Mina.\n- Yara reports to June.\n- Wen reports to Chen.\n- Jae reports to Kavi.\n- Mina reports to Amir.\n- Jo reports to Tia.\n- Cleo reports to Oto.\n- Dina reports to Hana.\n- Mo reports to Sol.\n- Ted reports to Hugo.\n- Kai reports to Gabe.\n- Omar reports to Jae.\n- Quin reports to Mo.\n- Aadi reports to Caro.\n- Hugo reports to Mara.\n- Xia reports to Cleo.\n- Luz reports to Anya.\n- June reports to Jo.\n- Gabe reports to Yara.\n- Aiko reports to Ted.\n- Amir reports to Dara.\n- Zane reports to Hal.\n- Jin reports to Gus.\n- Mara reports to Lena.\n- Bea reports to Jin.\n- Anya reports to Quin.\n- Kavi reports to Aadi.\n- Hal reports to Omar.",
+      "question": "Is Hana exactly 12 manager links above Cai?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d12-q14",
+      "depth": 12,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Tara reports to Zane.\n- Ira reports to Luz.\n- Ian reports to Hal.\n- Gus reports to Jo.\n- Ena reports to Mina.\n- Jae reports to Noa.\n- Emi reports to Eli.\n- Lio reports to Faye.\n- Pia reports to Mara.\n- Aiko reports to Dee.\n- Eli reports to Mo.\n- Zane reports to Ian.\n- Hana reports to Ira.\n- Uma reports to Omar.\n- Bela reports to Aadi.\n- Mina reports to Pia.\n- Wen reports to Hugo.\n- Oto reports to Yara.\n- Bea reports to Jae.\n- Kira reports to Ena.\n- Hugo reports to Hana.\n- Caro reports to Tia.\n- Hal reports to Cleo.\n- Dee reports to Bea.\n- Xia reports to Uma.\n- Omar reports to Tara.\n- Mara reports to Aiko.\n- June reports to Kira.\n- Jin reports to Wen.\n- Luz reports to Oto.\n- Kai reports to Gus.\n- Noa reports to Lio.\n- Aadi reports to Xia.\n- Jo reports to Jin.\n- Yara reports to Caro.\n- Mo reports to Bela.",
+      "question": "Is Faye exactly 12 manager links above June?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d12-q15",
+      "depth": 12,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Hugo reports to Ian.\n- Zia reports to Ira.\n- Lena reports to Dee.\n- Aadi reports to Gus.\n- Ira reports to Ava.\n- Una reports to Yara.\n- Ava reports to Caro.\n- Tia reports to Dara.\n- Caro reports to Vic.\n- Zane reports to Lio.\n- Bea reports to Hugo.\n- Eli reports to Arun.\n- Mina reports to Inez.\n- Oto reports to Jae.\n- Gus reports to Lena.\n- Lio reports to Cai.\n- Nia reports to Tia.\n- Kira reports to Zane.\n- Cai reports to Mina.\n- Anya reports to Nia.\n- Noa reports to Ted.\n- Yara reports to Rhea.\n- Luz reports to Kavi.\n- Cleo reports to Uma.\n- Jae reports to Bea.\n- Ian reports to Eli.\n- Dee reports to Luz.\n- Dara reports to Una.\n- Bela reports to Aadi.\n- Emi reports to Anya.\n- Arun reports to Zia.\n- Ted reports to Emi.\n- Vic reports to Quin.\n- Rhea reports to Sol.\n- Kavi reports to Kira.\n- Uma reports to Noa.",
+      "question": "Is Vic exactly 12 manager links above Oto?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d12-q16",
+      "depth": 12,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Vic reports to Emi.\n- Kira reports to Tia.\n- Chen reports to Jo.\n- June reports to Hugo.\n- Hana reports to Sol.\n- Ena reports to Hal.\n- Dina reports to Kavi.\n- Tia reports to Dina.\n- Kavi reports to Hana.\n- Eli reports to Pia.\n- Inez reports to Cai.\n- Hugo reports to Ena.\n- Cai reports to Zane.\n- Omar reports to Sana.\n- Arun reports to Faye.\n- Ravi reports to Chen.\n- Sana reports to Lio.\n- Uma reports to June.\n- Niko reports to Vic.\n- Una reports to Oto.\n- Cleo reports to Mina.\n- Quin reports to Zia.\n- Ava reports to Gus.\n- Ian reports to Luz.\n- Sol reports to Eli.\n- Faye reports to Quin.\n- Hal reports to Arun.\n- Zane reports to Noa.\n- Gus reports to Ian.\n- Emi reports to Inez.\n- Pia reports to Una.\n- Jo reports to Kira.\n- Luz reports to Uma.\n- Lio reports to Niko.\n- Noa reports to Cleo.\n- Gabe reports to Omar.",
+      "question": "Is Mina exactly 12 manager links above Gabe?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d12-q17",
+      "depth": 12,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Arun reports to Pia.\n- Amir reports to Aadi.\n- Hal reports to Hugo.\n- Rhea reports to Ian.\n- Cleo reports to Jin.\n- Quin reports to June.\n- Zane reports to Gabe.\n- Gia reports to Lio.\n- Ava reports to Xia.\n- Finn reports to Quin.\n- Jin reports to Ava.\n- Zia reports to Hana.\n- Aadi reports to Hal.\n- Hana reports to Yara.\n- Ted reports to Zane.\n- Bea reports to Gia.\n- Anya reports to Noa.\n- Gabe reports to Oto.\n- Niko reports to Anya.\n- Eli reports to Rhea.\n- Mo reports to Amir.\n- Ian reports to Omar.\n- Hugo reports to Dee.\n- Tia reports to Eli.\n- Luz reports to Kavi.\n- Kavi reports to Tia.\n- Oto reports to Arun.\n- Jo reports to Mo.\n- Yara reports to Luz.\n- Emi reports to Jo.\n- June reports to Zia.\n- Mina reports to Cleo.\n- Noa reports to Ted.\n- Lio reports to Nia.\n- Xia reports to Emi.\n- Pia reports to Bea.",
+      "question": "Is Ian exactly 12 manager links above Finn?",
+      "expected": "no"
+    },
+    {
+      "id": "chain-d12-q18",
+      "depth": 12,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Ravi reports to Omar.\n- Jin reports to Hana.\n- Luz reports to Cleo.\n- Gabe reports to Oto.\n- Aiko reports to Kai.\n- Pia reports to Zia.\n- Noa reports to Gus.\n- Yara reports to Luz.\n- Aadi reports to Gabe.\n- Sana reports to Xia.\n- Xia reports to Ian.\n- Zane reports to Nia.\n- Amir reports to Ted.\n- Oto reports to Una.\n- Una reports to Lio.\n- Kavi reports to Mara.\n- Dara reports to Rhea.\n- Ian reports to Anya.\n- Rhea reports to Aiko.\n- Kai reports to Dee.\n- Dee reports to Amir.\n- Ted reports to Vic.\n- Eli reports to Ravi.\n- Anya reports to Zane.\n- Arun reports to Eli.\n- Tara reports to Dara.\n- Omar reports to Noa.\n- Uma reports to Kavi.\n- Cai reports to Yara.\n- Zia reports to Cai.\n- Hana reports to Pia.\n- Nia reports to Arun.\n- Cleo reports to Aadi.\n- Mina reports to Uma.\n- Vic reports to Mina.\n- Hugo reports to Sana.",
+      "question": "Is Lio exactly 12 manager links above Jin?",
+      "expected": "yes"
+    },
+    {
+      "id": "chain-d12-q19",
+      "depth": 12,
+      "state": "Organisation chart. Each line gives one direct reporting relationship.\n\n- Chen reports to Kira.\n- Ian reports to Vic.\n- Yara reports to Tara.\n- Niko reports to Nia.\n- Nia reports to Sana.\n- Arun reports to Cai.\n- Faye reports to Bela.\n- Caro reports to Jae.\n- Bela reports to Ira.\n- Sol reports to Jin.\n- Amir reports to Ena.\n- Kavi reports to Sol.\n- Eli reports to Inez.\n- Cai reports to Wen.\n- Mina reports to Kavi.\n- Gus reports to Finn.\n- Kira reports to Ian.\n- Jin reports to Gus.\n- Jae reports to Yara.\n- Omar reports to Eli.\n- Ira reports to Quin.\n- Inez reports to Aiko.\n- Luz reports to Hana.\n- Quin reports to Gabe.\n- Ena reports to Caro.\n- June reports to Amir.\n- Gabe reports to Luz.\n- Hal reports to Omar.\n- Hana reports to Mina.\n- Dara reports to Niko.\n- Oto reports to Arun.\n- Aiko reports to Uma.\n- Uma reports to June.\n- Sana reports to Oto.\n- Vic reports to Emi.\n- Emi reports to Dara.",
+      "question": "Is Yara exactly 12 manager links above Hal?",
+      "expected": "no"
+    }
+  ],
+  "compass": {
+    "model": {
+      "endpoint": "http://127.0.0.1:8000",
+      "returned": "compass-0.2.0"
+    },
+    "summary": [
+      {
+        "depth": 1,
+        "correct": 20,
+        "total": 20,
+        "accuracy": 1.0
+      },
+      {
+        "depth": 2,
+        "correct": 10,
+        "total": 20,
+        "accuracy": 0.5
+      },
+      {
+        "depth": 3,
+        "correct": 10,
+        "total": 20,
+        "accuracy": 0.5
+      },
+      {
+        "depth": 4,
+        "correct": 10,
+        "total": 20,
+        "accuracy": 0.5
+      },
+      {
+        "depth": 6,
+        "correct": 10,
+        "total": 20,
+        "accuracy": 0.5
+      },
+      {
+        "depth": 8,
+        "correct": 12,
+        "total": 20,
+        "accuracy": 0.6
+      },
+      {
+        "depth": 12,
+        "correct": 10,
+        "total": 20,
+        "accuracy": 0.5
+      }
+    ],
+    "rows": [
+      {
+        "id": "chain-d1-q00",
+        "depth": 1,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.7983376894608746,
+        "latency_seconds": 0.29893816402181983,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 393,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d1-q01",
+        "depth": 1,
+        "expected": "no",
+        "predicted": "no",
+        "correct": true,
+        "probability_yes": 0.3302678178735774,
+        "latency_seconds": 0.2879395929630846,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d1-q02",
+        "depth": 1,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.8403777335515116,
+        "latency_seconds": 0.3969426320400089,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 403,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d1-q03",
+        "depth": 1,
+        "expected": "no",
+        "predicted": "no",
+        "correct": true,
+        "probability_yes": 0.3442341767886871,
+        "latency_seconds": 0.2921337669249624,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 394,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d1-q04",
+        "depth": 1,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.7446005911334493,
+        "latency_seconds": 0.28777306084521115,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 402,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d1-q05",
+        "depth": 1,
+        "expected": "no",
+        "predicted": "no",
+        "correct": true,
+        "probability_yes": 0.3438069114606633,
+        "latency_seconds": 0.28920155204832554,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 393,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d1-q06",
+        "depth": 1,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.8033967578400925,
+        "latency_seconds": 0.2907529647927731,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 395,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d1-q07",
+        "depth": 1,
+        "expected": "no",
+        "predicted": "no",
+        "correct": true,
+        "probability_yes": 0.3381839623184896,
+        "latency_seconds": 0.2987784929573536,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 393,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d1-q08",
+        "depth": 1,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.7931348804954732,
+        "latency_seconds": 0.6287852069362998,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 383,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d1-q09",
+        "depth": 1,
+        "expected": "no",
+        "predicted": "no",
+        "correct": true,
+        "probability_yes": 0.31950766539073927,
+        "latency_seconds": 0.28579402389004827,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d1-q10",
+        "depth": 1,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.8120200097415037,
+        "latency_seconds": 0.2833316340111196,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 394,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d1-q11",
+        "depth": 1,
+        "expected": "no",
+        "predicted": "no",
+        "correct": true,
+        "probability_yes": 0.3505267420261318,
+        "latency_seconds": 0.30248967302031815,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 392,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d1-q12",
+        "depth": 1,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.7857026583502604,
+        "latency_seconds": 0.2967582461424172,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 402,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d1-q13",
+        "depth": 1,
+        "expected": "no",
+        "predicted": "no",
+        "correct": true,
+        "probability_yes": 0.29618794086001404,
+        "latency_seconds": 0.29123113001696765,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 386,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d1-q14",
+        "depth": 1,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.8204083857762083,
+        "latency_seconds": 0.2756675509735942,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 384,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d1-q15",
+        "depth": 1,
+        "expected": "no",
+        "predicted": "no",
+        "correct": true,
+        "probability_yes": 0.361544475693229,
+        "latency_seconds": 0.2786191951017827,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 383,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d1-q16",
+        "depth": 1,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.8242562615602932,
+        "latency_seconds": 0.2867198719177395,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 395,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d1-q17",
+        "depth": 1,
+        "expected": "no",
+        "predicted": "no",
+        "correct": true,
+        "probability_yes": 0.3560815537175744,
+        "latency_seconds": 0.2963119118940085,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 394,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d1-q18",
+        "depth": 1,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.7760813457548112,
+        "latency_seconds": 0.2902360709849745,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 394,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d1-q19",
+        "depth": 1,
+        "expected": "no",
+        "predicted": "no",
+        "correct": true,
+        "probability_yes": 0.3957036148650251,
+        "latency_seconds": 0.2806809211615473,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 394,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d2-q00",
+        "depth": 2,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.6583321810204636,
+        "latency_seconds": 0.28777371090836823,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 419,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d2-q01",
+        "depth": 2,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5335367177712189,
+        "latency_seconds": 0.2796725139487535,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 415,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d2-q02",
+        "depth": 2,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.6383874217000565,
+        "latency_seconds": 0.2812485371250659,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 427,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d2-q03",
+        "depth": 2,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.6219986393247269,
+        "latency_seconds": 0.2826274479739368,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 415,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d2-q04",
+        "depth": 2,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.6270427092425669,
+        "latency_seconds": 0.27908164798282087,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 406,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d2-q05",
+        "depth": 2,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5453775899158478,
+        "latency_seconds": 0.28663917095400393,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 408,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d2-q06",
+        "depth": 2,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.6334440448875438,
+        "latency_seconds": 0.2789703181479126,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 416,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d2-q07",
+        "depth": 2,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.6210362937100066,
+        "latency_seconds": 0.2836603259202093,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 410,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d2-q08",
+        "depth": 2,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5569205744973889,
+        "latency_seconds": 0.29077833611518145,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 419,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d2-q09",
+        "depth": 2,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.6320157692934651,
+        "latency_seconds": 0.27948418189771473,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 421,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d2-q10",
+        "depth": 2,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.6053520116434203,
+        "latency_seconds": 0.2796172939706594,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 427,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d2-q11",
+        "depth": 2,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5734343637991699,
+        "latency_seconds": 0.29121866007335484,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 407,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d2-q12",
+        "depth": 2,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5872882805322469,
+        "latency_seconds": 0.28493029600940645,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 415,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d2-q13",
+        "depth": 2,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5374337282257788,
+        "latency_seconds": 0.2830094110686332,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 428,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d2-q14",
+        "depth": 2,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.586266508388047,
+        "latency_seconds": 0.2868750630877912,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 410,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d2-q15",
+        "depth": 2,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5995445576152284,
+        "latency_seconds": 0.2809135930147022,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 419,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d2-q16",
+        "depth": 2,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.6247367729425229,
+        "latency_seconds": 0.28053899109363556,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 427,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d2-q17",
+        "depth": 2,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5244801339645365,
+        "latency_seconds": 0.28316459199413657,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 414,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d2-q18",
+        "depth": 2,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.6129463202200495,
+        "latency_seconds": 0.2879752619192004,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 415,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d2-q19",
+        "depth": 2,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.6196699455104464,
+        "latency_seconds": 0.282424797071144,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 415,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d3-q00",
+        "depth": 3,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.560323674490633,
+        "latency_seconds": 0.28323261300101876,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 429,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d3-q01",
+        "depth": 3,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.568948468866477,
+        "latency_seconds": 0.28297436190769076,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 440,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d3-q02",
+        "depth": 3,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5663767686393969,
+        "latency_seconds": 0.2869144449941814,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 453,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d3-q03",
+        "depth": 3,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5624497619166778,
+        "latency_seconds": 0.28876971011050045,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 443,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d3-q04",
+        "depth": 3,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5544033080138819,
+        "latency_seconds": 0.29501074203290045,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 440,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d3-q05",
+        "depth": 3,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5389570782602466,
+        "latency_seconds": 0.2945351479575038,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 439,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d3-q06",
+        "depth": 3,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5394457082592364,
+        "latency_seconds": 0.28781485208310187,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 440,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d3-q07",
+        "depth": 3,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5205463782043929,
+        "latency_seconds": 0.2781788310967386,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 448,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d3-q08",
+        "depth": 3,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5415254290625751,
+        "latency_seconds": 0.28121952596120536,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 433,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d3-q09",
+        "depth": 3,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5986726907973958,
+        "latency_seconds": 0.2896217671222985,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 454,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d3-q10",
+        "depth": 3,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5386073406191789,
+        "latency_seconds": 0.3036997951567173,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 445,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d3-q11",
+        "depth": 3,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5807659425472078,
+        "latency_seconds": 0.2939650129992515,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 441,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d3-q12",
+        "depth": 3,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5925290874606455,
+        "latency_seconds": 0.2898824878502637,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 431,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d3-q13",
+        "depth": 3,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5529676370855363,
+        "latency_seconds": 0.2841631709598005,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 432,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d3-q14",
+        "depth": 3,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5336433076547252,
+        "latency_seconds": 0.2822312649805099,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 440,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d3-q15",
+        "depth": 3,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.541638808819137,
+        "latency_seconds": 0.2839186289347708,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 438,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d3-q16",
+        "depth": 3,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5519072321795345,
+        "latency_seconds": 0.29239690117537975,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 441,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d3-q17",
+        "depth": 3,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5650918577562252,
+        "latency_seconds": 0.32415355392731726,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 439,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d3-q18",
+        "depth": 3,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5592295328950321,
+        "latency_seconds": 0.31648124009370804,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 445,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d3-q19",
+        "depth": 3,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5460919131348816,
+        "latency_seconds": 0.28233879595063627,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 437,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d4-q00",
+        "depth": 4,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5795238632802054,
+        "latency_seconds": 0.2850959678180516,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 474,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d4-q01",
+        "depth": 4,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5467897825431337,
+        "latency_seconds": 0.2821677350439131,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 465,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d4-q02",
+        "depth": 4,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5730282330702652,
+        "latency_seconds": 0.2836610861122608,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 461,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d4-q03",
+        "depth": 4,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.56807449679111,
+        "latency_seconds": 0.33601305400952697,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 475,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d4-q04",
+        "depth": 4,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5682788476757258,
+        "latency_seconds": 0.323424288071692,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 467,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d4-q05",
+        "depth": 4,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5546247541391196,
+        "latency_seconds": 0.28733063698746264,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 466,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d4-q06",
+        "depth": 4,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5270006973419579,
+        "latency_seconds": 0.28844036697410047,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 465,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d4-q07",
+        "depth": 4,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5614848412082183,
+        "latency_seconds": 0.33333079097792506,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 464,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d4-q08",
+        "depth": 4,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5582176485981398,
+        "latency_seconds": 0.3401107070967555,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 467,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d4-q09",
+        "depth": 4,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5814064199863075,
+        "latency_seconds": 0.3126347691286355,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 465,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d4-q10",
+        "depth": 4,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5737349384103587,
+        "latency_seconds": 0.29310830496251583,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 468,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d4-q11",
+        "depth": 4,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5477627090239274,
+        "latency_seconds": 0.28587632486596704,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 455,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d4-q12",
+        "depth": 4,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5541584222666852,
+        "latency_seconds": 0.2914408210199326,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 466,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d4-q13",
+        "depth": 4,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5796651160884208,
+        "latency_seconds": 0.29489086009562016,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 464,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d4-q14",
+        "depth": 4,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5387396974842747,
+        "latency_seconds": 0.32459248788654804,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 469,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d4-q15",
+        "depth": 4,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5317866736953482,
+        "latency_seconds": 0.3203086119610816,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 463,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d4-q16",
+        "depth": 4,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5522410366727009,
+        "latency_seconds": 0.32342037791386247,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 470,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d4-q17",
+        "depth": 4,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5252494807733735,
+        "latency_seconds": 0.29185804491862655,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 476,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d4-q18",
+        "depth": 4,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5326597106895324,
+        "latency_seconds": 0.2798639349639416,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 461,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d4-q19",
+        "depth": 4,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5687080449304914,
+        "latency_seconds": 0.28594890609383583,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 464,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d6-q00",
+        "depth": 6,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5191416392365109,
+        "latency_seconds": 0.2824100269936025,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 514,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d6-q01",
+        "depth": 6,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5260699095580106,
+        "latency_seconds": 0.2813557470217347,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 507,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d6-q02",
+        "depth": 6,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5524004215471549,
+        "latency_seconds": 0.28346253489144146,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 504,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d6-q03",
+        "depth": 6,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5545854687375102,
+        "latency_seconds": 0.2981279769446701,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 502,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d6-q04",
+        "depth": 6,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5389631308947076,
+        "latency_seconds": 0.31819181493483484,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 519,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d6-q05",
+        "depth": 6,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5460946037402007,
+        "latency_seconds": 0.3012626930139959,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 502,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d6-q06",
+        "depth": 6,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5455121803067896,
+        "latency_seconds": 0.2855603329371661,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 505,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d6-q07",
+        "depth": 6,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5438938807629414,
+        "latency_seconds": 0.2818508609198034,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 497,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d6-q08",
+        "depth": 6,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5666603931794729,
+        "latency_seconds": 0.27946651191450655,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 506,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d6-q09",
+        "depth": 6,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5469700015496611,
+        "latency_seconds": 0.2911063190549612,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 515,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d6-q10",
+        "depth": 6,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5333411857001823,
+        "latency_seconds": 0.2955571049824357,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 509,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d6-q11",
+        "depth": 6,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.54184817086668,
+        "latency_seconds": 0.29475170909427106,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 509,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d6-q12",
+        "depth": 6,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5214425272454876,
+        "latency_seconds": 0.28665787214413285,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 513,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d6-q13",
+        "depth": 6,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5357015412277477,
+        "latency_seconds": 0.2915471629239619,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 508,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d6-q14",
+        "depth": 6,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5237407613313458,
+        "latency_seconds": 0.28268112894147635,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 504,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d6-q15",
+        "depth": 6,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5471385524702207,
+        "latency_seconds": 0.29192518605850637,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 504,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d6-q16",
+        "depth": 6,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5386195755713126,
+        "latency_seconds": 0.2823809159453958,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 509,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d6-q17",
+        "depth": 6,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.554311999651805,
+        "latency_seconds": 0.29314441489987075,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 520,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d6-q18",
+        "depth": 6,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5199829221980038,
+        "latency_seconds": 0.28653432009741664,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 499,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d6-q19",
+        "depth": 6,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.525472865713517,
+        "latency_seconds": 0.2897520780097693,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 518,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d8-q00",
+        "depth": 8,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5119645003975903,
+        "latency_seconds": 0.2946729601826519,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 560,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d8-q01",
+        "depth": 8,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5463647340052787,
+        "latency_seconds": 0.28220580401830375,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 557,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d8-q02",
+        "depth": 8,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5168846462668178,
+        "latency_seconds": 0.2825691078323871,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 563,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d8-q03",
+        "depth": 8,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5112639429883951,
+        "latency_seconds": 0.2959233089350164,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 550,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d8-q04",
+        "depth": 8,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5523952208419483,
+        "latency_seconds": 0.28998779016546905,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 553,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d8-q05",
+        "depth": 8,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5402423671740022,
+        "latency_seconds": 0.2831916338764131,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 558,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d8-q06",
+        "depth": 8,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5238565470100036,
+        "latency_seconds": 0.28493968793191016,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 549,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d8-q07",
+        "depth": 8,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5187562022333486,
+        "latency_seconds": 0.2937287010718137,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 553,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d8-q08",
+        "depth": 8,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5387479920304089,
+        "latency_seconds": 0.2853179909288883,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 544,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d8-q09",
+        "depth": 8,
+        "expected": "no",
+        "predicted": "no",
+        "correct": true,
+        "probability_yes": 0.47753855244583415,
+        "latency_seconds": 0.2895367150194943,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 550,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d8-q10",
+        "depth": 8,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5398982850510634,
+        "latency_seconds": 0.2911846188362688,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 549,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d8-q11",
+        "depth": 8,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5607867798091406,
+        "latency_seconds": 0.29023840092122555,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 551,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d8-q12",
+        "depth": 8,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5268010417694534,
+        "latency_seconds": 0.2835406369995326,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 567,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d8-q13",
+        "depth": 8,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.526811336941895,
+        "latency_seconds": 0.28850483684800565,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 543,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d8-q14",
+        "depth": 8,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.526691466771805,
+        "latency_seconds": 0.2997169110458344,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 558,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d8-q15",
+        "depth": 8,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5486636232664235,
+        "latency_seconds": 0.2962515619583428,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 554,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d8-q16",
+        "depth": 8,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5337248228617609,
+        "latency_seconds": 0.2835111659951508,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 548,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d8-q17",
+        "depth": 8,
+        "expected": "no",
+        "predicted": "no",
+        "correct": true,
+        "probability_yes": 0.4990501382121605,
+        "latency_seconds": 0.284623236162588,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 553,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d8-q18",
+        "depth": 8,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5463492189960989,
+        "latency_seconds": 0.29027298209257424,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 557,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d8-q19",
+        "depth": 8,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5534529845161306,
+        "latency_seconds": 0.28505670791491866,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 548,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d12-q00",
+        "depth": 12,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5187311174881298,
+        "latency_seconds": 0.2886137480381876,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 675,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d12-q01",
+        "depth": 12,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5278714806602807,
+        "latency_seconds": 0.28407510998658836,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 662,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d12-q02",
+        "depth": 12,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5453595700268695,
+        "latency_seconds": 0.2941890750080347,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 671,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d12-q03",
+        "depth": 12,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5430733383613475,
+        "latency_seconds": 0.2838646490126848,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 654,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d12-q04",
+        "depth": 12,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5400762415494743,
+        "latency_seconds": 0.27968019410036504,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 663,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d12-q05",
+        "depth": 12,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5258654424478895,
+        "latency_seconds": 0.28543763188645244,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 663,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d12-q06",
+        "depth": 12,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5587460575123818,
+        "latency_seconds": 0.2816705990117043,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 654,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d12-q07",
+        "depth": 12,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5364720571834372,
+        "latency_seconds": 0.28663296182639897,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 674,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d12-q08",
+        "depth": 12,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5039829232887035,
+        "latency_seconds": 0.2866176809184253,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 668,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d12-q09",
+        "depth": 12,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5396839222597425,
+        "latency_seconds": 0.28747759805992246,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 666,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d12-q10",
+        "depth": 12,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5260686480536517,
+        "latency_seconds": 0.28804785292595625,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 662,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d12-q11",
+        "depth": 12,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5326040001023894,
+        "latency_seconds": 0.2906706959474832,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 658,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d12-q12",
+        "depth": 12,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5184259745085172,
+        "latency_seconds": 0.28409077087417245,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 672,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d12-q13",
+        "depth": 12,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5118636569579613,
+        "latency_seconds": 0.2809881048742682,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 660,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d12-q14",
+        "depth": 12,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.533339398918152,
+        "latency_seconds": 0.29380225110799074,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 658,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d12-q15",
+        "depth": 12,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5437482448806761,
+        "latency_seconds": 0.28547759214416146,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 657,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d12-q16",
+        "depth": 12,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5198785797898081,
+        "latency_seconds": 0.28475295496173203,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 673,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d12-q17",
+        "depth": 12,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5614750866476925,
+        "latency_seconds": 0.28418842190876603,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 661,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d12-q18",
+        "depth": 12,
+        "expected": "yes",
+        "predicted": "yes",
+        "correct": true,
+        "probability_yes": 0.5322095811893823,
+        "latency_seconds": 0.28655517008155584,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 667,
+          "output_tokens": 0
+        }
+      },
+      {
+        "id": "chain-d12-q19",
+        "depth": 12,
+        "expected": "no",
+        "predicted": "yes",
+        "correct": false,
+        "probability_yes": 0.5171850820284852,
+        "latency_seconds": 0.2804199599195272,
+        "model": "compass-0.2.0",
+        "usage": {
+          "input_tokens": 663,
+          "output_tokens": 0
+        }
+      }
+    ]
+  }
+}

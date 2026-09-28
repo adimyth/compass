@@ -1,37 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="700" viewBox="0 0 1440 700" role="img" aria-labelledby="title desc">
-<title id="title">Manager-chain speed and cost profile: Jev and Qwen3.5-9B</title>
-<desc id="desc">On the same 140 manager-chain questions, Jev has a median endpoint latency of 0.38 seconds, reports 2,800 output tokens, and costs 0.0028 dollars. Qwen3.5-9B has a median endpoint latency of 23.54 seconds, generates 444,748 tokens, and costs 0.056 dollars.</desc>
-<rect width="1440" height="700" fill="#0E1014" rx="28"/>
-<text x="72.0" y="84.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="48" font-weight="700" text-anchor="start">the manager-chain speed &amp; cost profile</text>
-<text x="72.0" y="122.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="400" text-anchor="start">Same 140 questions. Jev returns a typed probability; Qwen3.5-9B writes a reasoning trace.</text>
-<rect x="72" y="180" width="400" height="330" rx="20" fill="#181C22"/>
-<rect x="520" y="180" width="400" height="330" rx="20" fill="#181C22"/>
-<rect x="968" y="180" width="400" height="330" rx="20" fill="#181C22"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="760" viewBox="0 0 1440 760" role="img" aria-labelledby="title desc">
+<title id="title">Manager-chain deployment profile: Compass, Jev, and Qwen3.5-9B</title>
+<desc id="desc">On the same 140 manager-chain questions, Compass has a 0.29-second median localhost endpoint latency on an RTX 4090 and generates no answer tokens. Jev has a 0.33-second median TypeSafe API latency, reports 2,800 output tokens, and costs 0.0028 dollars. Qwen3.5-9B has a 23.54-second median OpenRouter endpoint latency, generates 444,748 tokens, and costs 0.056 dollars.</desc>
+<rect width="1440" height="760" fill="#0E1014" rx="28"/>
+<text x="72.0" y="84.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="48" font-weight="700" text-anchor="start">the manager-chain deployment profile</text>
+<text x="72.0" y="122.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="400" text-anchor="start">Same 140 questions. Compass and Jev return a typed probability; Qwen3.5-9B writes a reasoning trace.</text>
+<rect x="72" y="180" width="400" height="390" rx="20" fill="#181C22"/>
+<rect x="520" y="180" width="400" height="390" rx="20" fill="#181C22"/>
+<rect x="968" y="180" width="400" height="390" rx="20" fill="#181C22"/>
 <text x="108.0" y="232.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" text-anchor="start">MEDIAN REQUEST LATENCY</text>
-<text x="108.0" y="271.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="700" text-anchor="start">Qwen was 62× slower</text>
-<text x="556.0" y="232.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" text-anchor="start">REPORTED OUTPUT TOKENS</text>
-<text x="556.0" y="271.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="700" text-anchor="start">Qwen used 159× tokens</text>
-<text x="1004.0" y="232.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" text-anchor="start">RECORDED RUN COST</text>
-<text x="1004.0" y="271.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="700" text-anchor="start">Qwen cost 20× more</text>
-<rect x="108.0" y="340.0" width="12.0" height="30" rx="15" fill="#F4D35E"/>
-<text x="108.0" y="326.0" fill="#F4D35E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Jev</text>
-<text x="138.0" y="362.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">0.38s</text>
-<rect x="108.0" y="444.0" width="240.0" height="30" rx="15" fill="#F17EBF"/>
-<text x="108.0" y="430.0" fill="#F17EBF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Qwen3.5-9B, thinking on</text>
-<text x="366.0" y="466.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">23.54s</text>
-<rect x="556.0" y="340.0" width="12.0" height="30" rx="15" fill="#F4D35E"/>
-<text x="556.0" y="326.0" fill="#F4D35E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Jev</text>
-<text x="586.0" y="362.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">2,800</text>
-<rect x="556.0" y="444.0" width="240.0" height="30" rx="15" fill="#F17EBF"/>
-<text x="556.0" y="430.0" fill="#F17EBF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Qwen3.5-9B, thinking on</text>
-<text x="814.0" y="466.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">444,748</text>
-<rect x="1004.0" y="340.0" width="12.0" height="30" rx="15" fill="#F4D35E"/>
-<text x="1004.0" y="326.0" fill="#F4D35E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Jev</text>
-<text x="1034.0" y="362.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">$0.0028</text>
-<rect x="1004.0" y="444.0" width="240.0" height="30" rx="15" fill="#F17EBF"/>
-<text x="1004.0" y="430.0" fill="#F17EBF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Qwen3.5-9B, thinking on</text>
-<text x="1262.0" y="466.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">$0.056</text>
-<text x="72.0" y="580.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="600" text-anchor="start">Jev cost $0.0028 for the run ($0.00002 per question). OpenRouter billed Qwen $0.056 ($0.00040 per question).</text>
-<text x="72.0" y="620.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="400" text-anchor="start">Each panel compares the same 140 questions.</text>
-<text x="72.0" y="656.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="400" text-anchor="start">Latency is the median end-to-end request time. Qwen requests ran with 12-way concurrency; this is not total suite wall time.</text>
+<text x="108.0" y="271.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">Compass was 1.2× faster than Jev</text>
+<text x="556.0" y="232.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" text-anchor="start">GENERATED ANSWER TOKENS</text>
+<text x="556.0" y="271.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="700" text-anchor="start">Qwen used 159× Jev&#x27;s tokens</text>
+<text x="1004.0" y="232.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" text-anchor="start">HOSTED API RUN CHARGE</text>
+<text x="1004.0" y="271.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">Qwen cost 20× Jev&#x27;s API charge</text>
+<rect x="108.0" y="340.0" width="12.0" height="30" rx="15" fill="#57D6E8"/>
+<text x="108.0" y="326.0" fill="#57D6E8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Compass, RTX 4090</text>
+<text x="138.0" y="362.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">0.287s</text>
+<rect x="108.0" y="436.0" width="12.0" height="30" rx="15" fill="#F4D35E"/>
+<text x="108.0" y="422.0" fill="#F4D35E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Jev 1.13.0 API</text>
+<text x="138.0" y="458.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">0.334s</text>
+<rect x="108.0" y="532.0" width="240.0" height="30" rx="15" fill="#F17EBF"/>
+<text x="108.0" y="518.0" fill="#F17EBF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Qwen3.5-9B, thinking on</text>
+<text x="366.0" y="554.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">23.54s (82×)</text>
+<rect x="556.0" y="340.0" width="12.0" height="30" rx="15" fill="#57D6E8"/>
+<text x="556.0" y="326.0" fill="#57D6E8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Compass, RTX 4090</text>
+<text x="586.0" y="362.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">0 (fixed readout)</text>
+<rect x="556.0" y="436.0" width="12.0" height="30" rx="15" fill="#F4D35E"/>
+<text x="556.0" y="422.0" fill="#F4D35E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Jev 1.13.0 API</text>
+<text x="586.0" y="458.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">2,800</text>
+<rect x="556.0" y="532.0" width="240.0" height="30" rx="15" fill="#F17EBF"/>
+<text x="556.0" y="518.0" fill="#F17EBF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Qwen3.5-9B, thinking on</text>
+<text x="814.0" y="554.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">444,748</text>
+<text x="1004.0" y="326.0" fill="#57D6E8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Compass, RTX 4090</text>
+<text x="1004.0" y="360.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">self-hosted GPU</text>
+<text x="1004.0" y="388.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="17" font-weight="400" text-anchor="start">No hosted API charge assigned</text>
+<rect x="1004.0" y="436.0" width="12.0" height="30" rx="15" fill="#F4D35E"/>
+<text x="1004.0" y="422.0" fill="#F4D35E" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Jev 1.13.0 API</text>
+<text x="1034.0" y="458.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">$0.0028</text>
+<rect x="1004.0" y="532.0" width="240.0" height="30" rx="15" fill="#F17EBF"/>
+<text x="1004.0" y="518.0" fill="#F17EBF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" text-anchor="start">Qwen3.5-9B, thinking on</text>
+<text x="1262.0" y="554.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" text-anchor="start">$0.056</text>
+<text x="72.0" y="640.0" fill="#F4F6F8" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="600" text-anchor="start">Jev cost $0.0028 for the run ($0.00002 per question). OpenRouter billed Qwen $0.056 ($0.00040 per question).</text>
+<text x="72.0" y="680.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="17" font-weight="400" text-anchor="start">Latency is client-observed end-to-end time: Compass ran locally on an RTX 4090; Jev was called serially from that host; Qwen used OpenRouter with 12 concurrent requests.</text>
+<text x="72.0" y="716.0" fill="#9EA5AF" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="17" font-weight="400" text-anchor="start">Compass uses a self-hosted GPU, so its cost is not comparable with the two hosted API charges.</text>
 </svg>

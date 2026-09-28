@@ -18,9 +18,11 @@ The suite has 20 questions at each chain length: 1, 2, 3, 4, 6, 8, and 12 links,
 
 | System | How it answers | Runner | Result file |
 | --- | --- | --- | --- |
-| Compass 0.2.0 | One forward pass through the fusion readout with the LoRA v2 adapter; yes when calibrated p(yes) ≥ 0.5. No generated tokens. | `scripts/manager_chain_eval.py` | `dev/results/manager-chain-2026-09-27.json` |
-| Jev (`jev-latest`, served as 1.13.0) | The same yes/no question sent to TypeSafe's hosted `/v1/systemone` endpoint. | `scripts/run_jev_manager_chain.py` | `dev/results/manager-chain-jev-2026-09-27.json` |
+| Compass 0.2.0 | The local `/v1/systemone` endpoint runs the fusion readout with the LoRA v2 adapter; yes when calibrated p(yes) ≥ 0.5. No generated tokens. | `scripts/run_compass_manager_chain.py` | `dev/results/manager-chain-compass-4090-2026-09-28.json` |
+| Jev 1.13.0 | The same yes/no question sent to TypeSafe's hosted `/v1/systemone` endpoint. | `scripts/run_jev_manager_chain.py` | `dev/results/manager-chain-jev-4090host-2026-09-28.json` |
 | Qwen3.5-9B, thinking on | Writes a reasoning trace, then `FINAL: YES` or `FINAL: NO`. The system prompt is `qwen_prompt` in `scripts/manager_chain_eval.py`. | `scripts/run_openrouter_manager_chain.py` | `dev/results/manager-chain-qwen9b-2026-09-27.json` |
+
+Compass and Jev ran sequentially from the same RTX 4090 host. Compass served its release endpoint locally after five warm-up requests. Jev remained a remote TypeSafe API call. The reported latency is client-observed end-to-end time for those two routes.
 
 Qwen ran through OpenRouter as `qwen/qwen3.5-9b`, pinned to Parasail's bf16 endpoint with fallbacks off, reasoning enabled, temperature 0, seed 20260927, a 32,768-token limit, and 12 concurrent requests. The answer is read only after `</think>`. A trace with no final answer is scored wrong. Reasoning tokens are counted with the `Qwen/Qwen3.5-9B` tokenizer.
 
@@ -32,10 +34,10 @@ Qwen ran through OpenRouter as `qwen/qwen3.5-9b`, pinned to Parasail's bf16 endp
 | 2 | 10/20 | 14/20 | 17/20 | 987 | 3 |
 | 3 | 10/20 | 12/20 | 17/20 | 981 | 3 |
 | 4 | 10/20 | 13/20 | 19/20 | 988 | 1 |
-| 6 | 10/20 | 11/20 | 20/20 | 1,139 | 0 |
+| 6 | 10/20 | 12/20 | 20/20 | 1,139 | 0 |
 | 8 | 12/20 | 10/20 | 20/20 | 1,242 | 0 |
 | 12 | 10/20 | 10/20 | 20/20 | 2,260 | 0 |
-| **All** | **82/140 (59 %)** | **90/140 (64 %)** | **129/140 (92 %)** | | **11** |
+| **All** | **82/140 (59 %)** | **91/140 (65 %)** | **129/140 (92 %)** | | **11** |
 
 Compass and Jev are at chance from length 2 onward. Qwen answered every item it finished correctly. The 11 items without an answer are greedy-decoding loops, with the same line such as "Okay." repeated up to 200 times, which Parasail ended with `finish_reason: "error"` after 18,972 to 25,270 tokens, ten of them at 301 to 316 seconds. They occur only at lengths 1 to 4. At temperature 0 a rerun repeats the same loop, so they stand as wrong. The 140 recorded answers cost $0.056 for 444,748 output tokens, and the final pass took 16 minutes. The chart is `docs/diagrams/manager-chain-results-qwen9b.svg`.
 
@@ -43,12 +45,13 @@ Compass is built on Qwen3.5-4B, so this compares it with a model more than twice
 
 ### Speed and token work
 
-| System | Median end-to-end request time | Reported output tokens across 140 questions | Recorded dollar charge |
+| System | Median endpoint time (p95) | Generated answer tokens across 140 questions | Recorded dollar charge |
 | --- | ---: | ---: | ---: |
-| Jev 1.13.0 | 0.38 s | 2,800 | $0.0028 via TypeSafe |
-| Qwen3.5-9B, thinking on | 23.54 s | 444,748 | $0.056 via OpenRouter |
+| Compass 0.2.0, local RTX 4090 | 0.287 s (0.324 s) | 0 | Self-hosted GPU |
+| Jev 1.13.0, TypeSafe API | 0.334 s (0.399 s) | 2,800 | $0.0028 via TypeSafe |
+| Qwen3.5-9B, thinking on | 23.54 s (301.72 s) | 444,748 | $0.056 via OpenRouter |
 
-Qwen took 62× longer per request, generated 159× more output tokens, and cost 20× more. The latency values are median end-to-end request times. Qwen requests ran with 12-way concurrency; they are not the suite wall time. `docs/diagrams/manager-chain-runtime-qwen9b.svg` renders the comparison.
+Compass finished 1.2× faster than Jev on the two client-observed endpoint routes. Qwen took 82× longer than Compass per request, generated 159× more answer tokens than Jev, and cost 20× more than Jev's API run. Compass uses a self-hosted GPU, so its cost does not belong in that API-charge comparison. Qwen requests ran with 12-way concurrency; its latency is not the suite wall time. `docs/diagrams/manager-chain-runtime-qwen9b.svg` renders the comparison.
 
 ### Why not Qwen3.5-4B
 
@@ -62,12 +65,13 @@ Qwen took 62× longer per request, generated 159× more output tokens, and cost 
 uv run python scripts/run_openrouter_manager_chain.py \
   --out dev/results/manager-chain-qwen9b-2026-09-27.json
 uv run python scripts/render_manager_chain_chart.py \
-  --compass-input dev/results/manager-chain-2026-09-27.json \
-  --jev-input dev/results/manager-chain-jev-2026-09-27.json \
+  --compass-input dev/results/manager-chain-compass-4090-2026-09-28.json \
+  --jev-input dev/results/manager-chain-jev-4090host-2026-09-28.json \
   --qwen-input dev/results/manager-chain-qwen9b-2026-09-27.json \
   --out docs/diagrams/manager-chain-results-qwen9b.svg
 uv run python scripts/render_manager_chain_runtime_chart.py \
-  --jev-input dev/results/manager-chain-jev-2026-09-27.json \
+  --compass-input dev/results/manager-chain-compass-4090-2026-09-28.json \
+  --jev-input dev/results/manager-chain-jev-4090host-2026-09-28.json \
   --qwen-input dev/results/manager-chain-qwen9b-2026-09-27.json \
   --out docs/diagrams/manager-chain-runtime-qwen9b.svg
 ```

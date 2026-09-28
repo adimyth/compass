@@ -32,7 +32,7 @@ python -m jevbench.cli run --tasks datasets/public/original.jsonl \
 
 Hard-tier top-label ECE 0.069; mean TVD to gold distributions on the public `probability` items 0.22. These are public-item figures only and are not comparable to ranked rows, which include the held-out and judge items. Hard misses concentrate in `temporal_numeric` and `long_policy`. We claim no rank from this; the held-out and judge items are yours, and speed and cost are measured from your server.
 
-**Cost basis.** Qwen3.5-4B at the hosted price you use for that size class ($0.03 per M input, DeepInfra), times the input tokens the API reports; nothing is generated. On an RTX 4090 we measured p50 91–174 ms raw (316–1,635 input tokens, verification readout) and 121–145 ms for the release configuration over localhost; your measurement from your server is the one that counts.
+**Cost basis.** Qwen3.5-4B at the hosted price you use for that size class ($0.03 per M input, DeepInfra), times the input tokens the API reports; nothing is generated. For context only, the release endpoint completed a separate, serial 140-item manager-chain run on an RTX 4090 at p50 287 ms and p95 324 ms after five warm-up calls (383–675 input tokens per request). Your measurement from your server is the one that counts.
 
 **Openness.** Apache-2.0 code; Qwen's weights unchanged (Apache-2.0) plus a 116 MB LoRA adapter we trained on our own generated and model-drafted items (Apache-2.0, `adimyth/compass-lora-v2`, pinned revision), with the training data, splits, shadow suite and provenance in the repository.
 
